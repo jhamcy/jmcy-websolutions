@@ -394,6 +394,13 @@
             line-height: 1.6;
         }
 
+        .hero-action-btns {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
         .hero-image-wrap {
             overflow: hidden;
             border-radius: 12px;
@@ -468,12 +475,20 @@
             box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
         }
 
+        .btn-messenger {
+            background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+            box-shadow: 0 4px 14px rgba(0, 132, 255, 0.3);
+        }
+
+        .btn-messenger:hover {
+            box-shadow: 0 8px 25px rgba(0, 132, 255, 0.5);
+        }
+
         .btn-outline {
             background: transparent;
             border: 1px solid var(--card-border);
             color: var(--github-gray);
             box-shadow: none;
-            margin-left: 0.5rem;
         }
 
         .btn-outline:hover {
@@ -937,14 +952,13 @@
                 font-size: 1.8rem;
             }
 
+            .hero-action-btns {
+                justify-content: center;
+            }
+
             .hero .btn {
                 display: block;
                 width: 100%;
-                margin: 0 0 0.8rem 0;
-            }
-
-            .hero .btn-outline {
-                margin-left: 0 !important;
             }
 
             .hero-image-wrap {
@@ -1023,7 +1037,7 @@
                 <a href="https://www.instagram.com/jmcy.websolutions" target="_blank" class="social-btn instagram" title="Instagram (jmcy.websolutions)">
                     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
-                <a href="https://m.me/jmcywebsolutions2026" target="_blank" class="social-btn messenger" title="Messenger (jmcywebsolutions2026)">
+                <a href="https://m.me/jmcywebsolutions2026" target="_blank" rel="noopener noreferrer" class="social-btn messenger" title="Messenger (jmcywebsolutions2026)">
                     <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.302 2.246.466 3.443.466 6.627 0 12-4.975 12-11.113C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.125 3.26 5.893-3.26-6.559 6.96z"/></svg>
                 </a>
                 <a href="https://wa.me/639091297422" target="_blank" class="social-btn whatsapp" title="WhatsApp (0909 129 7422)">
@@ -1050,8 +1064,14 @@
                     <span class="badge">Custom Frontend & Supabase Architecture</span>
                     <h2>Engineered Web Solutions: <span>Frontend & Full-Stack ERP</span></h2>
                     <p class="hero-text">We build two distinct tiers of web platforms: lightweight, lightning-fast <strong>Frontend-Only Websites</strong> and powerful <strong>Full-Stack Applications</strong> driven by Supabase cloud databases and Higher ERP backends.</p>
-                    <a href="#calculator" class="btn">Calculate Project Cost</a>
-                    <a href="about-me.html" class="btn btn-outline">Learn More About Us</a>
+                    
+                    <div class="hero-action-btns">
+                        <a href="#calculator" class="btn">Calculate Project Cost</a>
+                        <a href="https://m.me/jmcywebsolutions2026" target="_blank" rel="noopener noreferrer" class="btn btn-messenger">
+                            Direct PM on Messenger
+                        </a>
+                        <a href="about-me.html" class="btn btn-outline">Learn More About Us</a>
+                    </div>
 
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -1302,8 +1322,8 @@
                         <a href="https://wa.me/639091297422" target="_blank">+63 909 129 7422</a>
                     </div>
                     <div class="info-item">
-                        <h4>Messenger</h4>
-                        <a href="https://m.me/jmcywebsolutions2026" target="_blank">jmcywebsolutions2026</a>
+                        <h4>Messenger Direct PM</h4>
+                        <a href="https://m.me/jmcywebsolutions2026" target="_blank" rel="noopener noreferrer">m.me/jmcywebsolutions2026 &rarr;</a>
                     </div>
                 </div>
 
