@@ -41,22 +41,30 @@
         }
 
         /* KEYFRAME ANIMATIONS */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         @keyframes logoPulse {
             0% { box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
             50% { box-shadow: 0 0 22px rgba(56, 189, 248, 0.5); }
             100% { box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
         }
+
+        /* SCROLL REVEAL & INTERACTIVE ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay modifiers for staggered grid reveal */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
 
         /* MOBILE HEADER BAR */
         .mobile-header {
@@ -339,7 +347,6 @@
         section {
             margin-bottom: 4.5rem;
             scroll-margin-top: 2rem;
-            animation: fadeUp 0.8s ease-out forwards;
         }
 
         /* HERO SECTION */
@@ -454,7 +461,7 @@
             background-color: var(--card-border);
         }
 
-        /* BUTTONS */
+        /* BUTTONS WITH LIGHT GLOW SWEEP ANIMATION */
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
@@ -468,6 +475,25 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
@@ -509,12 +535,13 @@
             padding: 1.5rem;
             border-radius: 12px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .tech-card:hover {
             border-color: var(--accent-color);
-            transform: translateY(-4px);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 10px 25px -5px var(--accent-glow);
         }
 
         .tech-card.supabase-card:hover {
@@ -668,6 +695,11 @@
             border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 1.8rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .estimator-info-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
         }
 
         .estimator-info-card h3 {
@@ -803,6 +835,7 @@
             font-weight: 800;
             color: var(--accent-color);
             margin: 1rem 0;
+            transition: transform 0.2s ease, color 0.2s ease;
         }
 
         .calc-summary p {
@@ -1058,7 +1091,7 @@
     <!-- MAIN CONTENT -->
     <main>
         <!-- ABOUT / HERO SECTION -->
-        <section id="about" class="hero">
+        <section id="about" class="hero reveal">
             <div class="hero-container">
                 <div>
                     <span class="badge">Custom Frontend & Supabase Architecture</span>
@@ -1095,25 +1128,25 @@
         </section>
 
         <!-- TECH STACK SECTION -->
-        <section id="tech">
+        <section id="tech" class="reveal">
             <h2 class="section-title">Tech Stack & Infrastructure</h2>
             <div class="tech-grid">
-                <div class="tech-card">
+                <div class="tech-card reveal delay-1">
                     <span class="tech-icon">🌐</span>
                     <h4>Frontend Web</h4>
                     <p>Clean HTML5, CSS3, & JS without heavy frameworks or template bloat.</p>
                 </div>
-                <div class="tech-card supabase-card">
+                <div class="tech-card supabase-card reveal delay-2">
                     <span class="tech-icon">⚡</span>
                     <h4>Supabase Database</h4>
                     <p>Cloud PostgreSQL database for ERP data, real-time sync, and user access.</p>
                 </div>
-                <div class="tech-card github-card">
+                <div class="tech-card github-card reveal delay-3">
                     <span class="tech-icon">🐱</span>      
                     <h4>GitHub Management</h4>
                     <p>Version control, automated deployments, and continuous integration.</p>
                 </div>
-                <div class="tech-card supabase-card">
+                <div class="tech-card supabase-card reveal delay-4">
                     <span class="tech-icon">🔒</span>
                     <h4>Supabase Auth & RLS</h4>
                     <p>Secure authentication with fine-grained Row Level Security policies.</p>
@@ -1122,10 +1155,10 @@
         </section>
 
         <!-- TWO SERVICE TYPES SECTION -->
-        <section id="services">
+        <section id="services" class="reveal">
             <h2 class="section-title">Our 2 Website Solution Types</h2>
             <div class="grid">
-                <div class="card">
+                <div class="card reveal delay-1">
                     <div class="card-image-wrap">
                         <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Frontend Only Website" class="card-image">
                     </div>
@@ -1141,7 +1174,7 @@
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card reveal delay-2">
                     <div class="card-image-wrap">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Full-Stack Web App" class="card-image">
                     </div>
@@ -1159,8 +1192,8 @@
             </div>
         </section>
 
-        <!-- FILTERABLE PROJECTS PORTFOLIO SECTION -->
-        <section id="projects">
+        <!-- FILTERABLE PORTFOLIO SECTION -->
+        <section id="projects" class="reveal">
             <h2 class="section-title">Featured Projects & Repositories</h2>
             
             <div class="portfolio-filters">
@@ -1170,7 +1203,7 @@
             </div>
 
             <div class="grid">
-                <div class="card project-item fullstack-type">
+                <div class="card project-item fullstack-type reveal delay-1">
                     <div class="card-image-wrap">
                         <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" alt="Enterprise Operations ERP" class="card-image">
                     </div>
@@ -1185,7 +1218,7 @@
                     </div>
                 </div>
 
-                <div class="card project-item frontend-type">
+                <div class="card project-item frontend-type reveal delay-2">
                     <div class="card-image-wrap">
                         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Corporate Showcase Website" class="card-image">
                     </div>
@@ -1200,7 +1233,7 @@
                     </div>
                 </div>
 
-                <div class="card project-item fullstack-type">
+                <div class="card project-item fullstack-type reveal delay-3">
                     <div class="card-image-wrap">
                         <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Supabase Web App" class="card-image">
                     </div>
@@ -1218,16 +1251,16 @@
         </section>
 
         <!-- INTERACTIVE COST ESTIMATOR SECTION -->
-        <section id="calculator">
+        <section id="calculator" class="reveal">
             <h2 class="section-title">Interactive Scope & Cost Estimator</h2>
 
             <div class="estimator-details">
-                <div class="estimator-info-card">
+                <div class="estimator-info-card reveal delay-1">
                     <h3>💡 How The Estimator Works</h3>
                     <p>Our real-time cost calculator calculates an investment baseline using your preferred website tier and selected functional modules. As you toggle choices, the price dynamically recalculates in real-time. Submitting the estimate auto-populates your selected scope directly into our inquiry form for a seamless consultation workflow.</p>
                 </div>
 
-                <div class="estimator-info-card backend-scope-card">
+                <div class="estimator-info-card backend-scope-card reveal delay-2">
                     <h3>⚙️ Backend Architecture Scope (Supabase + ERP)</h3>
                     <ul>
                         <li><strong>PostgreSQL Database Architecture:</strong> Schema design, relational tables, indexed foreign keys, and optimized query execution for enterprise records.</li>
@@ -1238,7 +1271,7 @@
                 </div>
             </div>
 
-            <div class="calculator-container">
+            <div class="calculator-container reveal delay-3">
                 <div>
                     <div class="calc-group">
                         <label>1. Choose Architecture Tier & Scope:</label>
@@ -1300,11 +1333,11 @@
         </section>
 
         <!-- CONTACT SECTION -->
-        <section id="contact">
+        <section id="contact" class="reveal">
             <h2 class="section-title">Contact Us</h2>
             
             <div class="contact-grid">
-                <div class="contact-info-card">
+                <div class="contact-info-card reveal delay-1">
                     <div class="info-item">
                         <h4>Website & Domain</h4>
                         <a href="http://www.jmcywebsolutions.com" target="_blank">www.jmcywebsolutions.com</a>
@@ -1327,7 +1360,7 @@
                     </div>
                 </div>
 
-                <div class="contact-container">
+                <div class="contact-container reveal delay-2">
                     <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Ready to launch your frontend or full-stack web application? Send us your details below:</p>
                     
                     <form action="#" method="post" onsubmit="event.preventDefault(); alert('Thank you! Your inquiry has been sent to jhamcyd@gmail.com.');">
@@ -1393,6 +1426,19 @@
         window.addEventListener('scroll', handleMobileScroll);
         window.addEventListener('touchmove', handleMobileScroll);
 
+        /* INTERSECTION OBSERVER FOR SCROLL-TRIGGERED FADE & REVEAL */
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+        });
+
         function filterProjects(category) {
             const buttons = document.querySelectorAll('.filter-btn');
             const items = document.querySelectorAll('.project-item');
@@ -1440,7 +1486,15 @@
                 total += parseInt(cb.value);
             });
 
-            document.getElementById('totalPrice').innerText = '₱' + total.toLocaleString();
+            const priceDisplay = document.getElementById('totalPrice');
+            priceDisplay.innerText = '₱' + total.toLocaleString();
+            
+            /* Quick pulse animation on price update */
+            priceDisplay.style.transform = 'scale(1.08)';
+            setTimeout(() => {
+                priceDisplay.style.transform = 'scale(1)';
+            }, 150);
+
             return total;
         }
 
@@ -1493,7 +1547,11 @@
             }
         });
 
-        document.addEventListener('DOMContentLoaded', handleTypeChange);
+        document.addEventListener('DOMContentLoaded', () => {
+            handleTypeChange();
+            /* Attach scroll-reveal observer to all marked elements */
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        });
     </script>
 </body>
 </html>
