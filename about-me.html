@@ -46,17 +46,31 @@
       margin: auto;
     }
 
-    /* SCROLL ANIMATION BASE */
+    /* SCROLL ANIMATIONS BASE */
     .animate-on-scroll {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transform: translateY(35px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .animate-on-scroll.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Staggered Delay for Grid Children */
+    .stagger-children > * {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-on-scroll.visible .stagger-children > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .animate-on-scroll.visible .stagger-children > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .animate-on-scroll.visible .stagger-children > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .animate-on-scroll.visible .stagger-children > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .animate-on-scroll.visible .stagger-children > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+    .animate-on-scroll.visible .stagger-children > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
 
     /* TOP HEADER & RETURN BUTTON */
     header.top-bar {
@@ -95,7 +109,8 @@
       background: var(--primary);
       color: #07111f;
       border-color: var(--primary);
-      transform: translateX(-3px);
+      transform: translateX(-4px);
+      box-shadow: 0 4px 15px rgba(78, 184, 255, 0.3);
     }
 
     /* HERO */
@@ -136,6 +151,9 @@
 
     .hero h1 span {
       color: #63c2ff;
+      background: linear-gradient(90deg, #4eb8ff, #99d8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
@@ -154,6 +172,12 @@
       border: 1px solid rgba(78, 184, 255, 0.3);
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       animation: fadeInUp 1.3s ease-out;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .brand-banner-preview:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 35px rgba(78, 184, 255, 0.25);
     }
 
     .brand-banner-preview img {
@@ -176,7 +200,7 @@
       cursor: pointer;
       border: none;
       font-size: 1rem;
-      transition: transform .25s, box-shadow .25s, background .25s;
+      transition: transform .25s, box-shadow .25s, background .25s, color .25s;
     }
 
     .btn:hover {
@@ -189,6 +213,10 @@
       box-shadow: 0 10px 30px rgba(78,184,255,.25);
     }
 
+    .btn-primary:hover {
+      box-shadow: 0 15px 35px rgba(78,184,255,.4);
+    }
+
     .btn-secondary {
       border: 1px solid #526982;
       color: white;
@@ -198,6 +226,7 @@
     .btn-secondary:hover {
       border-color: var(--primary);
       color: var(--primary);
+      box-shadow: 0 10px 25px rgba(78, 184, 255, 0.15);
     }
 
     .profile-wrap {
@@ -215,12 +244,12 @@
       border: 1px solid rgba(255,255,255,.15);
       box-shadow: 0 30px 70px rgba(0,0,0,.35);
       transform: rotate(2deg);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .profile-card:hover {
-      transform: rotate(0deg) translateY(-6px);
-      box-shadow: 0 40px 80px rgba(78,184,255,.2);
+      transform: rotate(0deg) translateY(-8px);
+      box-shadow: 0 40px 80px rgba(78,184,255,.25);
     }
 
     .profile-card img {
@@ -299,12 +328,13 @@
       border-radius: 18px;
       padding: 38px;
       box-shadow: 0 15px 45px rgba(30,55,90,.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(30,55,90,.12);
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 50px rgba(78,184,255,.15);
     }
 
     .card h3 {
@@ -334,12 +364,13 @@
       padding: 30px;
       border-radius: 16px;
       border: 1px solid #dfe8f2;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
     .skill:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 35px rgba(30,55,90,.12);
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: 0 18px 40px rgba(30,55,90,.12);
     }
 
     .skill-icon {
@@ -351,11 +382,12 @@
       background: #e2f3ff;
       margin-bottom: 18px;
       font-size: 1.35rem;
-      transition: transform 0.3s ease;
+      transition: transform 0.35s ease, background-color 0.35s ease;
     }
 
     .skill:hover .skill-icon {
-      transform: scale(1.1) rotate(5deg);
+      transform: scale(1.15) rotate(6deg);
+      background: var(--primary);
     }
 
     .skill h3 {
@@ -383,12 +415,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
     .project:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 45px rgba(30,55,90,.12);
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 25px 50px rgba(30,55,90,.15);
     }
 
     .project-image-wrap {
@@ -423,10 +456,13 @@
       display: none;
       width: 100%;
       height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
     }
 
     .slide-item.active {
       display: block;
+      opacity: 1;
     }
 
     .slide-item img {
@@ -448,12 +484,13 @@
       font-size: 1.1rem;
       border-radius: 50%;
       z-index: 10;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .slide-btn:hover {
       background: var(--primary);
       color: #0b1220;
+      transform: translateY(-50%) scale(1.1);
     }
 
     .slide-btn.prev {
@@ -485,7 +522,7 @@
 
     .dot.active {
       background: var(--primary);
-      transform: scale(1.2);
+      transform: scale(1.3);
     }
 
     .project-content {
@@ -522,11 +559,12 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: gap 0.2s ease;
+      transition: gap 0.25s ease, color 0.25s ease;
     }
 
     .project-link:hover {
-      gap: 10px;
+      gap: 12px;
+      color: var(--primary);
       text-decoration: underline;
     }
 
@@ -566,15 +604,15 @@
       border-radius: 10px;
       color: #dce8f7;
       font-size: 1rem;
-      transition: all .25s ease;
+      transition: all .3s ease;
       background: rgba(255, 255, 255, 0.03);
     }
 
     .contact-info a:hover {
       border-color: var(--primary);
       color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(78, 184, 255, 0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(78, 184, 255, 0.2);
     }
 
     footer {
@@ -589,7 +627,7 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(25px);
       }
       to {
         opacity: 1;
@@ -600,7 +638,7 @@
     @keyframes fadeInDown {
       from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-25px);
       }
       to {
         opacity: 1;
@@ -611,7 +649,7 @@
     @keyframes fadeInRight {
       from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(35px);
       }
       to {
         opacity: 1;
@@ -669,7 +707,7 @@
 
 <body>
 
-  <!-- TOP BAR WITH RETURN BUTTON ONLY -->
+  <!-- TOP BAR WITH RETURN BUTTON -->
   <header class="top-bar">
     <div class="container top-bar-inner">
       <a href="index.html" class="btn-return">
@@ -693,7 +731,7 @@
         <p>
           Hi, I'm <strong>James Del Rosario</strong>, Founder & CEO of JMCY Web Solutions. We build tailored 
           web platforms for any type of business, alongside large-scale ERP inventory systems available both online (cloud) 
-          and as standalone local `.exe` applications.
+          and as standalone local <code>.exe</code> applications.
         </p>
 
         <div class="buttons">
@@ -727,7 +765,7 @@
         <h2>About JMCY Web Solutions</h2>
       </div>
 
-      <div class="about-grid">
+      <div class="about-grid stagger-children">
 
         <div class="card">
           <h3>Who We Are</h3>
@@ -768,7 +806,7 @@
         <h2>What We Deliver</h2>
       </div>
 
-      <div class="skill-grid">
+      <div class="skill-grid stagger-children">
 
         <div class="skill">
           <div class="skill-icon">🌐</div>
@@ -819,7 +857,7 @@
         <h2>Featured Projects</h2>
       </div>
 
-      <div class="project-grid">
+      <div class="project-grid stagger-children">
 
         <article class="project">
           <div>

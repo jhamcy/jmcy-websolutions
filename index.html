@@ -744,6 +744,65 @@
             color: var(--text-color);
         }
 
+        /* MODULE SUMMARY DETAILS STYLING */
+        .module-summary-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .module-summary-container h3 {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .module-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .module-summary-card {
+            background-color: #0b1120;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .module-summary-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .module-summary-card h4 {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .module-summary-card h4 span {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            background-color: var(--accent-glow);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .module-summary-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
         /* COST CALCULATOR STYLING */
         .calculator-container {
             background-color: var(--card-bg);
@@ -1046,6 +1105,7 @@
             .calculator-container,
             .contact-grid,
             .estimator-details,
+            .module-summary-grid,
             .grid,
             .tech-grid {
                 grid-template-columns: 1fr !important;
@@ -1298,6 +1358,28 @@
                         <li><strong>Higher ERP Relational Sync:</strong> Database setup and core synchronization with Higher ERP.</li>
                         <li><strong>Admin Management UI:</strong> Central control panel for administrative data overview and operational controls.</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- MODULE BREAKDOWN & SUMMARY DETAILS -->
+            <div class="module-summary-container reveal delay-2">
+                <h3>📌 Data Table Module Architecture Breakdown (₱20,000 / Module)</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.5;">
+                    Each Data Table Module provides complete full-stack implementation for a specific business data domain. Each module includes relational schema modeling, Row Level Security policies, automated REST/Realtime API exposure, and fully tailored CRUD (Create, Read, Update, Delete) UI interfaces.
+                </p>
+                <div class="module-summary-grid">
+                    <div class="module-summary-card">
+                        <h4>Full-Stack Data UI <span>Frontend + Backend</span></h4>
+                        <p>Custom HTML/CSS/JS interface for record Creation, Retrieval, Updates, and Deletions with sorting, search, and filtration controls.</p>
+                    </div>
+                    <div class="module-summary-card">
+                        <h4>PostgreSQL Table & Schema <span>Supabase Cloud</span></h4>
+                        <p>Relational SQL database structure with foreign keys, data constraints, indexing, and automated triggers tailored to your domain.</p>
+                    </div>
+                    <div class="module-summary-card">
+                        <h4>Security & Access Controls <span>RLS Policy</span></h4>
+                        <p>Fine-grained Row Level Security rules restricting access by user roles, departments, or individual account permissions.</p>
+                    </div>
                 </div>
             </div>
 
