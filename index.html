@@ -58,6 +58,11 @@
             100% { box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
         }
 
+        @keyframes modalPopIn {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
         /* SCROLL REVEAL & INTERACTIVE ANIMATIONS */
         .reveal {
             opacity: 0;
@@ -1038,6 +1043,110 @@
             line-height: 1.5;
         }
 
+        /* PROFESSIONAL NOTIFICATION MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 7, 18, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background: #111827;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 440px;
+            padding: 2.2rem;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.15);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-container {
+            animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .modal-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem auto;
+            background: var(--accent-glow);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .modal-icon-wrap.success {
+            background: rgba(62, 207, 142, 0.15);
+            border-color: rgba(62, 207, 142, 0.4);
+            color: var(--supabase-green);
+        }
+
+        .modal-icon-wrap.error {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.4);
+            color: #ef4444;
+        }
+
+        .modal-icon-wrap svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .modal-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-color);
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.3px;
+        }
+
+        .modal-message {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.8rem;
+        }
+
+        .modal-close-btn {
+            width: 100%;
+            padding: 0.85rem;
+            font-weight: 700;
+            border-radius: 8px;
+            border: none;
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .modal-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4);
+        }
+
         /* STRICT VIEWPORT-WIDTH MEDIA QUERIES FOR MOBILE DEVICES */
         @media screen and (max-width: 768px) {
             .mobile-header {
@@ -1501,6 +1610,25 @@
         </section>
     </main>
 
+    <!-- PROFESSIONAL NOTIFICATION MODAL CONTAINER -->
+    <div class="modal-overlay" id="notificationModal" onclick="handleBackdropClick(event)">
+        <div class="modal-container">
+            <div class="modal-icon-wrap" id="modalIconWrap">
+                <svg id="modalIconSuccess" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <path d="M20 6L9 17l-5-5"></path>
+                </svg>
+                <svg id="modalIconError" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+            </div>
+            <h3 class="modal-title" id="modalTitle">Request Sent!</h3>
+            <p class="modal-message" id="modalMessage">Thank you! Your inquiry has been successfully sent to jhamcyd@gmail.com.</p>
+            <button class="modal-close-btn" onclick="closeNotificationModal()">Continue</button>
+        </div>
+    </div>
+
     <!-- INTERACTIVE JAVASCRIPT LOGIC -->
     <script>
         function toggleMobileMenu() {
@@ -1692,6 +1820,48 @@
             document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
         }
 
+        /* CUSTOM NOTIFICATION MODAL LOGIC */
+        function showNotificationModal(type, title, message) {
+            const modal = document.getElementById('notificationModal');
+            const iconWrap = document.getElementById('modalIconWrap');
+            const iconSuccess = document.getElementById('modalIconSuccess');
+            const iconError = document.getElementById('modalIconError');
+            const titleEl = document.getElementById('modalTitle');
+            const messageEl = document.getElementById('modalMessage');
+
+            titleEl.innerText = title;
+            messageEl.innerText = message;
+
+            if (type === 'success') {
+                iconWrap.className = 'modal-icon-wrap success';
+                iconSuccess.style.display = 'block';
+                iconError.style.display = 'none';
+            } else {
+                iconWrap.className = 'modal-icon-wrap error';
+                iconSuccess.style.display = 'none';
+                iconError.style.display = 'block';
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeNotificationModal() {
+            const modal = document.getElementById('notificationModal');
+            modal.classList.remove('active');
+        }
+
+        function handleBackdropClick(event) {
+            if (event.target.id === 'notificationModal') {
+                closeNotificationModal();
+            }
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeNotificationModal();
+            }
+        });
+
         /* EMAILJS SUBMISSION HANDLER */
         function sendEmail(event) {
             event.preventDefault();
@@ -1703,11 +1873,19 @@
 
             emailjs.sendForm('service_9vxmk0h', 'template_224pkcs', '#contact-form')
                 .then(() => {
-                    alert('Thank you! Your inquiry has been successfully sent to jhamcyd@gmail.com.');
+                    showNotificationModal(
+                        'success', 
+                        'Request Sent!', 
+                        'Thank you! Your inquiry has been successfully sent to jhamcyd@gmail.com. We will get back to you shortly.'
+                    );
                     document.getElementById('contact-form').reset();
                     handleTypeChange();
                 }, (error) => {
-                    alert('Failed to send message. Please try again or reach out via Messenger/WhatsApp.\nError: ' + JSON.stringify(error));
+                    showNotificationModal(
+                        'error', 
+                        'Submission Failed', 
+                        'We were unable to deliver your request right now. Please try again or reach out directly via Messenger or WhatsApp.\nError: ' + (error.text || JSON.stringify(error))
+                    );
                 })
                 .finally(() => {
                     submitBtn.innerText = originalText;
