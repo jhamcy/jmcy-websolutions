@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMCY Web Solutions | Custom Frontend & Supabase Web Applications</title>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init({
+                publicKey: "4dBXSgJvdfz1-kYdi",
+            });
+        })();
+    </script>
+
     <style>
         /* CSS RESET & VARIABLES */
         * {
@@ -1460,30 +1471,30 @@
                 <div class="contact-container reveal delay-2">
                     <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Ready to launch your frontend or full-stack web application? Send us your details below:</p>
                     
-                    <form action="#" method="post" onsubmit="event.preventDefault(); alert('Thank you! Your inquiry has been sent to jhamcyd@gmail.com.');">
+                    <form id="contact-form" onsubmit="sendEmail(event)">
                         <div>
-                            <input type="text" placeholder="Full Name" required>
+                            <input type="text" name="user_name" placeholder="Full Name" required>
                         </div>
                         <div>
-                            <input type="email" placeholder="Email Address" required>
+                            <input type="email" name="user_email" placeholder="Email Address" required>
                         </div>
                         <div>
-                            <input type="tel" placeholder="Mobile Number" required>
+                            <input type="tel" name="user_phone" placeholder="Mobile Number" required>
                         </div>
                         <div>
-                            <select id="architectureSelect" onchange="handleDropdownSelectionChange()" required>
+                            <select id="architectureSelect" name="website_type" onchange="handleDropdownSelectionChange()" required>
                                 <option value="">Select Website Type</option>
                                 <option value="Frontend-Only Website">1. Frontend-Only Website (Static HTML/CSS/JS)</option>
                                 <option value="Full-Stack Website">2. Full-Stack Website (Frontend + Supabase Backend)</option>
                             </select>
                         </div>
                         <div>
-                            <textarea id="messageInput" rows="5" placeholder="Tell us about your web project requirements..." required></textarea>
+                            <textarea id="messageInput" name="message" rows="5" placeholder="Tell us about your web project requirements..." required></textarea>
                         </div>
                         <div>
-                            <textarea class="project-details-large" placeholder="Project Details (e.g., target features, timelines, scope notes, design preferences, or specific business goals)..."></textarea>
+                            <textarea class="project-details-large" name="project_details" placeholder="Project Details (e.g., target features, timelines, scope notes, design preferences, or specific business goals)..."></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Consultation Request</button>
+                        <button type="submit" id="submitBtn" class="btn">Send Consultation Request</button>
                     </form>
                 </div>
             </div>
@@ -1679,6 +1690,29 @@
             const total = calculateTotal();
             syncProjectMessageField(total);
             document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /* EMAILJS SUBMISSION HANDLER */
+        function sendEmail(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+
+            emailjs.sendForm('service_9vxmk0h', 'template_42ew7fz', '#contact-form')
+                .then(() => {
+                    alert('Thank you! Your inquiry has been successfully sent to jhamcyd@gmail.com.');
+                    document.getElementById('contact-form').reset();
+                    handleTypeChange();
+                }, (error) => {
+                    alert('Failed to send message. Please try again or reach out via Messenger/WhatsApp.\nError: ' + JSON.stringify(error));
+                })
+                .finally(() => {
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                });
         }
 
         const sections = document.querySelectorAll('section');
