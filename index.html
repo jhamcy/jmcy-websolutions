@@ -1455,7 +1455,7 @@
             });
         }
 
-        /* TOGGLE VISIBILITY OF BACKEND MODULES BASED ON ARCHITECTURE TIER */
+        /* TOGGLE VISIBILITY & UNCHECK BACKEND MODULES WHEN FRONTEND-ONLY IS SELECTED */
         function handleTypeChange() {
             const isFrontendOnly = document.getElementById('type1').checked;
             const backendGroup = document.getElementById('backendModulesGroup');
@@ -1464,7 +1464,7 @@
             if (isFrontendOnly) {
                 backendGroup.style.display = 'none';
                 checkboxes.forEach(cb => {
-                    cb.checked = false;
+                    cb.checked = false; // Unchecks hidden checkboxes
                 });
             } else {
                 backendGroup.style.display = 'block';
@@ -1481,10 +1481,14 @@
                 total += parseInt(selectedType.value);
             }
 
-            const checkboxes = document.querySelectorAll('.calc-checkbox:checked');
-            checkboxes.forEach(cb => {
-                total += parseInt(cb.value);
-            });
+            /* Only add backend checkbox values if Full-Stack mode is active */
+            const isFrontendOnly = document.getElementById('type1').checked;
+            if (!isFrontendOnly) {
+                const checkboxes = document.querySelectorAll('.calc-checkbox:checked');
+                checkboxes.forEach(cb => {
+                    total += parseInt(cb.value);
+                });
+            }
 
             const priceDisplay = document.getElementById('totalPrice');
             priceDisplay.innerText = '₱' + total.toLocaleString();
@@ -1498,19 +1502,32 @@
             return total;
         }
 
+        /* DYNAMIC MESSAGE POPULATION BASED ON SELECTED TIER */
         function applyEstimateToForm() {
             const total = calculateTotal();
-            const selectedType = document.querySelector('input[name="projectType"]:checked');
-            const typeLabel = selectedType ? selectedType.nextElementSibling.querySelector('strong').innerText : "Custom Project";
-
+            const isFrontendOnly = document.getElementById('type1').checked;
             const archSelect = document.getElementById('architectureSelect');
-            if (typeLabel.includes("Frontend-Only")) {
-                archSelect.value = "Frontend-Only Website";
-            } else {
-                archSelect.value = "Full-Stack Website";
-            }
+            const messageInput = document.getElementById('messageInput');
 
-            document.getElementById('messageInput').value = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote of ₱${total.toLocaleString()} for a ${typeLabel}. I would like to discuss implementing this project using your custom HTML frontend and Supabase backend services.`;
+            if (isFrontendOnly) {
+                // Populate specifically for Frontend-Only Websites
+                archSelect.value = "Frontend-Only Website";
+                messageInput.value = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote of ₱${total.toLocaleString()} for a Frontend-Only Website (Static HTML/CSS/JS). I would like to discuss implementing this project with your team.`;
+            } else {
+                // Collect selected backend features if Full-Stack is selected
+                let selectedFeatures = [];
+                document.querySelectorAll('.calc-checkbox:checked').forEach(cb => {
+                    const featureTitle = cb.nextElementSibling.querySelector('strong').innerText;
+                    selectedFeatures.push(featureTitle);
+                });
+
+                let featureListText = selectedFeatures.length > 0 
+                    ? `\nSelected Modules: ${selectedFeatures.join(', ')}.` 
+                    : '';
+
+                archSelect.value = "Full-Stack Website";
+                messageInput.value = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote of ₱${total.toLocaleString()} for a Full-Stack Website (Frontend + Supabase Backend).${featureListText}\n\nI would like to discuss implementing this project using your custom HTML frontend and Supabase backend services.`;
+            }
 
             document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
         }
