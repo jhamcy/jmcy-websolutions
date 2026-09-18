@@ -1251,13 +1251,13 @@
             }
         }
     </style>
+
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6SZ683WL8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-F6SZ683WL8');
     </script>
 
@@ -1834,6 +1834,7 @@
 
             const total = calculateTotal();
             syncProjectMessageField(total);
+            trackBusinessEvent('quote_start', { method: 'estimate_to_form' });
             document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -1895,6 +1896,15 @@
                         'Request Sent!', 
                         'Thank you! Your inquiry has been successfully sent to jhamcyd@gmail.com. We will get back to you shortly.'
                     );
+
+                    // GA4: record a successful consultation request as a key business event.
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'generate_lead', {
+                            method: 'contact_form',
+                            form_name: 'consultation_request'
+                        });
+                    }
+
                     document.getElementById('contact-form').reset();
                     handleTypeChange();
                 }, (error) => {
@@ -1942,7 +1952,72 @@
             }
         });
 
+        /* GOOGLE ANALYTICS BUSINESS EVENT TRACKING */
+        function trackBusinessEvent(eventName, params = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            // Quote/estimator engagement
+            document.querySelectorAll('a[href="#calculator"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    trackBusinessEvent('quote_start', { method: 'estimator_link' });
+                });
+            });
+
+            // Contact and social actions
+            document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    trackBusinessEvent('email_click', { link_url: link.href });
+                });
+            });
+
+            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    trackBusinessEvent('phone_click', { link_url: link.href });
+                });
+            });
+
+            document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    trackBusinessEvent('whatsapp_click', { link_url: link.href });
+                });
+            });
+
+            document.querySelectorAll('a[href*="m.me"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    trackBusinessEvent('messenger_click', { link_url: link.href });
+                });
+            });
+
+            document.querySelectorAll('a[href*="facebook.com"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    trackBusinessEvent('facebook_click', { link_url: link.href });
+                });
+            });
+
+            // GitHub/project outbound links
+            document.querySelectorAll('a[href*="github.com"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    trackBusinessEvent('github_click', { link_url: link.href });
+                });
+            });
+
+            // Begin tracking when the user interacts with the consultation form.
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                let formStarted = false;
+                contactForm.addEventListener('input', () => {
+                    if (!formStarted) {
+                        formStarted = true;
+                        trackBusinessEvent('contact_form_start', { form_name: 'consultation_request' });
+                    }
+                }, { once: false });
+            }
+
+            // Existing page initialization
             handleTypeChange();
             /* Attach scroll-reveal observer to all marked elements */
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
