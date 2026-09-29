@@ -6,9 +6,20 @@
     <title>Portfolio | JMCY Web Solutions</title>
 
     <!-- SEO -->
-    <meta name="description" content="Browse live frontend project samples by JMCY Web Solutions — massage, restaurant, and tea house websites — plus custom full-stack ERP systems available by consultation.">
+    <meta name="description" content="Live frontend demo samples by JMCY Web Solutions (massage, restaurant, tea house) and custom full-stack ERP systems by consultation.">
     <link rel="canonical" href="https://www.jmcywebsolutions.com/portfolio.html">
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <meta name="theme-color" content="#090d16">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Portfolio | JMCY Web Solutions">
+    <meta property="og:description" content="Live demo samples and custom full-stack ERP systems by JMCY Web Solutions.">
+    <meta property="og:image" content="https://www.jmcywebsolutions.com/logo.png">
+    <meta property="og:url" content="https://www.jmcywebsolutions.com/portfolio.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio | JMCY Web Solutions">
 
     <style>
         * {
@@ -47,47 +58,15 @@
             margin: auto;
         }
 
-        /* TOP BAR & RETURN BUTTON (from about-me.html) */
-        header.top-bar {
-            position: sticky;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(11, 18, 32, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 16px 0;
-        }
-
-        .top-bar-inner {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .btn-return {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-
-        .btn-return:hover {
-            background: var(--accent-color);
-            color: #07111f;
-            border-color: var(--accent-color);
-            transform: translateX(-4px);
-            box-shadow: 0 4px 15px rgba(78, 184, 255, 0.3);
-        }
+        /* TOP BAR (shared: portfolio.html + about-me.html) */
+        header.top-bar { position: sticky; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(3, 7, 18, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--card-border); padding: 14px 0; }
+        .top-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        .btn-return { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: #ffffff; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.25s ease; }
+        .btn-return:hover { background: var(--accent-color); color: #07111f; border-color: var(--accent-color); transform: translateX(-4px); box-shadow: 0 4px 15px rgba(56,189,248,0.3); }
+        .top-links { display: flex; gap: 1.4rem; align-items: center; }
+        .top-links a { color: var(--text-muted); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: color 0.25s ease; }
+        .top-links a:hover, .top-links a.active { color: var(--accent-color); }
+        @media (max-width: 560px) { .top-links { gap: 1rem; } .top-links a { font-size: 0.82rem; } .btn-return { padding: 8px 12px; font-size: 0.85rem; } }
 
         main {
             max-width: 1200px;
@@ -327,16 +306,22 @@
     <header class="top-bar">
         <div class="container top-bar-inner">
             <a href="index.html" class="btn-return">&#8592; Back to Main Site</a>
+            <nav class="top-links">
+                <a href="portfolio.html" class="active" aria-current="page">Portfolio</a>
+                <a href="about-me.html">About Us</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
         </div>
     </header>
 
     <main>
         <div class="page-intro">
             <h1>Portfolio</h1>
-            <p>A closer look at recent frontend project samples, built entirely on clean HTML/CSS/JS. Full-stack and ERP builds are scoped individually — see the note below.</p>
+            <p>Demo samples built to show new customers what is possible. Completed client projects are featured on the <a href="index.html#projects" style="color:var(--accent-color);font-weight:600;text-decoration:none;">main site</a>. Full-stack and ERP builds are scoped individually, so see the note at the bottom. <a href="index.html#packages" style="color:var(--accent-color);font-weight:600;text-decoration:none;">View frontend packages &amp; pricing &rarr;</a></p>
         </div>
 
-        <h2 class="section-title">Frontend-Only Samples</h2>
+        <h2 class="section-title" style="margin-top:0;">Demo Samples (Frontend-Only)</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin: -0.8rem 0 1.6rem 0;">Built as portfolio samples for prospective customers. These are not client projects.</p>
 
         <div class="grid">
             <div class="card">
@@ -348,10 +333,11 @@
                     <p>Sanctuary-style booking site for a holistic massage and spa brand, with a full service menu covering massages, facials, body work, and hydrotherapy, plus a dedicated reservation section.</p>
                     <div class="card-tags" style="margin-bottom:1.2rem;">
                         <span class="tag tag-frontend">Frontend Only</span>
+                        <span class="tag tag-fullstack">Demo Sample</span>
                         <span class="tag">Wellness / Spa</span>
                         <span class="tag tag-github">GitHub Pages</span>
                     </div>
-                    <a href="https://jhamcy.github.io/Lotus-Oli/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Project &rarr;</a>
+                    <a href="https://jhamcy.github.io/Lotus-Oli/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Demo &rarr;</a>
                 </div>
             </div>
 
@@ -364,10 +350,11 @@
                     <p>Restaurant showcase site with a curated menu, a live shopping-bag style order builder, and one-tap checkout hand-off via WhatsApp, SMS, or Messenger.</p>
                     <div class="card-tags" style="margin-bottom:1.2rem;">
                         <span class="tag tag-frontend">Frontend Only</span>
+                        <span class="tag tag-fullstack">Demo Sample</span>
                         <span class="tag">Restaurant / Ordering UI</span>
                         <span class="tag tag-github">GitHub Pages</span>
                     </div>
-                    <a href="https://jhamcy.github.io/AURA/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Project &rarr;</a>
+                    <a href="https://jhamcy.github.io/AURA/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Demo &rarr;</a>
                 </div>
             </div>
 
@@ -380,10 +367,11 @@
                     <p>Milk tea ordering site with a customizable drink menu (sweetness, ice, toppings), a running cart, and checkout hand-off to WhatsApp, SMS, or Messenger.</p>
                     <div class="card-tags" style="margin-bottom:1.2rem;">
                         <span class="tag tag-frontend">Frontend Only</span>
+                        <span class="tag tag-fullstack">Demo Sample</span>
                         <span class="tag">Food &amp; Beverage</span>
                         <span class="tag tag-github">GitHub Pages</span>
                     </div>
-                    <a href="https://jhamcy.github.io/Milk-Leaf/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Project &rarr;</a>
+                    <a href="https://jhamcy.github.io/Milk-Leaf/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Demo &rarr;</a>
                 </div>
             </div>
         </div>
@@ -393,19 +381,23 @@
         <div class="erp-card">
             <div class="erp-card-text">
                 <h3>🗂️ Custom ERP System — Frontend + Backend</h3>
-                <p>Full-stack ERP builds (inventory, payroll, admin dashboards, login-gated portals) are scoped per client — architecture, modules, and pricing are tailored during a project discussion rather than shown as a public demo.</p>
+                <p>Full-stack ERP builds (inventory, payroll, admin dashboards, login-gated portals) are scoped per client — architecture, modules, and pricing are tailored during a project discussion rather than listed at a fixed price. JMP International is a delivered example.</p>
                 <div class="card-tags" style="margin-bottom:0;">
                     <span class="tag tag-fullstack">Frontend + Backend</span>
                     <span class="tag tag-supabase">Supabase ERP</span>
                     <span class="tag">By Consultation</span>
                 </div>
             </div>
-            <a href="index.html#contact" class="btn">Discuss Your Project &rarr;</a>
+            <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+                <a href="index.html#contact" class="btn">Discuss Your Project &rarr;</a>
+                <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Live Example: JMP International &rarr;</a>
+            </div>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 JMCY Web Solutions. All rights reserved.
+        &copy; <span id="year">2026</span> JMCY Web Solutions. All rights reserved.
     </footer>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

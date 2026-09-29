@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d16">
     <title>JMCY Web Solutions | Custom Frontend & Supabase Web Applications</title>
 
     <!-- SEO -->
@@ -959,6 +960,37 @@
             line-height: 1.5;
         }
 
+        /* FRONTEND PACKAGE & ADD-ONS */
+        .pkg-core { background: linear-gradient(135deg, var(--card-bg), var(--sidebar-bg)); border: 1px solid var(--card-border); border-radius: 16px; padding: 2.2rem; margin-bottom: 1.5rem; }
+        .pkg-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+        .pkg-head h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+        .pkg-head p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; max-width: 520px; }
+        .pkg-price { font-size: 2.2rem; font-weight: 800; color: var(--accent-color); line-height: 1; text-align: right; }
+        .pkg-price small { display: block; font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.4rem; }
+        .pkg-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.8rem; }
+        .pkg-list.single { grid-template-columns: 1fr; }
+        .pkg-list li { font-size: 0.84rem; color: var(--text-muted); line-height: 1.55; padding-left: 1.2rem; position: relative; }
+        .pkg-list li::before { content: "\25B9"; position: absolute; left: 0; color: var(--accent-color); }
+        .pkg-list strong { color: var(--text-color); }
+        .pkg-note { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid var(--card-border); font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+        .addon-intro { color: var(--text-muted); font-size: 0.9rem; margin: 2rem 0 1.2rem; }
+        .addon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        .addon-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.6rem; transition: border-color 0.3s ease, transform 0.3s ease; }
+        .addon-card:hover { border-color: var(--accent-color); transform: translateY(-4px); }
+        .addon-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-color); background: var(--accent-glow); padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.8rem; }
+        .addon-card h4 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .addon-price { font-size: 1.3rem; font-weight: 800; color: var(--accent-color); margin-bottom: 1rem; }
+        .addon-price small { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); }
+        .addon-card .pkg-note { margin-top: 1rem; }
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2rem; }
+        .step-card { background: #0b1120; border: 1px solid var(--card-border); border-radius: 10px; padding: 1.3rem; }
+        .step-card h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+        .step-card h4 span { color: var(--accent-color); margin-right: 0.4rem; }
+        .step-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+        .calc-breakdown { text-align: left; margin: 0 0 1rem; }
+        .calc-breakdown > div { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; color: var(--text-muted); padding: 0.55rem 0; border-top: 1px solid var(--card-border); }
+        .calc-breakdown strong { color: var(--text-color); }
+
         /* CONTACT SECTION */
         .contact-grid {
             display: grid;
@@ -1242,7 +1274,10 @@
             .estimator-details,
             .module-summary-grid,
             .grid,
-            .tech-grid {
+            .tech-grid,
+            .pkg-list,
+            .addon-grid,
+            .steps {
                 grid-template-columns: 1fr !important;
             }
 
@@ -1290,6 +1325,7 @@
                 <li><a href="#about" class="active" onclick="closeMobileMenu()">About</a></li>
                 <li><a href="#tech" onclick="closeMobileMenu()">Tech Stack</a></li>
                 <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+                <li><a href="#packages" onclick="closeMobileMenu()">Packages</a></li>
                 <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="#calculator" onclick="closeMobileMenu()">Estimator</a></li>
@@ -1307,7 +1343,7 @@
                 <a href="https://www.instagram.com/jmcy.websolutions" target="_blank" class="social-btn instagram" title="Instagram (jmcy.websolutions)">
                     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
-                <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer" class="social-btn messenger" title="Messenger (jmcywebsolutions)">
+                <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer" class="social-btn messenger" title="Messenger (jmcyweb)">
                     <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.302 2.246.466 3.443.466 6.627 0 12-4.975 12-11.113C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.125 3.26 5.893-3.26-6.559 6.96z"/></svg>
                 </a>
                 <a href="https://wa.me/639091297422" target="_blank" class="social-btn whatsapp" title="WhatsApp (0909 129 7422)">
@@ -1321,7 +1357,7 @@
             <p><a href="about-me.html" class="github-link">
                 Learn More About Us &rarr;
             </a></p>
-            <p style="margin-top:0.4rem;">&copy; 2026 JMCY Web Solutions.</p>
+            <p style="margin-top:0.4rem;">&copy; <span id="year">2026</span> JMCY Web Solutions.</p>
         </div>
     </aside>
 
@@ -1408,6 +1444,7 @@
                             <span class="tag">Custom CSS</span>
                             <span class="tag tag-github">GitHub Hosted</span>
                         </div>
+                        <a href="#packages" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Package &amp; Pricing &rarr;</a>
                     </div>
                 </div>
 
@@ -1429,12 +1466,75 @@
             </div>
         </section>
 
+        <!-- FRONTEND-ONLY PACKAGE & ADD-ONS -->
+        <section id="packages" class="reveal">
+            <h2 class="section-title">Frontend-Only Package &amp; Add-Ons</h2>
+
+            <div class="pkg-core reveal delay-1">
+                <div class="pkg-head">
+                    <div>
+                        <h3>Core Development Package</h3>
+                        <p>Complete custom development, layout design, and deployment of your business website, as a one-time investment.</p>
+                    </div>
+                    <div class="pkg-price">&#8369;15,000<small>One-time investment</small></div>
+                </div>
+                <ul class="pkg-list">
+                    <li><strong>Custom Brand Integration:</strong> Your business name, logo, brand assets, service menu, and localized copywriting applied to a proven layout.</li>
+                    <li><strong>Fast, Clean Code:</strong> Built in plain HTML/CSS/JS for quick load times, which supports better Google speed scores and local search visibility.</li>
+                    <li><strong>Mobile-First Design:</strong> Fully responsive on smartphones, tablets, and desktop computers.</li>
+                    <li><strong>Lead &amp; Booking Capture:</strong> A working "Book Appointment" or "Contact Us" form that sends customer inquiries straight to your business email.</li>
+                    <li><strong>&#8369;0 Hosting Fees:</strong> Deployed on GitHub's global network, so there are no monthly or annual server hosting charges.</li>
+                    <li><strong>Launch &amp; Handover:</strong> Your custom domain (.com or .ph) linked to the live site, plus 14 days of post-launch technical support.</li>
+                </ul>
+                <p class="pkg-note"><strong>Note:</strong> Annual domain registration (approx. &#8369;800&ndash;&#8369;1,500/year depending on the extension) is billed directly to you by the registrar (e.g., Namecheap or GoDaddy), so you keep full ownership of your domain.</p>
+            </div>
+
+            <p class="addon-intro">Optional add-on services: activate them now or anytime as your business grows.</p>
+            <div class="addon-grid">
+                <div class="addon-card reveal delay-1">
+                    <span class="addon-tag">Option A</span>
+                    <h4>Local SEO Setup &amp; Indexing</h4>
+                    <div class="addon-price">&#8369;5,000 <small>one-time setup</small></div>
+                    <ul class="pkg-list single">
+                        <li><strong>Target Keyword Optimization:</strong> Meta titles, headers, descriptions, and image alt tags tailored to rank you for local searches in your city (e.g., "Best spa in [Your City]").</li>
+                        <li><strong>Google Search Console:</strong> Sitemap created and submitted so your pages are discovered, indexed, and updated faster.</li>
+                    </ul>
+                </div>
+                <div class="addon-card reveal delay-2">
+                    <span class="addon-tag">Option B</span>
+                    <h4>Monthly Website Maintenance</h4>
+                    <div class="addon-price">&#8369;2,500 <small>/ month &middot; no lock-in</small></div>
+                    <ul class="pkg-list single">
+                        <li><strong>Up to 3 update rounds per month:</strong> Text edits, seasonal price changes, service menu updates, or operating hour changes.</li>
+                        <li><strong>Monthly checkups:</strong> Platform performance review and link health monitoring.</li>
+                    </ul>
+                </div>
+                <div class="addon-card reveal delay-3">
+                    <span class="addon-tag">Option C</span>
+                    <h4>Google Ads Launch &amp; Management</h4>
+                    <div class="addon-price">&#8369;7,500 <small>/ month &middot; continuous management</small></div>
+                    <ul class="pkg-list single">
+                        <li><strong>A/B Campaign Setup:</strong> 2 to 3 ad copy variations tested to find which brings the most high-intent booking conversions.</li>
+                        <li><strong>Daily Click &amp; Search Term Monitoring:</strong> Low-intent or accidental clicks are blocked with negative keywords to protect your budget.</li>
+                        <li><strong>Radius Targeting &amp; Verification:</strong> Targeting mapped around your business location, with help through Google's identity/business verification.</li>
+                    </ul>
+                    <p class="pkg-note">Your daily ad budget is paid directly to Google through your linked business credit/debit card.</p>
+                </div>
+            </div>
+
+            <div class="steps">
+                <div class="step-card"><h4><span>1</span>Approval</h4><p>Reply to the proposal confirming your selected package and optional add-ons.</p></div>
+                <div class="step-card"><h4><span>2</span>Downpayment</h4><p>A 50% mobilization deposit (&#8369;7,500 on the core package) starts the work. The balance is settled on final approval, before go-live on your domain.</p></div>
+                <div class="step-card"><h4><span>3</span>Content Handover</h4><p>Send your logo, verified service/pricing list, high-resolution media, and preferred contact channels.</p></div>
+            </div>
+        </section>
+
         <!-- FILTERABLE PORTFOLIO SECTION -->
         <section id="projects" class="reveal">
-            <h2 class="section-title">Featured Projects & Repositories</h2>
+            <h2 class="section-title">Completed Client Projects</h2>
 
             <p style="color: var(--text-muted); margin: -1rem 0 1.6rem 0; font-size: 0.9rem;">
-                Want more samples? <a href="portfolio.html" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">View the full portfolio &rarr;</a>
+                Want to see more? Browse our demo samples in the <a href="portfolio.html" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">full portfolio &rarr;</a>
             </p>
 
             <div class="portfolio-filters">
@@ -1454,7 +1554,7 @@
                         <div class="card-tags">
                             <span class="tag tag-fullstack">Frontend + Backend</span>
                             <span class="tag tag-supabase">Supabase ERP</span>
-                            <span class="tag tag-github">Live Site</span>
+                            <span class="tag tag-github">Client Project &middot; Live</span>
                         </div>
                         <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Live Project &rarr;</a>
                     </div>
@@ -1470,7 +1570,7 @@
                         <div class="card-tags">
                             <span class="tag tag-frontend">Frontend Only</span>
                             <span class="tag">Local SEO</span>
-                            <span class="tag tag-github">Live Site</span>
+                            <span class="tag tag-github">Client Project &middot; Live</span>
                         </div>
                         <a href="https://www.famous-touch.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Live Project &rarr;</a>
                     </div>
@@ -1539,6 +1639,21 @@
                         </div>
                     </div>
 
+                    <!-- FRONTEND ADD-ONS -->
+                    <div class="calc-group" id="frontendAddonsGroup">
+                        <label>2. Optional Add-On Services (Frontend-Only):</label>
+                        <div class="calc-options" style="grid-template-columns: 1fr;">
+                            <input type="checkbox" id="addonA" value="5000" data-billing="one-time" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
+                            <label for="addonA" class="option-label"><strong>Option A: Local SEO Setup &amp; Indexing</strong><small>&#8369;5,000 one-time: keyword optimization + Google Search Console</small></label>
+
+                            <input type="checkbox" id="addonB" value="2500" data-billing="monthly" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
+                            <label for="addonB" class="option-label"><strong>Option B: Monthly Website Maintenance</strong><small>&#8369;2,500 / month: up to 3 update rounds + performance checkups</small></label>
+
+                            <input type="checkbox" id="addonC" value="7500" data-billing="monthly" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
+                            <label for="addonC" class="option-label"><strong>Option C: Google Ads Launch &amp; Management</strong><small>&#8369;7,500 / month: A/B campaigns, search term monitoring, radius targeting</small></label>
+                        </div>
+                    </div>
+
                     <!-- DYNAMIC MODULE & USER ACCOUNT GROUP -->
                     <div class="calc-group" id="backendModulesGroup" style="display: none;">
                         <label>2. User Accounts Fee (₱200 / user account):</label>
@@ -1557,9 +1672,13 @@
 
                 <div class="calc-summary">
                     <div>
-                        <h3>Estimated Investment</h3>
+                        <h3>Estimated Investment (One-Time)</h3>
                         <div class="calc-price" id="totalPrice">₱15,000</div>
-                        <p>Includes complete source code, responsive mobile optimization, GitHub version control, and initial deployment setup.</p>
+                        <div class="calc-breakdown">
+                            <div id="monthlyRow" style="display:none;"><span>Monthly recurring add-ons</span><strong id="monthlyPrice">₱0 / month</strong></div>
+                            <div id="depositRow"><span>50% downpayment (one-time items)</span><strong id="depositPrice">₱7,500</strong></div>
+                        </div>
+                        <p>Includes complete source code, responsive mobile optimization, GitHub version control, and initial deployment setup. Domain registration and ad spend are billed separately to your own accounts.</p>
                     </div>
                     <button type="button" class="btn" onclick="applyEstimateToForm()">Inquire With This Estimate</button>
                 </div>
@@ -1590,7 +1709,7 @@
                     </div>
                     <div class="info-item">
                         <h4>Messenger Direct PM</h4>
-                        <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer">m.me/jmcywebsolutions &rarr;</a>
+                        <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer">m.me/jmcyweb &rarr;</a>
                     </div>
                 </div>
 
@@ -1715,59 +1834,68 @@
         }
 
         /* TOGGLE VISIBILITY WHEN FRONTEND-ONLY VS FULL-STACK IS SELECTED */
-        function handleTypeChange() {
+        const ADDON_LABELS = {
+            addonA: 'Option A: Local SEO Setup & Indexing',
+            addonB: 'Option B: Monthly Website Maintenance',
+            addonC: 'Option C: Google Ads Launch & Management'
+        };
+
+        function peso(n) { return '₱' + n.toLocaleString(); }
+
+        /* SINGLE SOURCE OF TRUTH FOR ESTIMATE MATH */
+        function getEstimate() {
             const isFrontendOnly = document.getElementById('type1').checked;
-            const backendGroup = document.getElementById('backendModulesGroup');
+            const base = parseInt(document.querySelector('input[name="projectType"]:checked').value);
+            const est = { isFrontendOnly, oneTime: base, monthly: 0, addons: [], userCount: 0, moduleCount: 0 };
 
             if (isFrontendOnly) {
-                backendGroup.style.display = 'none';
+                document.querySelectorAll('.addon-checkbox:checked').forEach(cb => {
+                    const price = parseInt(cb.value);
+                    if (cb.dataset.billing === 'monthly') est.monthly += price; else est.oneTime += price;
+                    est.addons.push({ label: ADDON_LABELS[cb.id], price, billing: cb.dataset.billing });
+                });
+            } else {
+                est.userCount = parseInt(document.getElementById('userAccountCount').value) || 0;
+                est.moduleCount = parseInt(document.getElementById('dataTableModuleCount').value) || 0;
+                est.oneTime += est.userCount * 200 + est.moduleCount * 20000;
+            }
+            return est;
+        }
+
+        /* TOGGLE VISIBILITY WHEN FRONTEND-ONLY VS FULL-STACK IS SELECTED */
+        function handleTypeChange() {
+            const isFrontendOnly = document.getElementById('type1').checked;
+            document.getElementById('backendModulesGroup').style.display = isFrontendOnly ? 'none' : 'block';
+            document.getElementById('frontendAddonsGroup').style.display = isFrontendOnly ? 'block' : 'none';
+
+            if (isFrontendOnly) {
                 document.getElementById('userAccountCount').value = 0;
                 document.getElementById('dataTableModuleCount').value = 0;
             } else {
-                backendGroup.style.display = 'block';
+                document.querySelectorAll('.addon-checkbox').forEach(cb => cb.checked = false);
             }
 
-            const total = calculateTotal();
-            
-            const archSelect = document.getElementById('architectureSelect');
-            if (isFrontendOnly) {
-                archSelect.value = "Frontend-Only Website";
-            } else {
-                archSelect.value = "Full-Stack Website";
-            }
-            
-            syncProjectMessageField(total);
+            document.getElementById('architectureSelect').value = isFrontendOnly ? "Frontend-Only Website" : "Full-Stack Website";
+            calculateTotal();
         }
 
         function calculateTotal() {
-            let total = 0;
-
-            const selectedType = document.querySelector('input[name="projectType"]:checked');
-            if (selectedType) {
-                total += parseInt(selectedType.value);
-            }
-
-            const isFrontendOnly = document.getElementById('type1').checked;
-            if (!isFrontendOnly) {
-                const userCount = parseInt(document.getElementById('userAccountCount').value) || 0;
-                const moduleCount = parseInt(document.getElementById('dataTableModuleCount').value) || 0;
-
-                total += userCount * 200;
-                total += moduleCount * 20000;
-            }
+            const est = getEstimate();
 
             const priceDisplay = document.getElementById('totalPrice');
-            priceDisplay.innerText = '₱' + total.toLocaleString();
-            
+            priceDisplay.innerText = peso(est.oneTime);
+
+            document.getElementById('monthlyRow').style.display = est.monthly > 0 ? 'flex' : 'none';
+            document.getElementById('monthlyPrice').innerText = peso(est.monthly) + ' / month';
+            document.getElementById('depositRow').style.display = est.isFrontendOnly ? 'flex' : 'none';
+            document.getElementById('depositPrice').innerText = peso(est.oneTime / 2);
+
             /* Quick pulse animation on price update */
             priceDisplay.style.transform = 'scale(1.08)';
-            setTimeout(() => {
-                priceDisplay.style.transform = 'scale(1)';
-            }, 150);
+            setTimeout(() => { priceDisplay.style.transform = 'scale(1)'; }, 150);
 
-            syncProjectMessageField(total);
-
-            return total;
+            syncProjectMessageField();
+            return est.oneTime;
         }
 
         /* SYNC DROPDOWN SELECTION WITH CALCULATOR & AUTO FILL MESSAGE FIELD */
@@ -1786,38 +1914,27 @@
         }
 
         /* HELPER METHOD TO GENERATE MESSAGE TEXT */
-        function syncProjectMessageField(totalPrice) {
-            const archSelectValue = document.getElementById('architectureSelect').value;
-            if (!archSelectValue) return;
+        function syncProjectMessageField() {
+            if (!document.getElementById('architectureSelect').value) return;
 
-            let total = totalPrice;
-            if (total === undefined) {
-                total = 0;
-                const selectedType = document.querySelector('input[name="projectType"]:checked');
-                if (selectedType) total += parseInt(selectedType.value);
-                
-                const isFrontendOnly = document.getElementById('type1').checked;
-                if (!isFrontendOnly) {
-                    const userCount = parseInt(document.getElementById('userAccountCount').value) || 0;
-                    const moduleCount = parseInt(document.getElementById('dataTableModuleCount').value) || 0;
-                    total += (userCount * 200) + (moduleCount * 20000);
-                }
-            }
-
-            const isFrontendOnly = document.getElementById('type1').checked;
+            const est = getEstimate();
             const messageInput = document.getElementById('messageInput');
 
-            if (isFrontendOnly) {
-                messageInput.value = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote of ₱${total.toLocaleString()} for a Frontend-Only Website (Static HTML/CSS/JS). I would like to discuss implementing this project with your team.`;
+            if (est.isFrontendOnly) {
+                let msg = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote for a Frontend-Only Website (Static HTML/CSS/JS).\n\nCore Development Package (one-time): ₱15,000`;
+                est.addons.forEach(ad => {
+                    msg += `\n${ad.label}: ${peso(ad.price)}${ad.billing === 'monthly' ? ' / month' : ' (one-time)'}`;
+                });
+                msg += `\n\nOne-Time Total: ${peso(est.oneTime)}`;
+                if (est.monthly > 0) msg += `\nMonthly Recurring: ${peso(est.monthly)} / month`;
+                msg += `\n\nI would like to discuss implementing this project with your team.`;
+                messageInput.value = msg;
             } else {
-                const userCount = parseInt(document.getElementById('userAccountCount').value) || 0;
-                const moduleCount = parseInt(document.getElementById('dataTableModuleCount').value) || 0;
-
                 let detailsList = `\nBase Tier (₱20,000): Supabase Auth & RLS, Higher ERP Relational Sync, Admin Management UI.`;
-                if (userCount > 0) detailsList += `\nUser Accounts: ${userCount} accounts (₱${(userCount * 200).toLocaleString()}).`;
-                if (moduleCount > 0) detailsList += `\nData Table Modules: ${moduleCount} module(s) (₱${(moduleCount * 20000).toLocaleString()}).`;
+                if (est.userCount > 0) detailsList += `\nUser Accounts: ${est.userCount} accounts (${peso(est.userCount * 200)}).`;
+                if (est.moduleCount > 0) detailsList += `\nData Table Modules: ${est.moduleCount} module(s) (${peso(est.moduleCount * 20000)}).`;
 
-                messageInput.value = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote of ₱${total.toLocaleString()} for a Full-Stack Website (Frontend + Supabase Backend).${detailsList}\n\nI would like to discuss implementing this project using your custom HTML frontend and Supabase backend services.`;
+                messageInput.value = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote of ${peso(est.oneTime)} for a Full-Stack Website (Frontend + Supabase Backend).${detailsList}\n\nI would like to discuss implementing this project using your custom HTML frontend and Supabase backend services.`;
             }
         }
 
@@ -2018,6 +2135,7 @@
             }
 
             // Existing page initialization
+            document.getElementById('year').textContent = new Date().getFullYear();
             handleTypeChange();
             /* Attach scroll-reveal observer to all marked elements */
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
