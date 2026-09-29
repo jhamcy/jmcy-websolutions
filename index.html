@@ -1952,7 +1952,15 @@
             const total = calculateTotal();
             syncProjectMessageField(total);
             trackBusinessEvent('quote_start', { method: 'estimate_to_form' });
-            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+            const formBox = document.getElementById('contact-form').closest('.contact-container');
+            formBox.style.scrollMarginTop = window.innerWidth <= 768 ? '5.5rem' : '2rem';
+            formBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            /* Focus the first empty field once the scroll settles */
+            setTimeout(() => {
+                const firstEmpty = Array.from(document.querySelectorAll('#contact-form input, #contact-form select'))
+                    .find(el => !el.value);
+                if (firstEmpty) firstEmpty.focus({ preventScroll: true });
+            }, 700);
         }
 
         /* CUSTOM NOTIFICATION MODAL LOGIC */
