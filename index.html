@@ -991,6 +991,135 @@
         .calc-breakdown > div { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.82rem; color: var(--text-muted); padding: 0.55rem 0; border-top: 1px solid var(--card-border); }
         .calc-breakdown strong { color: var(--text-color); }
 
+        /* UNIFIED PACKAGE CONTAINER + ADD-ON SLIDESHOW */
+.pkg-unified { background: linear-gradient(135deg, var(--card-bg), var(--sidebar-bg)); border: 1px solid var(--card-border); border-radius: 16px; padding: 2.2rem; }
+.addon-divider { margin: 2rem 0 1.2rem; padding-top: 1.6rem; border-top: 1px solid var(--card-border); }
+.addon-divider h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+.addon-divider p { font-size: 0.88rem; color: var(--text-muted); }
+.addon-slider { position: relative; outline: none; }
+.slider-viewport { overflow: hidden; border-radius: 12px; }
+.slider-track { display: flex; transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+.slider-slide { flex: 0 0 100%; min-width: 0; padding: 0 2px; }
+.slider-slide .addon-card { height: 100%; background: #0b1120; }
+.slider-slide .addon-card:hover { transform: none; }
+.slider-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.2rem; }
+.slider-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--card-border); background: var(--card-bg); color: var(--text-color); font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; }
+.slider-btn:hover { border-color: var(--accent-color); color: var(--accent-color); box-shadow: 0 0 10px var(--accent-glow); }
+.slider-dots { display: flex; gap: 0.5rem; }
+.slider-dot { width: 10px; height: 10px; padding: 0; border-radius: 50%; border: none; background: var(--card-border); cursor: pointer; transition: all 0.3s ease; }
+.slider-dot.active { background: var(--accent-color); width: 26px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { .slider-track { transition: none; } }
+
+        /* PROJECTS SLIDESHOW */
+        .slider-slide.hide { display: none; }
+        .project-slider .card { display: grid; grid-template-columns: 0.8fr 1.2fr; height: 100%; }
+        .project-slider .card:hover { transform: none; }
+        .project-slider .card-image-wrap { height: 100%; min-height: 240px; }
+        @media screen and (max-width: 768px) {
+            .project-slider .card { grid-template-columns: 1fr; }
+            .project-slider .card-image-wrap { height: 180px; min-height: 0; }
+        }
+
+        /* SIMPLIFIED ESTIMATOR */
+        .est-intro { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: -0.8rem 0 1.6rem; }
+        .calc-group label.est-step { display: flex; align-items: center; gap: 0.7rem; font-size: 1rem; }
+        .est-step span, .est-step-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-glow); color: var(--accent-color); border: 1px solid rgba(56, 189, 248, 0.4); font-size: 0.8rem; font-weight: 800; }
+        .est-step em { font-style: normal; font-weight: 500; color: var(--text-muted); font-size: 0.8rem; }
+        .calc-summary h3 { display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+        .est-counter { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: #0b1120; border: 1px solid var(--card-border); border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
+        .est-counter-text strong { display: block; font-size: 0.9rem; margin-bottom: 0.25rem; }
+        .est-counter-text small { color: var(--text-muted); font-size: 0.78rem; line-height: 1.5; }
+        .est-stepper { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+        .est-stepper button { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--card-bg); color: var(--text-color); font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; }
+        .est-stepper button:hover { border-color: var(--accent-color); color: var(--accent-color); }
+        .est-stepper input { width: 64px; text-align: center; padding: 0.5rem 0.3rem; -moz-appearance: textfield; }
+        .est-stepper input::-webkit-outer-spin-button, .est-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .est-includes { background: #0b1120; border: 1px dashed var(--card-border); border-radius: 10px; padding: 1.1rem 1.3rem; }
+        .est-includes h4 { font-size: 0.85rem; color: var(--accent-color); margin-bottom: 0.7rem; }
+        .est-sub { display: block; color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; margin: -0.6rem 0 1rem; }
+        .calc-summary.est-summary { position: sticky; top: 2rem; align-self: start; }
+        @media screen and (max-width: 768px) {
+            .est-counter { flex-direction: column; align-items: flex-start; }
+            .calc-summary.est-summary { position: static; }
+        }
+
+        /* PORTFOLIO CALL-TO-ACTION */
+        .portfolio-cta { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.12)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 14px; padding: 1.4rem 1.8rem; margin: -0.6rem 0 2rem; }
+        .portfolio-cta p { font-size: 1.35rem; font-weight: 700; line-height: 1.4; color: var(--text-color); margin: 0; flex: 1 1 280px; }
+        .portfolio-cta-btn { font-size: 1.05rem; padding: 1rem 2rem; white-space: nowrap; animation: ctaPulse 2.5s infinite ease-in-out; }
+        @keyframes ctaPulse { 0%, 100% { box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3); } 50% { box-shadow: 0 6px 26px rgba(56, 189, 248, 0.65); } }
+        @media (prefers-reduced-motion: reduce) { .portfolio-cta-btn { animation: none; } }
+        @media screen and (max-width: 768px) {
+            .portfolio-cta { flex-direction: column; text-align: center; padding: 1.3rem 1.1rem; }
+            .portfolio-cta p { font-size: 1.15rem; flex-basis: auto; }
+            .portfolio-cta-btn { display: block; width: 100%; text-align: center; }
+        }
+
+        /* SLIDESHOW ANIMATIONS */
+        .slider-slide { opacity: 0.35; transform: scale(0.94); transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slider-slide.is-active { opacity: 1; transform: scale(1); }
+        @keyframes slideItemIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideImgIn { from { opacity: 0; transform: scale(1.12); } to { opacity: 1; transform: scale(1); } }
+        @keyframes sliderProgress { from { width: 0; } to { width: 100%; } }
+        .reveal.active .slider-slide.is-active .addon-card > *,
+        .reveal.active .slider-slide.is-active .card-body > * { animation: slideItemIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .reveal.active .slider-slide.is-active .card-image-wrap { animation: slideImgIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .reveal.active .slider-slide.is-active .addon-card > *:nth-child(1),
+        .reveal.active .slider-slide.is-active .card-body > *:nth-child(1) { animation-delay: 0.12s; }
+        .reveal.active .slider-slide.is-active .addon-card > *:nth-child(2),
+        .reveal.active .slider-slide.is-active .card-body > *:nth-child(2) { animation-delay: 0.2s; }
+        .reveal.active .slider-slide.is-active .addon-card > *:nth-child(3),
+        .reveal.active .slider-slide.is-active .card-body > *:nth-child(3) { animation-delay: 0.28s; }
+        .reveal.active .slider-slide.is-active .addon-card > *:nth-child(4),
+        .reveal.active .slider-slide.is-active .card-body > *:nth-child(4) { animation-delay: 0.36s; }
+        .reveal.active .slider-slide.is-active .addon-card > *:nth-child(5),
+        .reveal.active .slider-slide.is-active .card-body > *:nth-child(5) { animation-delay: 0.44s; }
+        .slider-btn:hover { transform: scale(1.12); }
+        .slider-btn:active { transform: scale(0.92); }
+        .slider-progress { height: 3px; background: var(--card-border); border-radius: 3px; margin-top: 1rem; overflow: hidden; }
+        .slider-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #38bdf8, #818cf8); border-radius: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            .slider-slide { transition: none; opacity: 1; transform: none; }
+            .reveal.active .slider-slide.is-active .addon-card > *,
+            .reveal.active .slider-slide.is-active .card-body > *,
+            .reveal.active .slider-slide.is-active .card-image-wrap { animation: none; }
+        }
+
+        /* FULL-STACK & ERP SYSTEMS SLIDESHOW */
+        .sys-intro { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: -0.8rem 0 1.6rem; }
+        .tag.tag-live { color: var(--supabase-green); background-color: rgba(62, 207, 142, 0.1); }
+        .tag.tag-soon { color: #fbbf24; background-color: rgba(251, 191, 36, 0.1); }
+        .sys-card { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 2rem; height: 100%; background: linear-gradient(135deg, var(--card-bg), var(--sidebar-bg)); border: 1px solid var(--card-border); border-radius: 12px; padding: 2rem; }
+        .sys-main { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+        .sys-head { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+        .sys-head h3 { font-size: 1.35rem; font-weight: 800; }
+        .sys-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }
+        .sys-figures { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; width: 100%; margin: 1.3rem 0; }
+        .sys-figure { background: #0b1120; border: 1px solid var(--card-border); border-radius: 8px; padding: 0.8rem 1rem; }
+        .sys-figure .num { display: block; font-size: 1.2rem; font-weight: 800; color: var(--accent-color); }
+        .sys-figure .label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.4; }
+        .sys-main .btn { margin-top: auto; }
+        .sys-side { background: #0b1120; border: 1px solid var(--card-border); border-radius: 10px; padding: 1.4rem; align-self: stretch; }
+        .sys-side h4 { font-size: 0.85rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .reveal.active .slider-slide.is-active .sys-main > *,
+        .reveal.active .slider-slide.is-active .sys-side > * { animation: slideItemIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .reveal.active .slider-slide.is-active .sys-main > *:nth-child(1),
+        .reveal.active .slider-slide.is-active .sys-side > *:nth-child(1) { animation-delay: 0.12s; }
+        .reveal.active .slider-slide.is-active .sys-main > *:nth-child(2),
+        .reveal.active .slider-slide.is-active .sys-side > *:nth-child(2) { animation-delay: 0.2s; }
+        .reveal.active .slider-slide.is-active .sys-main > *:nth-child(3),
+        .reveal.active .slider-slide.is-active .sys-side > *:nth-child(3) { animation-delay: 0.28s; }
+        .reveal.active .slider-slide.is-active .sys-main > *:nth-child(4),
+        .reveal.active .slider-slide.is-active .sys-side > *:nth-child(4) { animation-delay: 0.36s; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal.active .slider-slide.is-active .sys-main > *,
+            .reveal.active .slider-slide.is-active .sys-side > * { animation: none; }
+        }
+        @media screen and (max-width: 768px) {
+            .sys-card { grid-template-columns: 1fr; padding: 1.4rem; gap: 1.2rem; }
+            .sys-main .btn { width: 100%; text-align: center; }
+        }
+
         /* CONTACT SECTION */
         .contact-grid {
             display: grid;
@@ -1326,6 +1455,7 @@
                 <li><a href="#tech" onclick="closeMobileMenu()">Tech Stack</a></li>
                 <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
                 <li><a href="#packages" onclick="closeMobileMenu()">Packages</a></li>
+                <li><a href="#systems" onclick="closeMobileMenu()">Systems</a></li>
                 <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="#calculator" onclick="closeMobileMenu()">Estimator</a></li>
@@ -1467,65 +1597,161 @@
         </section>
 
         <!-- FRONTEND-ONLY PACKAGE & ADD-ONS -->
-        <section id="packages" class="reveal">
-            <h2 class="section-title">Frontend-Only Package &amp; Add-Ons</h2>
+<section id="packages" class="reveal">
+    <h2 class="section-title">Frontend-Only Package &amp; Add-Ons</h2>
 
-            <div class="pkg-core reveal delay-1">
-                <div class="pkg-head">
-                    <div>
-                        <h3>Core Development Package</h3>
-                        <p>Complete custom development, layout design, and deployment of your business website, as a one-time investment.</p>
+    <div class="pkg-unified">
+        <!-- Core package -->
+        <div class="pkg-head">
+            <div>
+                <h3>Core Development Package</h3>
+                <p>Complete custom development, layout design, and deployment of your business website, as a one-time investment.</p>
+            </div>
+            <div class="pkg-price">&#8369;15,000<small>One-time investment</small></div>
+        </div>
+        <ul class="pkg-list">
+            <li><strong>Custom Branding:</strong> Your logo, assets, service menu &amp; copy on a proven layout.</li>
+            <li><strong>Fast, Clean Code:</strong> Plain HTML/CSS/JS for quick loads and better Google scores.</li>
+            <li><strong>Mobile-First:</strong> Fully responsive on phones, tablets &amp; desktop.</li>
+            <li><strong>Lead Capture:</strong> Working booking/contact form sent to your email.</li>
+            <li><strong>&#8369;0 Hosting:</strong> Deployed on GitHub — no monthly server fees.</li>
+            <li><strong>Launch &amp; Handover:</strong> Domain linked live, plus 14 days of support.</li>
+        </ul>
+        <p class="pkg-note"><strong>Note:</strong> Domain registration (&#8369;800&ndash;&#8369;1,500/year) is billed directly by your registrar (e.g. Namecheap, GoDaddy) — you keep full ownership.</p>
+
+        <!-- Add-ons slideshow -->
+        <div class="addon-divider">
+            <h3>Optional Add-On Services</h3>
+            <p>Activate them now or anytime as your business grows.</p>
+        </div>
+
+        <div class="addon-slider" id="addonSlider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Optional add-on services">
+            <div class="slider-viewport">
+                <div class="slider-track" id="addonTrack">
+                    <div class="slider-slide">
+                        <div class="addon-card">
+                            <span class="addon-tag">Option A</span>
+                            <h4>Local SEO Setup &amp; Indexing</h4>
+                            <div class="addon-price">&#8369;3,500 <small>one-time setup</small></div>
+                            <ul class="pkg-list single">
+                                <li><strong>Keyword Optimization:</strong> Titles, headers &amp; alt tags tuned for local search.</li>
+                                <li><strong>Search Console:</strong> Sitemap submitted for faster indexing.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="pkg-price">&#8369;15,000<small>One-time investment</small></div>
-                </div>
-                <ul class="pkg-list">
-                    <li><strong>Custom Brand Integration:</strong> Your business name, logo, brand assets, service menu, and localized copywriting applied to a proven layout.</li>
-                    <li><strong>Fast, Clean Code:</strong> Built in plain HTML/CSS/JS for quick load times, which supports better Google speed scores and local search visibility.</li>
-                    <li><strong>Mobile-First Design:</strong> Fully responsive on smartphones, tablets, and desktop computers.</li>
-                    <li><strong>Lead &amp; Booking Capture:</strong> A working "Book Appointment" or "Contact Us" form that sends customer inquiries straight to your business email.</li>
-                    <li><strong>&#8369;0 Hosting Fees:</strong> Deployed on GitHub's global network, so there are no monthly or annual server hosting charges.</li>
-                    <li><strong>Launch &amp; Handover:</strong> Your custom domain (.com or .ph) linked to the live site, plus 14 days of post-launch technical support.</li>
-                </ul>
-                <p class="pkg-note"><strong>Note:</strong> Annual domain registration (approx. &#8369;800&ndash;&#8369;1,500/year depending on the extension) is billed directly to you by the registrar (e.g., Namecheap or GoDaddy), so you keep full ownership of your domain.</p>
-            </div>
-
-            <p class="addon-intro">Optional add-on services: activate them now or anytime as your business grows.</p>
-            <div class="addon-grid">
-                <div class="addon-card reveal delay-1">
-                    <span class="addon-tag">Option A</span>
-                    <h4>Local SEO Setup &amp; Indexing</h4>
-                    <div class="addon-price">&#8369;5,000 <small>one-time setup</small></div>
-                    <ul class="pkg-list single">
-                        <li><strong>Target Keyword Optimization:</strong> Meta titles, headers, descriptions, and image alt tags tailored to rank you for local searches in your city (e.g., "Best spa in [Your City]").</li>
-                        <li><strong>Google Search Console:</strong> Sitemap created and submitted so your pages are discovered, indexed, and updated faster.</li>
-                    </ul>
-                </div>
-                <div class="addon-card reveal delay-2">
-                    <span class="addon-tag">Option B</span>
-                    <h4>Monthly Website Maintenance</h4>
-                    <div class="addon-price">&#8369;2,500 <small>/ month &middot; no lock-in</small></div>
-                    <ul class="pkg-list single">
-                        <li><strong>Up to 3 update rounds per month:</strong> Text edits, seasonal price changes, service menu updates, or operating hour changes.</li>
-                        <li><strong>Monthly checkups:</strong> Platform performance review and link health monitoring.</li>
-                    </ul>
-                </div>
-                <div class="addon-card reveal delay-3">
-                    <span class="addon-tag">Option C</span>
-                    <h4>Google Ads Launch &amp; Management</h4>
-                    <div class="addon-price">&#8369;7,500 <small>/ month &middot; continuous management</small></div>
-                    <ul class="pkg-list single">
-                        <li><strong>A/B Campaign Setup:</strong> 2 to 3 ad copy variations tested to find which brings the most high-intent booking conversions.</li>
-                        <li><strong>Daily Click &amp; Search Term Monitoring:</strong> Low-intent or accidental clicks are blocked with negative keywords to protect your budget.</li>
-                        <li><strong>Radius Targeting &amp; Verification:</strong> Targeting mapped around your business location, with help through Google's identity/business verification.</li>
-                    </ul>
-                    <p class="pkg-note">Your daily ad budget is paid directly to Google through your linked business credit/debit card.</p>
+                    <div class="slider-slide">
+                        <div class="addon-card">
+                            <span class="addon-tag">Option B</span>
+                            <h4>Monthly Website Maintenance</h4>
+                            <div class="addon-price">&#8369;1,500 <small>/ month &middot; no lock-in</small></div>
+                            <ul class="pkg-list single">
+                                <li><strong>Up to 3 updates/month:</strong> Text, pricing, menu or hours changes.</li>
+                                <li><strong>Monthly checkups:</strong> Performance &amp; link health review.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slider-slide">
+                        <div class="addon-card">
+                            <span class="addon-tag">Option C</span>
+                            <h4>Google Ads Launch &amp; Management</h4>
+                            <div class="addon-price">&#8369;4,500 <small>/ month &middot; continuous management</small></div>
+                            <ul class="pkg-list single">
+                                <li><strong>A/B Campaign Setup:</strong> 2-3 ad variations tested for best conversions.</li>
+                                <li><strong>Daily Monitoring:</strong> Negative keywords block wasted clicks.</li>
+                                <li><strong>Radius Targeting:</strong> Mapped to your location, with verification help.</li>
+                            </ul>
+                            <p class="pkg-note">Daily ad budget is billed directly by Google to your card.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="slider-controls">
+                <button type="button" class="slider-btn" id="addonPrev" aria-label="Previous add-on">&#8249;</button>
+                <div class="slider-dots" id="addonDots"></div>
+                <button type="button" class="slider-btn" id="addonNext" aria-label="Next add-on">&#8250;</button>
+            </div>
+        </div>
 
-            <div class="steps">
-                <div class="step-card"><h4><span>1</span>Approval</h4><p>Reply to the proposal confirming your selected package and optional add-ons.</p></div>
-                <div class="step-card"><h4><span>2</span>Downpayment</h4><p>A 50% mobilization deposit (&#8369;7,500 on the core package) starts the work. The balance is settled on final approval, before go-live on your domain.</p></div>
-                <div class="step-card"><h4><span>3</span>Content Handover</h4><p>Send your logo, verified service/pricing list, high-resolution media, and preferred contact channels.</p></div>
+        <!-- Steps below the slideshow -->
+        <div class="steps">
+            <div class="step-card"><h4><span>1</span>Approval</h4><p>Reply to the proposal confirming your selected package and optional add-ons.</p></div>
+            <div class="step-card"><h4><span>2</span>Downpayment</h4><p>A 50% mobilization deposit (&#8369;7,500 on the core package) starts the work. The balance is settled on final approval, before go-live on your domain.</p></div>
+            <div class="step-card"><h4><span>3</span>Content Handover</h4><p>Send your logo, verified service/pricing list, high-resolution media, and preferred contact channels.</p></div>
+        </div>
+    </div>
+</section>
+
+        <!-- FULL-STACK & ERP SYSTEMS (SLIDESHOW) -->
+        <section id="systems" class="reveal">
+            <h2 class="section-title">Full-Stack &amp; ERP Systems</h2>
+            <p class="sys-intro">Ready-made desktop software you own outright: no subscription and no internet needed.</p>
+
+            <div class="addon-slider systems-slider" id="systemsSlider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Full-Stack and ERP systems">
+                <div class="slider-viewport">
+                    <div class="slider-track" id="systemsTrack">
+
+                        <div class="slider-slide">
+                            <div class="sys-card">
+                                <div class="sys-main">
+                                    <div class="sys-head">
+                                        <h3>JMCY PH Payroll System</h3>
+                                        <span class="tag tag-live">Available Now</span>
+                                    </div>
+                                    <p class="sys-desc">A complete, offline Philippine payroll system for small and mid-size businesses: attendance, semi-monthly payroll, government contributions, and payslips, all in one installed Windows app. No subscription, no internet dependency, and your data stays on your own PC.</p>
+                                    <div class="sys-figures">
+                                        <div class="sys-figure"><span class="num">&#8369;20,000</span><span class="label">one-time license</span></div>
+                                        <div class="sys-figure"><span class="num">30 days</span><span class="label">free trial, no key needed</span></div>
+                                        <div class="sys-figure"><span class="num">4</span><span class="label">gov't contributions automated</span></div>
+                                        <div class="sys-figure"><span class="num">2</span><span class="label">configurable payroll cutoffs</span></div>
+                                    </div>
+                                    <a href="https://github.com/jhamcy/jmcy-websolutions/releases/download/v1.1.4/JMCY-PH-Payroll-System-1.1.4-x64-Installer.exe" class="btn">Download for Windows &rarr;</a>
+                                </div>
+                                <div class="sys-side">
+                                    <h4>What's included</h4>
+                                    <ul class="pkg-list single">
+                                        <li>Attendance with tardiness, undertime &amp; overtime rules</li>
+                                        <li>SSS, PhilHealth, Pag-IBIG &amp; BIR tax auto-computed</li>
+                                        <li>Holiday calendar &amp; rest-day premium pay</li>
+                                        <li>Loan tracking with automatic payoff detection</li>
+                                        <li>Payslips, reports &amp; automatic daily backups</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slider-slide">
+                            <div class="sys-card">
+                                <div class="sys-main">
+                                    <div class="sys-head">
+                                        <h3>JMCY Internal Inventory</h3>
+                                        <span class="tag tag-soon">In Development</span>
+                                    </div>
+                                    <p class="sys-desc">A companion desktop system for stock and internal inventory management, built on the same offline, own-your-data approach as JMCY Payroll. Currently in active development, with details and pricing to follow closer to release.</p>
+                                    <div class="sys-figures">
+                                        <div class="sys-figure"><span class="num">Windows</span><span class="label">desktop app</span></div>
+                                        <div class="sys-figure"><span class="num">Offline</span><span class="label">no subscription</span></div>
+                                    </div>
+                                    <a href="#contact" class="btn btn-outline">Ask About This System &rarr;</a>
+                                </div>
+                                <div class="sys-side">
+                                    <h4>Planned highlights</h4>
+                                    <ul class="pkg-list single">
+                                        <li>Stock levels with automatic reorder points, so you know how many to order</li>
+                                        <li>One-time license with unlimited users</li>
+                                        <li>1-month free trial</li>
+                                        <li>Runs offline on your own PC</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button type="button" class="slider-btn" id="systemsPrev" aria-label="Previous system">&#8249;</button>
+                    <div class="slider-dots" id="systemsDots"></div>
+                    <button type="button" class="slider-btn" id="systemsNext" aria-label="Next system">&#8250;</button>
+                </div>
             </div>
         </section>
 
@@ -1533,9 +1759,10 @@
         <section id="projects" class="reveal">
             <h2 class="section-title">Completed Client Projects</h2>
 
-            <p style="color: var(--text-muted); margin: -1rem 0 1.6rem 0; font-size: 0.9rem;">
-                Want to see more? Browse our demo samples in the <a href="portfolio.html" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">full portfolio &rarr;</a>
-            </p>
+            <div class="portfolio-cta">
+                <p>Want to see more? Browse our demo samples in the full portfolio.</p>
+                <a href="portfolio.html" class="btn portfolio-cta-btn">View Full Portfolio &rarr;</a>
+            </div>
 
             <div class="portfolio-filters">
                 <button class="filter-btn active" onclick="filterProjects('all')">All Solutions</button>
@@ -1543,144 +1770,163 @@
                 <button class="filter-btn" onclick="filterProjects('fullstack-type')">Full-Stack (Supabase)</button>
             </div>
 
-            <div class="grid">
-                <div class="card project-item fullstack-type reveal delay-1">
-                    <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="card-image-wrap" style="display:block; background:#ffffff; align-items:center; justify-content:center;">
-                        <img src="jmp-logo.jpg" alt="JMP International Fish Trading Logo" class="card-image" style="object-fit: contain; padding: 1.5rem;">
-                    </a>
-                    <div class="card-body">
-                        <h3>JMP International Fish Trading</h3>
-                        <p>Full website platform plus a Supabase-backed ERP inventory system: product catalog, employee login portal, cold-chain stock tracking, and admin management UI.</p>
-                        <div class="card-tags">
-                            <span class="tag tag-fullstack">Frontend + Backend</span>
-                            <span class="tag tag-supabase">Supabase ERP</span>
-                            <span class="tag tag-github">Client Project &middot; Live</span>
+            <div class="addon-slider project-slider" id="projectsSlider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Completed client projects">
+                <div class="slider-viewport">
+                    <div class="slider-track" id="projectsTrack">
+
+                        <div class="slider-slide project-item fullstack-type">
+                            <div class="card">
+                                <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="card-image-wrap" style="display:block; background:#ffffff;">
+                                    <img src="jmp-logo.jpg" alt="JMP International Fish Trading Logo" class="card-image" style="object-fit: contain; padding: 1.5rem;">
+                                </a>
+                                <div class="card-body">
+                                    <h3>JMP International Fish Trading</h3>
+                                    <p>Full website platform plus a Supabase-backed ERP inventory system: product catalog, employee login portal, cold-chain stock tracking, and admin management UI.</p>
+                                    <div class="card-tags">
+                                        <span class="tag tag-fullstack">Frontend + Backend</span>
+                                        <span class="tag tag-supabase">Supabase ERP</span>
+                                        <span class="tag tag-github">Client Project &middot; Live</span>
+                                    </div>
+                                    <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Live Project &rarr;</a>
+                                </div>
+                            </div>
                         </div>
-                        <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Live Project &rarr;</a>
+
+                        <div class="slider-slide project-item frontend-type">
+                            <div class="card">
+                                <a href="https://www.famous-touch.com" target="_blank" rel="noopener noreferrer" class="card-image-wrap" style="display:block; background:#ffffff;">
+                                    <img src="famous-touch-logo.png" alt="Famous Touch Mobile Massage Logo" class="card-image" style="object-fit: contain; padding: 1.5rem;">
+                                </a>
+                                <div class="card-body">
+                                    <h3>Famous Touch &mdash; Mobile Massage Booking</h3>
+                                    <p>Frontend-only marketing and booking site for a 24/7 mobile massage service, with service-area sections, WhatsApp/Viber booking links, and SEO-optimized local landing content.</p>
+                                    <div class="card-tags">
+                                        <span class="tag tag-frontend">Frontend Only</span>
+                                        <span class="tag">Local SEO</span>
+                                        <span class="tag tag-github">Client Project &middot; Live</span>
+                                    </div>
+                                    <a href="https://www.famous-touch.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Live Project &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-                <div class="card project-item frontend-type reveal delay-2">
-                    <a href="https://www.famous-touch.com" target="_blank" rel="noopener noreferrer" class="card-image-wrap" style="display:block; background:#ffffff; align-items:center; justify-content:center;">
-                        <img src="famous-touch-logo.png" alt="Famous Touch Mobile Massage Logo" class="card-image" style="object-fit: contain; padding: 1.5rem;">
-                    </a>
-                    <div class="card-body">
-                        <h3>Famous Touch — Mobile Massage Booking</h3>
-                        <p>Frontend-only marketing and booking site for a 24/7 mobile massage service, with service-area sections, WhatsApp/Viber booking links, and SEO-optimized local landing content.</p>
-                        <div class="card-tags">
-                            <span class="tag tag-frontend">Frontend Only</span>
-                            <span class="tag">Local SEO</span>
-                            <span class="tag tag-github">Client Project &middot; Live</span>
-                        </div>
-                        <a href="https://www.famous-touch.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Live Project &rarr;</a>
-                    </div>
+                <div class="slider-controls" id="projectsControls">
+                    <button type="button" class="slider-btn" id="projectsPrev" aria-label="Previous project">&#8249;</button>
+                    <div class="slider-dots" id="projectsDots"></div>
+                    <button type="button" class="slider-btn" id="projectsNext" aria-label="Next project">&#8250;</button>
                 </div>
             </div>
         </section>
 
         <!-- INTERACTIVE COST ESTIMATOR SECTION -->
         <section id="calculator" class="reveal">
-            <h2 class="section-title">Interactive Scope & Cost Estimator</h2>
+            <h2 class="section-title">Interactive Scope &amp; Cost Estimator</h2>
+            <p class="est-intro">Get a quick price in 3 easy steps. This is only an estimate, so there is no commitment.</p>
 
-            <div class="estimator-details">
-                <div class="estimator-info-card reveal delay-1">
-                    <h3>💡 How The Estimator Works</h3>
-                    <p>Our real-time cost calculator calculates an investment baseline using your preferred website tier and selected data table modules. As you adjust table counts or user accounts, the price dynamically recalculates in real-time. Submitting the estimate auto-populates your selected scope directly into our inquiry form.</p>
-                </div>
-
-                <div class="estimator-info-card backend-scope-card reveal delay-2">
-                    <h3>⚙️ Base Full-Stack Architecture Scope (₱20,000)</h3>
-                    <ul>
-                        <li><strong>Supabase Auth & RLS:</strong> Built-in authentication and Row Level Security policies (plus ₱200/user account).</li>
-                        <li><strong>Higher ERP Relational Sync:</strong> Database setup and core synchronization with Higher ERP.</li>
-                        <li><strong>Admin Management UI:</strong> Central control panel for administrative data overview and operational controls.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- MODULE BREAKDOWN & SUMMARY DETAILS -->
-            <div class="module-summary-container reveal delay-2">
-                <h3>📌 Data Table Module Architecture Breakdown (₱20,000 / Module)</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.5;">
-                    Each Data Table Module provides complete full-stack implementation for a specific business data domain. Each module includes relational schema modeling, Row Level Security policies, automated REST/Realtime API exposure, and fully tailored CRUD (Create, Read, Update, Delete) UI interfaces.
-                </p>
-                <div class="module-summary-grid">
-                    <div class="module-summary-card">
-                        <h4>Full-Stack Data UI <span>Frontend + Backend</span></h4>
-                        <p>Custom HTML/CSS/JS interface for record Creation, Retrieval, Updates, and Deletions with sorting, search, and filtration controls.</p>
-                    </div>
-                    <div class="module-summary-card">
-                        <h4>PostgreSQL Table & Schema <span>Supabase Cloud</span></h4>
-                        <p>Relational SQL database structure with foreign keys, data constraints, indexing, and automated triggers tailored to your domain.</p>
-                    </div>
-                    <div class="module-summary-card">
-                        <h4>Security & Access Controls <span>RLS Policy</span></h4>
-                        <p>Fine-grained Row Level Security rules restricting access by user roles, departments, or individual account permissions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="calculator-container reveal delay-3">
+            <div class="calculator-container reveal delay-1">
                 <div>
+                    <!-- STEP 1 -->
                     <div class="calc-group">
-                        <label>1. Choose Architecture Tier & Scope:</label>
+                        <label class="est-step"><span>1</span> What do you need?</label>
                         <div class="calc-options">
                             <input type="radio" id="type1" name="projectType" value="15000" class="calc-radio" checked onchange="handleTypeChange()">
                             <label for="type1" class="option-label">
-                                <strong>Frontend-Only Website</strong>
-                                <small>Pure HTML/CSS/JS, fast static layout & UI (₱15,000)</small>
+                                <strong>Simple Website</strong>
+                                <small>&#8369;15,000 &middot; Shows your business online. Great for shops, salons, restaurants &amp; services.</small>
                             </label>
 
                             <input type="radio" id="type2" name="projectType" value="20000" class="calc-radio" onchange="handleTypeChange()">
                             <label for="type2" class="option-label">
-                                <strong>Full-Stack (Base ₱20,000)</strong>
-                                <small>Includes Supabase Auth, RLS, Higher ERP Sync & Admin UI</small>
+                                <strong>Website + Online System</strong>
+                                <small>From &#8369;20,000 &middot; Adds staff login, a database &amp; an admin panel. Great for inventory, orders &amp; payroll.</small>
                             </label>
                         </div>
                     </div>
 
-                    <!-- FRONTEND ADD-ONS -->
+                    <!-- STEP 2 (Simple Website): optional extras -->
                     <div class="calc-group" id="frontendAddonsGroup">
-                        <label>2. Optional Add-On Services (Frontend-Only):</label>
+                        <label class="est-step"><span>2</span> Want any extras? <em>(optional)</em></label>
                         <div class="calc-options" style="grid-template-columns: 1fr;">
-                            <input type="checkbox" id="addonA" value="5000" data-billing="one-time" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
-                            <label for="addonA" class="option-label"><strong>Option A: Local SEO Setup &amp; Indexing</strong><small>&#8369;5,000 one-time: keyword optimization + Google Search Console</small></label>
+                            <input type="checkbox" id="addonA" value="3500" data-billing="one-time" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
+                            <label for="addonA" class="option-label"><strong>Get Found on Google</strong><small>&#8369;3,500 one-time &middot; We tune your site so local customers find you, and submit it to Google.</small></label>
 
-                            <input type="checkbox" id="addonB" value="2500" data-billing="monthly" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
-                            <label for="addonB" class="option-label"><strong>Option B: Monthly Website Maintenance</strong><small>&#8369;2,500 / month: up to 3 update rounds + performance checkups</small></label>
+                            <input type="checkbox" id="addonB" value="1500" data-billing="monthly" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
+                            <label for="addonB" class="option-label"><strong>Worry-Free Updates</strong><small>&#8369;1,500 per month &middot; Up to 3 changes a month (text, prices, hours) plus monthly checkups.</small></label>
 
-                            <input type="checkbox" id="addonC" value="7500" data-billing="monthly" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
-                            <label for="addonC" class="option-label"><strong>Option C: Google Ads Launch &amp; Management</strong><small>&#8369;7,500 / month: A/B campaigns, search term monitoring, radius targeting</small></label>
+                            <input type="checkbox" id="addonC" value="4500" data-billing="monthly" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
+                            <label for="addonC" class="option-label"><strong>We Run Your Google Ads</strong><small>&#8369;4,500 per month &middot; We set up and manage your ads. Your ad budget is paid separately to Google.</small></label>
                         </div>
                     </div>
 
-                    <!-- DYNAMIC MODULE & USER ACCOUNT GROUP -->
+                    <!-- STEP 2 (Online System): size of the system -->
                     <div class="calc-group" id="backendModulesGroup" style="display: none;">
-                        <label>2. User Accounts Fee (₱200 / user account):</label>
-                        <div class="user-count-wrapper">
-                            <label for="userAccountCount">Number of User Accounts:</label>
-                            <input type="number" id="userAccountCount" value="0" min="0" oninput="calculateTotal()">
+                        <label class="est-step"><span>2</span> How big is your system?</label>
+
+                        <div class="est-counter">
+                            <div class="est-counter-text">
+                                <strong>People who will log in</strong>
+                                <small>&#8369;200 per person. For example: you, your staff, your managers.</small>
+                            </div>
+                            <div class="est-stepper">
+                                <button type="button" onclick="stepValue('userAccountCount', -1)" aria-label="Fewer people">&minus;</button>
+                                <input type="number" id="userAccountCount" value="0" min="0" oninput="calculateTotal()" aria-label="Number of people who will log in">
+                                <button type="button" onclick="stepValue('userAccountCount', 1)" aria-label="More people">+</button>
+                            </div>
                         </div>
 
-                        <label style="margin-top: 1.5rem;">3. Data Table Modules (₱20,000 / Frontend & Backend Module per Data Table):</label>
-                        <div class="user-count-wrapper">
-                            <label for="dataTableModuleCount">Number of Data Table Modules:</label>
-                            <input type="number" id="dataTableModuleCount" value="0" min="0" oninput="calculateTotal()">
+                        <div class="est-counter">
+                            <div class="est-counter-text">
+                                <strong>Parts of your business to manage (modules)</strong>
+                                <small>&#8369;20,000 each. One module is one list you can add, edit, search and delete, like Products, Customers, Orders or Employees.</small>
+                            </div>
+                            <div class="est-stepper">
+                                <button type="button" onclick="stepValue('dataTableModuleCount', -1)" aria-label="Fewer modules">&minus;</button>
+                                <input type="number" id="dataTableModuleCount" value="0" min="0" oninput="calculateTotal()" aria-label="Number of modules">
+                                <button type="button" onclick="stepValue('dataTableModuleCount', 1)" aria-label="More modules">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What's included -->
+                    <div class="est-includes">
+                        <div id="includesFrontend">
+                            <h4>Included in your &#8369;15,000</h4>
+                            <ul class="pkg-list single">
+                                <li>Custom design with your logo and branding</li>
+                                <li>Works on phones, tablets and computers</li>
+                                <li>Contact or booking form sent to your email</li>
+                                <li>Free hosting, so no monthly server fees</li>
+                                <li>Launch on your own domain plus 14 days of support</li>
+                            </ul>
+                        </div>
+                        <div id="includesFullstack" style="display:none;">
+                            <h4>Included in the &#8369;20,000 base</h4>
+                            <ul class="pkg-list single">
+                                <li>Secure login for you and your team</li>
+                                <li>An online database that safely stores your data</li>
+                                <li>An admin panel to manage everything in one place</li>
+                                <li>Rules for who can see or change what</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="calc-summary">
+                <!-- STEP 3 -->
+                <div class="calc-summary est-summary">
                     <div>
-                        <h3>Estimated Investment (One-Time)</h3>
-                        <div class="calc-price" id="totalPrice">₱15,000</div>
+                        <h3><span class="est-step-num">3</span> Your Estimate</h3>
+                        <div class="calc-price" id="totalPrice">&#8369;15,000</div>
+                        <span class="est-sub">one-time payment</span>
+                        <div class="calc-breakdown" id="calcLines"></div>
                         <div class="calc-breakdown">
-                            <div id="monthlyRow" style="display:none;"><span>Monthly recurring add-ons</span><strong id="monthlyPrice">₱0 / month</strong></div>
-                            <div id="depositRow"><span>50% downpayment (one-time items)</span><strong id="depositPrice">₱7,500</strong></div>
+                            <div id="monthlyRow" style="display:none;"><span>Total per month (optional services)</span><strong id="monthlyPrice">&#8369;0 / month</strong></div>
+                            <div id="depositRow"><span>To start: 50% downpayment</span><strong id="depositPrice">&#8369;7,500</strong></div>
                         </div>
-                        <p>Includes complete source code, responsive mobile optimization, GitHub version control, and initial deployment setup. Domain registration and ad spend are billed separately to your own accounts.</p>
+                        <p>Includes the complete source code and launch. Domain registration and ad spend are paid separately to your own accounts. The final price is confirmed after we talk about your needs.</p>
                     </div>
-                    <button type="button" class="btn" onclick="applyEstimateToForm()">Inquire With This Estimate</button>
+                    <button type="button" class="btn" onclick="applyEstimateToForm()">Get This Quote &rarr;</button>
                 </div>
             </div>
         </section>
@@ -1831,6 +2077,8 @@
                     item.classList.add('hide');
                 }
             });
+
+            if (window.refreshProjectsSlider) window.refreshProjectsSlider();
         }
 
         /* TOGGLE VISIBILITY WHEN FRONTEND-ONLY VS FULL-STACK IS SELECTED */
@@ -1839,6 +2087,30 @@
             addonB: 'Option B: Monthly Website Maintenance',
             addonC: 'Option C: Google Ads Launch & Management'
         };
+
+        /* +/- BUTTONS FOR THE COUNTERS */
+        function stepValue(id, delta) {
+            const el = document.getElementById(id);
+            el.value = Math.max(0, (parseInt(el.value) || 0) + delta);
+            calculateTotal();
+        }
+
+        /* ITEM-BY-ITEM PRICE LIST IN THE SUMMARY */
+        function renderBreakdown(est) {
+            const rows = [];
+            if (est.isFrontendOnly) {
+                rows.push(['Simple Website', peso(15000)]);
+                est.addons.forEach(ad => {
+                    const name = ad.label.replace(/^Option [A-C]: /, '');
+                    rows.push([name, peso(ad.price) + (ad.billing === 'monthly' ? ' / month' : '')]);
+                });
+            } else {
+                rows.push(['Website + Online System (base)', peso(20000)]);
+                if (est.userCount > 0) rows.push([est.userCount + ' login' + (est.userCount > 1 ? 's' : '') + ' x \u20B1200', peso(est.userCount * 200)]);
+                if (est.moduleCount > 0) rows.push([est.moduleCount + ' module' + (est.moduleCount > 1 ? 's' : '') + ' x \u20B120,000', peso(est.moduleCount * 20000)]);
+            }
+            document.getElementById('calcLines').innerHTML = rows.map(r => '<div><span>' + r[0] + '</span><strong>' + r[1] + '</strong></div>').join('');
+        }
 
         function peso(n) { return '₱' + n.toLocaleString(); }
 
@@ -1867,6 +2139,8 @@
             const isFrontendOnly = document.getElementById('type1').checked;
             document.getElementById('backendModulesGroup').style.display = isFrontendOnly ? 'none' : 'block';
             document.getElementById('frontendAddonsGroup').style.display = isFrontendOnly ? 'block' : 'none';
+            document.getElementById('includesFrontend').style.display = isFrontendOnly ? 'block' : 'none';
+            document.getElementById('includesFullstack').style.display = isFrontendOnly ? 'none' : 'block';
 
             if (isFrontendOnly) {
                 document.getElementById('userAccountCount').value = 0;
@@ -1895,6 +2169,7 @@
             setTimeout(() => { priceDisplay.style.transform = 'scale(1)'; }, 150);
 
             syncProjectMessageField();
+            renderBreakdown(est);
             return est.oneTime;
         }
 
@@ -2076,6 +2351,218 @@
                 });
             }
         });
+
+        /* ADD-ON SLIDESHOW */
+(function () {
+    const slider = document.getElementById('addonSlider');
+    if (!slider) return;
+    const track = document.getElementById('addonTrack');
+    const slides = track.children;
+    const dotsWrap = document.getElementById('addonDots');
+    const total = slides.length;
+    let index = 0, timer = null;
+
+    for (let i = 0; i < total; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'slider-dot';
+        dot.setAttribute('aria-label', 'Go to add-on ' + (i + 1));
+        dot.addEventListener('click', () => { goTo(i); restart(); });
+        dotsWrap.appendChild(dot);
+    }
+
+    function goTo(i) {
+        index = (i + total) % total;
+        Array.from(slides).forEach((s, n) => s.classList.toggle('is-active', n === index));
+        if (timer) runBar(6000);
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        Array.from(dotsWrap.children).forEach((d, n) => d.classList.toggle('active', n === index));
+    }
+
+    let bar = slider.querySelector('.slider-progress span');
+    if (!bar) {
+        const w = document.createElement('div');
+        w.className = 'slider-progress';
+        w.innerHTML = '<span></span>';
+        slider.appendChild(w);
+        bar = w.firstChild;
+    }
+    function runBar(ms) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = 'sliderProgress ' + ms + 'ms linear forwards'; }
+    function clearBar() { bar.style.animation = 'none'; bar.style.width = '0'; }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function start() { if (!reduceMotion && !timer) { timer = setInterval(() => goTo(index + 1), 6000); runBar(6000); } }
+    function stop() { clearInterval(timer); timer = null; clearBar(); }
+    function restart() { stop(); start(); }
+
+    document.getElementById('addonPrev').addEventListener('click', () => { goTo(index - 1); restart(); });
+    document.getElementById('addonNext').addEventListener('click', () => { goTo(index + 1); restart(); });
+
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+    slider.addEventListener('focusin', stop);
+    slider.addEventListener('focusout', start);
+    slider.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') { goTo(index - 1); restart(); }
+        if (e.key === 'ArrowRight') { goTo(index + 1); restart(); }
+    });
+
+    /* Swipe support for phones */
+    let startX = 0;
+    slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); }, { passive: true });
+    slider.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+        start();
+    });
+
+    goTo(0);
+    start();
+})();
+
+        /* PROJECTS SLIDESHOW (works with the filter buttons) */
+        (function () {
+            const slider = document.getElementById('projectsSlider');
+            if (!slider) return;
+            const track = document.getElementById('projectsTrack');
+            const dotsWrap = document.getElementById('projectsDots');
+            const controls = document.getElementById('projectsControls');
+            let index = 0, timer = null;
+
+            const visible = () => Array.from(track.children).filter(s => !s.classList.contains('hide'));
+
+            function buildDots() {
+                dotsWrap.innerHTML = '';
+                visible().forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'slider-dot';
+                    dot.setAttribute('aria-label', 'Go to project ' + (i + 1));
+                    dot.addEventListener('click', () => { goTo(i); restart(); });
+                    dotsWrap.appendChild(dot);
+                });
+            }
+
+            function goTo(i) {
+                const n = visible().length;
+                if (!n) return;
+                index = (i + n) % n;
+                Array.from(track.children).forEach(s => s.classList.remove('is-active'));
+                visible()[index].classList.add('is-active');
+                if (timer) runBar(7000);
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                Array.from(dotsWrap.children).forEach((d, k) => d.classList.toggle('active', k === index));
+            }
+
+            let bar = slider.querySelector('.slider-progress span');
+    if (!bar) {
+        const w = document.createElement('div');
+        w.className = 'slider-progress';
+        w.innerHTML = '<span></span>';
+        slider.appendChild(w);
+        bar = w.firstChild;
+    }
+    function runBar(ms) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = 'sliderProgress ' + ms + 'ms linear forwards'; }
+    function clearBar() { bar.style.animation = 'none'; bar.style.width = '0'; }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            function start() { if (!reduceMotion && !timer && visible().length > 1) { timer = setInterval(() => goTo(index + 1), 7000); runBar(7000); } }
+            function stop() { clearInterval(timer); timer = null; clearBar(); }
+            function restart() { stop(); start(); }
+
+            window.refreshProjectsSlider = function () {
+                stop();
+                buildDots();
+                controls.style.display = visible().length > 1 ? 'flex' : 'none';
+                goTo(0);
+                start();
+            };
+
+            document.getElementById('projectsPrev').addEventListener('click', () => { goTo(index - 1); restart(); });
+            document.getElementById('projectsNext').addEventListener('click', () => { goTo(index + 1); restart(); });
+            slider.addEventListener('mouseenter', stop);
+            slider.addEventListener('mouseleave', start);
+            slider.addEventListener('focusin', stop);
+            slider.addEventListener('focusout', start);
+            slider.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') { goTo(index - 1); restart(); }
+                if (e.key === 'ArrowRight') { goTo(index + 1); restart(); }
+            });
+
+            let startX = 0;
+            slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); }, { passive: true });
+            slider.addEventListener('touchend', e => {
+                const dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+                start();
+            });
+
+            window.refreshProjectsSlider();
+        })();
+
+        /* SYSTEMS SLIDESHOW */
+        (function () {
+            const slider = document.getElementById('systemsSlider');
+            if (!slider) return;
+            const track = document.getElementById('systemsTrack');
+            const slides = Array.from(track.children);
+            const dotsWrap = document.getElementById('systemsDots');
+            const total = slides.length;
+            const DELAY = 7000;
+            let index = 0, timer = null;
+
+            const wrap = document.createElement('div');
+            wrap.className = 'slider-progress';
+            wrap.innerHTML = '<span></span>';
+            slider.appendChild(wrap);
+            const bar = wrap.firstChild;
+            function runBar() { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = 'sliderProgress ' + DELAY + 'ms linear forwards'; }
+            function clearBar() { bar.style.animation = 'none'; bar.style.width = '0'; }
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'slider-dot';
+                dot.setAttribute('aria-label', 'Go to system ' + (i + 1));
+                dot.addEventListener('click', () => { goTo(i); restart(); });
+                dotsWrap.appendChild(dot);
+            });
+
+            function goTo(i) {
+                index = (i + total) % total;
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
+                Array.from(dotsWrap.children).forEach((d, n) => d.classList.toggle('active', n === index));
+                if (timer) runBar();
+            }
+
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            function start() { if (!reduceMotion && !timer) { timer = setInterval(() => goTo(index + 1), DELAY); runBar(); } }
+            function stop() { clearInterval(timer); timer = null; clearBar(); }
+            function restart() { stop(); start(); }
+
+            document.getElementById('systemsPrev').addEventListener('click', () => { goTo(index - 1); restart(); });
+            document.getElementById('systemsNext').addEventListener('click', () => { goTo(index + 1); restart(); });
+            slider.addEventListener('mouseenter', stop);
+            slider.addEventListener('mouseleave', start);
+            slider.addEventListener('focusin', stop);
+            slider.addEventListener('focusout', start);
+            slider.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') { goTo(index - 1); restart(); }
+                if (e.key === 'ArrowRight') { goTo(index + 1); restart(); }
+            });
+
+            let startX = 0;
+            slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); }, { passive: true });
+            slider.addEventListener('touchend', e => {
+                const dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+                start();
+            });
+
+            goTo(0);
+            start();
+        })();
 
         /* GOOGLE ANALYTICS BUSINESS EVENT TRACKING */
         function trackBusinessEvent(eventName, params = {}) {

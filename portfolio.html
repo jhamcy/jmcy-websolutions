@@ -254,12 +254,207 @@
             font-size: 2.4rem;
         }
 
+        .systems-subhead {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 2.6rem 0 1.2rem 0;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .systems-subhead .count {
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .systems-subhead::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--card-border);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+        }
+
+        .product-card.is-soon:hover {
+            border-color: var(--card-border);
+            transform: none;
+        }
+
+        .product-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-head h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .product-card p.product-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .product-figures {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-figure {
+            background: rgba(56, 189, 248, 0.06);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.6rem 0.7rem;
+        }
+
+        .product-figure .num {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .product-figure .label {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 0.1rem;
+        }
+
+        .product-feature-list {
+            list-style: none;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.3rem;
+        }
+
+        .product-feature-list li::before {
+            content: "\2713";
+            color: var(--supabase-green);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .tag.tag-soon { color: #fbbf24; background-color: rgba(251, 191, 36, 0.1); }
+        .tag.tag-live { color: var(--supabase-green); background-color: rgba(62, 207, 142, 0.1); }
+
+        .btn-soon {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            box-shadow: none;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .product-card .btn { margin-top: auto; align-self: flex-start; }
+
         footer {
             text-align: center;
             padding: 2rem;
             color: var(--text-muted);
             font-size: 0.8rem;
             border-top: 1px solid var(--card-border);
+        }
+
+        /* DEMO SAMPLES SLIDESHOW */
+        .demo-slider { position: relative; outline: none; }
+        .slider-viewport { overflow: hidden; border-radius: 12px; }
+        .slider-track { display: flex; transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+        .slider-slide { flex: 0 0 100%; min-width: 0; padding: 0 2px; opacity: 0.35; transform: scale(0.94); transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slider-slide.is-active { opacity: 1; transform: scale(1); }
+        .demo-slider .card { display: grid; grid-template-columns: 0.9fr 1.1fr; height: 100%; }
+        .demo-slider .card:hover { transform: none; }
+        .demo-slider .card-image-wrap { height: 100%; min-height: 280px; }
+        .demo-slider .card-body { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+        .slider-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.2rem; }
+        .slider-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--card-border); background: var(--card-bg); color: var(--text-color); font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; }
+        .slider-btn:hover { border-color: var(--accent-color); color: var(--accent-color); box-shadow: 0 0 10px var(--accent-glow); transform: scale(1.12); }
+        .slider-btn:active { transform: scale(0.92); }
+        .slider-dots { display: flex; gap: 0.5rem; }
+        .slider-dot { width: 10px; height: 10px; padding: 0; border-radius: 50%; border: none; background: var(--card-border); cursor: pointer; transition: all 0.3s ease; }
+        .slider-dot.active { background: var(--accent-color); width: 26px; border-radius: 6px; }
+        .slider-progress { height: 3px; background: var(--card-border); border-radius: 3px; margin-top: 1rem; overflow: hidden; }
+        .slider-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #38bdf8, #818cf8); border-radius: 3px; }
+        @keyframes slideItemIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideImgIn { from { opacity: 0; transform: scale(1.12); } to { opacity: 1; transform: scale(1); } }
+        @keyframes sliderProgress { from { width: 0; } to { width: 100%; } }
+        .slider-slide.is-active .card-body > * { animation: slideItemIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .slider-slide.is-active .card-image-wrap { animation: slideImgIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .slider-slide.is-active .card-body > *:nth-child(1) { animation-delay: 0.12s; }
+        .slider-slide.is-active .card-body > *:nth-child(2) { animation-delay: 0.2s; }
+        .slider-slide.is-active .card-body > *:nth-child(3) { animation-delay: 0.28s; }
+        .slider-slide.is-active .card-body > *:nth-child(4) { animation-delay: 0.36s; }
+        .slider-slide.is-active .card-body > *:nth-child(5) { animation-delay: 0.44s; }
+        @media (prefers-reduced-motion: reduce) {
+            .slider-track { transition: none; }
+            .slider-slide { transition: none; opacity: 1; transform: none; }
+            .slider-slide.is-active .card-body > *, .slider-slide.is-active .card-image-wrap { animation: none; }
+        }
+        @media screen and (max-width: 768px) {
+            .demo-slider .card { grid-template-columns: 1fr; }
+            .demo-slider .card-image-wrap { height: 200px; min-height: 0; }
+        }
+
+        /* DESKTOP APPLICATIONS SLIDESHOW */
+        .systems-slider { position: relative; outline: none; margin-bottom: 1rem; }
+        .sys-card { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 2rem; height: 100%; background: linear-gradient(135deg, var(--card-bg), var(--sidebar-bg)); border: 1px solid var(--card-border); border-radius: 12px; padding: 2rem; }
+        .sys-main { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+        .sys-main .product-head { flex-wrap: wrap; align-items: center; width: 100%; margin-bottom: 0.8rem; }
+        .sys-main .product-head h3 { font-size: 1.35rem; font-weight: 800; }
+        .sys-main .product-figures { width: 100%; margin: 1.1rem 0 1.3rem; }
+        .sys-main .btn { margin-top: auto; }
+        .sys-side { background: #0b1120; border: 1px solid var(--card-border); border-radius: 10px; padding: 1.4rem; align-self: stretch; }
+        .sys-side h4 { font-size: 0.85rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .sys-side .product-feature-list { margin-bottom: 0; }
+        .slider-slide.is-active .sys-main > *,
+        .slider-slide.is-active .sys-side > * { animation: slideItemIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .slider-slide.is-active .sys-main > *:nth-child(1),
+        .slider-slide.is-active .sys-side > *:nth-child(1) { animation-delay: 0.12s; }
+        .slider-slide.is-active .sys-main > *:nth-child(2),
+        .slider-slide.is-active .sys-side > *:nth-child(2) { animation-delay: 0.2s; }
+        .slider-slide.is-active .sys-main > *:nth-child(3),
+        .slider-slide.is-active .sys-side > *:nth-child(3) { animation-delay: 0.28s; }
+        .slider-slide.is-active .sys-main > *:nth-child(4),
+        .slider-slide.is-active .sys-side > *:nth-child(4) { animation-delay: 0.36s; }
+        @media (prefers-reduced-motion: reduce) {
+            .slider-slide.is-active .sys-main > *, .slider-slide.is-active .sys-side > * { animation: none; }
+        }
+        @media screen and (max-width: 768px) {
+            .sys-card { grid-template-columns: 1fr; padding: 1.4rem; gap: 1.2rem; }
+            .sys-main .btn { width: 100%; text-align: center; }
         }
 
         @media screen and (max-width: 900px) {
@@ -323,8 +518,11 @@
         <h2 class="section-title" style="margin-top:0;">Demo Samples (Frontend-Only)</h2>
         <p style="color: var(--text-muted); font-size: 0.9rem; margin: -0.8rem 0 1.6rem 0;">Built as portfolio samples for prospective customers. These are not client projects.</p>
 
-        <div class="grid">
-            <div class="card">
+        <div class="demo-slider" id="demoSlider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Frontend demo samples">
+            <div class="slider-viewport">
+                <div class="slider-track" id="demoTrack">
+                    <div class="slider-slide">
+<div class="card">
                 <a href="https://jhamcy.github.io/Lotus-Oli/" target="_blank" rel="noopener noreferrer" class="card-image-wrap">
                     <img src="https://jhamcy.github.io/Lotus-Oli/images/lotus-sanctuary-hero.png" alt="Lotus & Oil Massage Sanctuary website preview" class="card-image">
                 </a>
@@ -340,8 +538,10 @@
                     <a href="https://jhamcy.github.io/Lotus-Oli/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Demo &rarr;</a>
                 </div>
             </div>
+                    </div>
 
-            <div class="card">
+                    <div class="slider-slide">
+<div class="card">
                 <a href="https://jhamcy.github.io/AURA/" target="_blank" rel="noopener noreferrer" class="card-image-wrap">
                     <img src="https://jhamcy.github.io/AURA/images/wagyu-craft-burger.png" alt="AURA Restaurant website preview" class="card-image">
                 </a>
@@ -357,8 +557,10 @@
                     <a href="https://jhamcy.github.io/AURA/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Demo &rarr;</a>
                 </div>
             </div>
+                    </div>
 
-            <div class="card">
+                    <div class="slider-slide">
+<div class="card">
                 <a href="https://jhamcy.github.io/Milk-Leaf/" target="_blank" rel="noopener noreferrer" class="card-image-wrap">
                     <img src="https://jhamcy.github.io/Milk-Leaf/assets/hero-01.png" alt="Milk & Leaf Tea House website preview" class="card-image">
                 </a>
@@ -374,14 +576,93 @@
                     <a href="https://jhamcy.github.io/Milk-Leaf/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Live Demo &rarr;</a>
                 </div>
             </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button type="button" class="slider-btn" id="demoPrev" aria-label="Previous demo">&#8249;</button>
+                <div class="slider-dots" id="demoDots"></div>
+                <button type="button" class="slider-btn" id="demoNext" aria-label="Next demo">&#8250;</button>
+            </div>
         </div>
 
         <h2 class="section-title">Full-Stack &amp; ERP Systems</h2>
+        <p style="color: var(--text-muted); margin: -1rem 0 0 0; font-size: 0.9rem;">Our systems are built in two tracks — standalone desktop software you own outright, and custom-scoped online/cloud platforms built per client.</p>
 
+        <div class="systems-subhead">💻 Desktop Applications <span class="count">Own it once · runs on your PC</span></div>
+        <div class="systems-slider" id="systemsSlider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Desktop applications">
+            <div class="slider-viewport">
+                <div class="slider-track" id="systemsTrack">
+
+                    <div class="slider-slide">
+                        <div class="sys-card">
+                            <div class="sys-main">
+                                <div class="product-head">
+                                    <h3>JMCY PH Payroll System</h3>
+                                    <span class="tag tag-live">Available Now</span>
+                                </div>
+                                <p class="product-desc">A complete, offline Philippine payroll system for small and mid-size businesses — attendance, semi-monthly payroll, government contributions, and payslips, all on one installed Windows app. No subscription, no internet dependency, your data stays on your own PC.</p>
+                                <div class="product-figures">
+                                    <div class="product-figure"><span class="num">₱20,000</span><span class="label">one-time license</span></div>
+                                    <div class="product-figure"><span class="num">30 days</span><span class="label">free trial, no key needed</span></div>
+                                    <div class="product-figure"><span class="num">4</span><span class="label">gov't contributions automated</span></div>
+                                    <div class="product-figure"><span class="num">2</span><span class="label">configurable payroll cutoffs</span></div>
+                                </div>
+                                <a href="https://github.com/jhamcy/jmcy-websolutions/releases/download/v1.1.4/JMCY-PH-Payroll-System-1.1.4-x64-Installer.exe" class="btn">Download for Windows &rarr;</a>
+                            </div>
+                            <div class="sys-side">
+                                <h4>What's included</h4>
+                                <ul class="product-feature-list">
+                                    <li>Attendance with tardiness, undertime &amp; overtime rules</li>
+                                    <li>SSS, PhilHealth, Pag-IBIG &amp; BIR tax auto-computed</li>
+                                    <li>Holiday calendar &amp; rest-day premium pay</li>
+                                    <li>Loan tracking with automatic payoff detection</li>
+                                    <li>Payslips, reports &amp; automatic daily backups</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-slide">
+                        <div class="sys-card">
+                            <div class="sys-main">
+                                <div class="product-head">
+                                    <h3>JMCY Internal Inventory</h3>
+                                    <span class="tag tag-soon">In Development</span>
+                                </div>
+                                <p class="product-desc">A companion desktop system for stock and internal inventory management, built on the same offline, own-your-data approach as JMCY Payroll. Currently in active development — details and pricing to follow closer to release.</p>
+                                <div class="product-figures">
+                                    <div class="product-figure"><span class="num">Windows</span><span class="label">desktop app</span></div>
+                                    <div class="product-figure"><span class="num">Offline</span><span class="label">no subscription</span></div>
+                                </div>
+                                <a href="index.html#contact" class="btn btn-outline">Ask About This System &rarr;</a>
+                            </div>
+                            <div class="sys-side">
+                                <h4>Planned highlights</h4>
+                                <ul class="product-feature-list">
+                                    <li>Stock levels with automatic reorder points, so you know how many to order</li>
+                                    <li>One-time license with unlimited users</li>
+                                    <li>1-month free trial</li>
+                                    <li>Runs offline on your own PC</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button type="button" class="slider-btn" id="systemsPrev" aria-label="Previous system">&#8249;</button>
+                <div class="slider-dots" id="systemsDots"></div>
+                <button type="button" class="slider-btn" id="systemsNext" aria-label="Next system">&#8250;</button>
+            </div>
+        </div>
+
+        <div class="systems-subhead">☁️ Online / Cloud Systems <span class="count">Custom-scoped per client</span></div>
         <div class="erp-card">
             <div class="erp-card-text">
                 <h3>🗂️ Custom ERP System — Frontend + Backend</h3>
-                <p>Full-stack ERP builds (inventory, payroll, admin dashboards, login-gated portals) are scoped per client — architecture, modules, and pricing are tailored during a project discussion rather than listed at a fixed price. JMP International is a delivered example.</p>
+                <p>Full-stack ERP builds (inventory, payroll, admin dashboards, login-gated portals) are scoped per client — architecture, modules, and pricing are tailored during a project discussion rather than listed at a fixed price. JMP International is a delivered example, and cloud/online editions of our desktop products are also in planning.</p>
                 <div class="card-tags" style="margin-bottom:0;">
                     <span class="tag tag-fullstack">Frontend + Backend</span>
                     <span class="tag tag-supabase">Supabase ERP</span>
@@ -398,6 +679,136 @@
     <footer>
         &copy; <span id="year">2026</span> JMCY Web Solutions. All rights reserved.
     </footer>
+    <script>
+    /* DEMO SAMPLES SLIDESHOW */
+    (function () {
+        const slider = document.getElementById('demoSlider');
+        if (!slider) return;
+        const track = document.getElementById('demoTrack');
+        const slides = Array.from(track.children);
+        const dotsWrap = document.getElementById('demoDots');
+        const total = slides.length;
+        const DELAY = 7000;
+        let index = 0, timer = null;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'slider-progress';
+        wrap.innerHTML = '<span></span>';
+        slider.appendChild(wrap);
+        const bar = wrap.firstChild;
+        function runBar() { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = 'sliderProgress ' + DELAY + 'ms linear forwards'; }
+        function clearBar() { bar.style.animation = 'none'; bar.style.width = '0'; }
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'slider-dot';
+            dot.setAttribute('aria-label', 'Go to demo ' + (i + 1));
+            dot.addEventListener('click', () => { goTo(i); restart(); });
+            dotsWrap.appendChild(dot);
+        });
+
+        function goTo(i) {
+            index = (i + total) % total;
+            track.style.transform = 'translateX(-' + (index * 100) + '%)';
+            slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
+            Array.from(dotsWrap.children).forEach((d, n) => d.classList.toggle('active', n === index));
+            if (timer) runBar();
+        }
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function start() { if (!reduceMotion && !timer) { timer = setInterval(() => goTo(index + 1), DELAY); runBar(); } }
+        function stop() { clearInterval(timer); timer = null; clearBar(); }
+        function restart() { stop(); start(); }
+
+        document.getElementById('demoPrev').addEventListener('click', () => { goTo(index - 1); restart(); });
+        document.getElementById('demoNext').addEventListener('click', () => { goTo(index + 1); restart(); });
+        slider.addEventListener('mouseenter', stop);
+        slider.addEventListener('mouseleave', start);
+        slider.addEventListener('focusin', stop);
+        slider.addEventListener('focusout', start);
+        slider.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') { goTo(index - 1); restart(); }
+            if (e.key === 'ArrowRight') { goTo(index + 1); restart(); }
+        });
+
+        let startX = 0;
+        slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); }, { passive: true });
+        slider.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+            start();
+        });
+
+        goTo(0);
+        start();
+    })();
+    </script>
+    <script>
+    /* DESKTOP APPLICATIONS SLIDESHOW */
+    (function () {
+        const slider = document.getElementById('systemsSlider');
+        if (!slider) return;
+        const track = document.getElementById('systemsTrack');
+        const slides = Array.from(track.children);
+        const dotsWrap = document.getElementById('systemsDots');
+        const total = slides.length;
+        const DELAY = 7000;
+        let index = 0, timer = null;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'slider-progress';
+        wrap.innerHTML = '<span></span>';
+        slider.appendChild(wrap);
+        const bar = wrap.firstChild;
+        function runBar() { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = 'sliderProgress ' + DELAY + 'ms linear forwards'; }
+        function clearBar() { bar.style.animation = 'none'; bar.style.width = '0'; }
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'slider-dot';
+            dot.setAttribute('aria-label', 'Go to system ' + (i + 1));
+            dot.addEventListener('click', () => { goTo(i); restart(); });
+            dotsWrap.appendChild(dot);
+        });
+
+        function goTo(i) {
+            index = (i + total) % total;
+            track.style.transform = 'translateX(-' + (index * 100) + '%)';
+            slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
+            Array.from(dotsWrap.children).forEach((d, n) => d.classList.toggle('active', n === index));
+            if (timer) runBar();
+        }
+
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function start() { if (!reduceMotion && !timer) { timer = setInterval(() => goTo(index + 1), DELAY); runBar(); } }
+        function stop() { clearInterval(timer); timer = null; clearBar(); }
+        function restart() { stop(); start(); }
+
+        document.getElementById('systemsPrev').addEventListener('click', () => { goTo(index - 1); restart(); });
+        document.getElementById('systemsNext').addEventListener('click', () => { goTo(index + 1); restart(); });
+        slider.addEventListener('mouseenter', stop);
+        slider.addEventListener('mouseleave', start);
+        slider.addEventListener('focusin', stop);
+        slider.addEventListener('focusout', start);
+        slider.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') { goTo(index - 1); restart(); }
+            if (e.key === 'ArrowRight') { goTo(index + 1); restart(); }
+        });
+
+        let startX = 0;
+        slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); }, { passive: true });
+        slider.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+            start();
+        });
+
+        goTo(0);
+        start();
+    })();
+    </script>
     <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
