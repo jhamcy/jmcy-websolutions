@@ -457,6 +457,12 @@
             .sys-main .btn { width: 100%; text-align: center; }
         }
 
+        /* PAYROLL PROMO IMAGE */
+        .sys-promo { display: block; margin-bottom: 1.1rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--card-border); }
+        .sys-promo img { display: block; width: 100%; height: auto; transition: transform 0.5s ease; }
+        .sys-promo:hover img { transform: scale(1.04); }
+        @media screen and (max-width: 768px) { .sys-promo { max-width: 420px; margin-left: auto; margin-right: auto; } }
+
         @media screen and (max-width: 900px) {
             .grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -611,6 +617,9 @@
                                 <a href="https://github.com/jhamcy/jmcy-websolutions/releases/download/v1.1.4/JMCY-PH-Payroll-System-1.1.4-x64-Installer.exe" class="btn">Download for Windows &rarr;</a>
                             </div>
                             <div class="sys-side">
+                                <a href="payroll-promo-square-1080x1080.png" target="_blank" rel="noopener noreferrer" class="sys-promo" aria-label="View the JMCY PH Payroll System promo image full size">
+                                    <img src="payroll-promo-square-1080x1080.png" alt="JMCY PH Payroll System: Philippine payroll, pay once and own it. ₱20,000 one-time license, 30-day free trial." width="1080" height="1080" loading="lazy">
+                                </a>
                                 <h4>What's included</h4>
                                 <ul class="product-feature-list">
                                     <li>Attendance with tardiness, undertime &amp; overtime rules</li>
