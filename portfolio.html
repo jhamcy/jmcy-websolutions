@@ -34,6 +34,7 @@
         }
 
         :root {
+            --sidebar-width: 270px;
             --bg-color: #090d16;
             --sidebar-bg: #030712;
             --card-bg: #111827;
@@ -49,8 +50,10 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
+            display: flex;
             min-height: 100vh;
             width: 100%;
+            overflow-x: hidden;
         }
 
         .container {
@@ -58,21 +61,296 @@
             margin: auto;
         }
 
-        /* TOP BAR (shared: portfolio.html + about-me.html) */
-        header.top-bar { position: sticky; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(3, 7, 18, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--card-border); padding: 14px 0; }
-        .top-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-        .btn-return { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: #ffffff; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.25s ease; }
-        .btn-return:hover { background: var(--accent-color); color: #07111f; border-color: var(--accent-color); transform: translateX(-4px); box-shadow: 0 4px 15px rgba(56,189,248,0.3); }
-        .top-links { display: flex; gap: 1.4rem; align-items: center; }
-        .top-links a { color: var(--text-muted); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: color 0.25s ease; }
-        .top-links a:hover, .top-links a.active { color: var(--accent-color); }
-        @media (max-width: 560px) { .top-links { gap: 1rem; } .top-links a { font-size: 0.82rem; } .btn-return { padding: 8px 12px; font-size: 0.85rem; } }
+
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: var(--sidebar-bg);
+            border-bottom: 1px solid var(--card-border);
+            padding: 0 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-header.nav-hidden {
+            transform: translateY(-100%);
+        }
+
+        .mobile-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .mobile-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--card-border);
+        }
+
+        .mobile-brand span {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: 1px solid var(--card-border);
+            color: var(--text-color);
+            font-size: 1.4rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--card-bg);
+        }
+
+        /* DESKTOP RIGHT-SIDE NAVIGATION PANEL */
+        aside {
+            width: var(--sidebar-width);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: var(--sidebar-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 2.5rem 1.5rem;
+            border-left: 1px solid var(--card-border);
+            z-index: 900;
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .brand-logo {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--card-border);
+            animation: logoPulse 4s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .brand h1 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .brand p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* NAVIGATION MENU */
+        nav {
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        nav li {
+            width: 100%;
+            position: relative;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: transparent;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ffffff;
+            background-color: var(--card-bg);
+            transform: translateX(-6px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a:hover::before, nav a.active::before {
+            background-color: var(--accent-color);
+            box-shadow: 0 0 8px var(--accent-color);
+            transform: scale(1.4);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 3px;
+            background-color: var(--accent-color);
+            border-radius: 4px 0 0 4px;
+            opacity: 0;
+            transform: scaleY(0);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        /* SOCIAL MEDIA LINKS SECTION */
+        .social-nav {
+            margin-top: 1.5rem;
+            margin-bottom: auto;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--card-border);
+            width: 100%;
+        }
+
+        .social-nav span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-btn.facebook:hover { color: #1877f2; border-color: #1877f2; background-color: rgba(24, 119, 242, 0.1); }
+        .social-btn.instagram:hover { color: #e4405f; border-color: #e4405f; background-color: rgba(228, 64, 95, 0.1); }
+        .social-btn.messenger:hover { color: #0084ff; border-color: #0084ff; background-color: rgba(0, 132, 255, 0.1); }
+        .social-btn.whatsapp:hover { color: #25d366; border-color: #25d366; background-color: rgba(37, 211, 102, 0.1); }
+
+        .sidebar-footer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--card-border);
+            padding-top: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .sidebar-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--github-gray) !important;
+            font-weight: 600;
+            margin-top: 0.4rem;
+            transition: color 0.3s ease;
+        }
+
+        .github-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        /* MAIN CONTENT AREA */
 
         main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem 5rem 2rem;
+            margin-right: var(--sidebar-width);
+            flex: 1;
+            min-width: 0;
+            padding: 3rem 4rem;
+            width: calc(100% - var(--sidebar-width));
         }
+        main > footer { margin-top: 4rem; }
+
+        /* SIDEBAR LAYOUT (same as index.html) */
+        @media screen and (max-width: 768px) {
+            .mobile-header { display: flex; }
+            aside { top: 70px; width: var(--sidebar-width); transform: translateX(100%); padding-top: 1.5rem; }
+            aside.open { transform: translateX(0); }
+            aside.nav-hidden { transform: translateX(100%) !important; }
+            main { margin-right: 0; width: 100%; padding: 5.5rem 1rem 3rem 1rem; }
+        }
+
 
         .page-intro {
             margin-bottom: 2.5rem;
@@ -470,12 +748,8 @@
         }
 
         @media screen and (max-width: 640px) {
-            header.top-bar {
-                padding: 12px 0;
-            }
-
             main {
-                padding: 2rem 1.2rem 3.5rem 1.2rem;
+                padding: 5.5rem 1.2rem 3.5rem 1.2rem;
             }
 
             .grid {
@@ -504,16 +778,69 @@
 
 </head>
 <body>
-    <header class="top-bar">
-        <div class="container top-bar-inner">
-            <a href="index.html" class="btn-return">&#8592; Back to Main Site</a>
-            <nav class="top-links">
-                <a href="portfolio.html" class="active" aria-current="page">Portfolio</a>
-                <a href="about-me.html">About Us</a>
-                <a href="index.html#contact">Contact</a>
-            </nav>
-        </div>
+        <!-- MOBILE TOP HEADER BAR -->
+    <header class="mobile-header" id="mobileHeader">
+        <a href="index.html#about" class="mobile-brand">
+            <img src="logo.png" alt="JMCY Logo">
+            <span>JMCY WEB SOLUTIONS</span>
+        </a>
+        <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+            ☰
+        </button>
     </header>
+
+    <!-- RIGHT SIDEBAR PANEL -->
+    <aside id="sidebarNav">
+        <div class="brand">
+            <img src="logo.png" alt="JMCY Logo" class="brand-logo">
+            <div>
+                <h1>JMCY</h1>
+                <p>WEB SOLUTIONS</p>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#about" onclick="closeMobileMenu()">About</a></li>
+                <li><a href="index.html#tech" onclick="closeMobileMenu()">Tech Stack</a></li>
+                <li><a href="index.html#services" onclick="closeMobileMenu()">Services</a></li>
+                <li><a href="index.html#packages" onclick="closeMobileMenu()">Packages</a></li>
+                <li><a href="index.html#systems" onclick="closeMobileMenu()">Systems</a></li>
+                <li><a href="payment.html">Buy Payroll</a></li>
+                <li><a href="index.html#projects" onclick="closeMobileMenu()">Projects</a></li>
+                <li><a href="portfolio.html" class="active" aria-current="page">Portfolio</a></li>
+                <li><a href="index.html#calculator" onclick="closeMobileMenu()">Estimator</a></li>
+                <li><a href="index.html#contact" onclick="closeMobileMenu()">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- SOCIAL MEDIA LINKS -->
+        <div class="social-nav">
+            <span>Connect With Us</span>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/1F1MPHFTPg/" target="_blank" class="social-btn facebook" title="Facebook Page">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/jmcy.websolutions" target="_blank" class="social-btn instagram" title="Instagram (jmcy.websolutions)">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer" class="social-btn messenger" title="Messenger (jmcyweb)">
+                    <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.302 2.246.466 3.443.466 6.627 0 12-4.975 12-11.113C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.125 3.26 5.893-3.26-6.559 6.96z"/></svg>
+                </a>
+                <a href="https://wa.me/639091297422" target="_blank" class="social-btn whatsapp" title="WhatsApp (0909 129 7422)">
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <p><a href="index.html">www.jmcywebsolutions.com</a></p>
+            <p><a href="about-me.html" class="github-link">
+                Learn More About Us &rarr;
+            </a></p>
+            <p style="margin-top:0.4rem;">&copy; <span id="yearSide">2026</span> JMCY Web Solutions.</p>
+        </div>
+    </aside>
 
     <main>
         <div class="page-intro">
@@ -683,11 +1010,10 @@
                 <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Live Example: JMP International &rarr;</a>
             </div>
         </div>
-    </main>
-
     <footer>
         &copy; <span id="year">2026</span> JMCY Web Solutions. All rights reserved.
     </footer>
+    </main>
     <script>
     /* DEMO SAMPLES SLIDESHOW */
     (function () {
@@ -819,5 +1145,22 @@
     })();
     </script>
     <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    <script>
+        function toggleMobileMenu() { const s = document.getElementById('sidebarNav'); s.classList.toggle('open'); s.classList.remove('nav-hidden'); }
+        function closeMobileMenu() { const s = document.getElementById('sidebarNav'); if (window.innerWidth <= 768) s.classList.remove('open'); }
+        let lastScrollTop = 0;
+        const mobileHeader = document.getElementById('mobileHeader');
+        const sidebarNav = document.getElementById('sidebarNav');
+        function handleMobileScroll() {
+            if (window.innerWidth > 768) return;
+            const cur = window.pageYOffset || document.documentElement.scrollTop;
+            if (cur > lastScrollTop && cur > 60) { sidebarNav.classList.remove('open'); mobileHeader.classList.add('nav-hidden'); sidebarNav.classList.add('nav-hidden'); }
+            else { mobileHeader.classList.remove('nav-hidden'); sidebarNav.classList.remove('nav-hidden'); }
+            lastScrollTop = cur <= 0 ? 0 : cur;
+        }
+        window.addEventListener('scroll', handleMobileScroll);
+        window.addEventListener('touchmove', handleMobileScroll);
+        document.getElementById('yearSide').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
