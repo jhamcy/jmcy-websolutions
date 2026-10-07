@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#090d16">
-    <title>JMCY Web Solutions | Custom Frontend & Supabase Web Applications</title>
+    <title>JMCY Web Solutions | Affordable Websites & Payroll Software for Philippine Businesses</title>
 
     <!-- SEO -->
-    <meta name="description" content="JMCY Web Solutions builds custom frontend and full-stack web platforms — from fast static business sites to Supabase-powered ERP and inventory systems. Live projects include JMP International Fish Trading and Famous Touch.">
+    <meta name="description" content="JMCY Web Solutions builds affordable business websites, custom online systems, and the JMCY PH Payroll System for Philippine businesses. See live projects for JMP International Fish Trading and Famous Touch.">
     <link rel="canonical" href="https://www.jmcywebsolutions.com/">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png"> <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"> <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"> <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
 
     <!-- Open Graph / Social Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="JMCY Web Solutions | Custom Frontend & Supabase Web Applications">
-    <meta property="og:description" content="Custom frontend and full-stack (Supabase + ERP) web platforms for businesses — from lightweight landing pages to inventory management systems.">
+    <meta property="og:title" content="JMCY Web Solutions | Affordable Websites & Payroll Software for Philippine Businesses">
+    <meta property="og:description" content="Business websites from ₱15,000, custom online systems priced to your needs, and an offline Philippine payroll system you own.">
     <meta property="og:image" content="https://www.jmcywebsolutions.com/logo.png">
     <meta property="og:url" content="https://www.jmcywebsolutions.com/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="JMCY Web Solutions">
-    <meta name="twitter:description" content="Custom frontend and full-stack web platforms — Supabase, ERP, and static business sites.">
+    <meta name="twitter:description" content="Business websites, custom online systems, and Philippine payroll software.">
 
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -1420,6 +1420,36 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* BUSINESS SYSTEMS: desktop vs online tracks */
+        .erp-card { background: linear-gradient(135deg, var(--card-bg), var(--sidebar-bg)); border: 1px solid var(--card-border); border-radius: 12px; padding: 2.2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+        .erp-card-text h3 { font-size: 1.3rem; margin-bottom: 0.6rem; }
+        .erp-card-text p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; max-width: 560px; margin-bottom: 1rem; }
+        .systems-subhead { display: flex; align-items: center; gap: 0.6rem; margin: 2.6rem 0 1.2rem 0; font-size: 1rem; font-weight: 700; color: var(--text-color); }
+        .systems-subhead .count { font-weight: 500; font-size: 0.8rem; color: var(--text-muted); }
+        .systems-subhead::after { content: ""; flex: 1; height: 1px; background: var(--card-border); }
+        @media (max-width: 768px) { .erp-card { flex-direction: column; align-items: flex-start; padding: 1.4rem; } .systems-subhead { flex-wrap: wrap; } }
+
+        /* FAQ CHAT ASSISTANT */
+        .faq-chat { max-width: 760px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; }
+        .faq-head { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.2rem; background: var(--sidebar-bg); border-bottom: 1px solid var(--card-border); }
+        .faq-head small { display: block; color: var(--text-muted); font-size: 0.78rem; }
+        .faq-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-color); color: #03121c; font-weight: 800; display: grid; place-items: center; flex: none; }
+        .faq-log { height: 340px; overflow-y: auto; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+        .faq-msg { max-width: 88%; padding: 0.7rem 0.95rem; border-radius: 12px; font-size: 0.92rem; line-height: 1.55; white-space: pre-line; overflow-wrap: anywhere; }
+        .faq-msg.bot { align-self: flex-start; background: #0b1120; border: 1px solid var(--card-border); }
+        .faq-msg.user { align-self: flex-end; background: var(--accent-color); color: #03121c; }
+        .faq-msg.typing { color: var(--text-muted); font-style: italic; }
+        .faq-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; white-space: normal; }
+        .faq-links a { color: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.8rem; font-weight: 600; text-decoration: none; }
+        .faq-links a:hover { background: var(--accent-glow); }
+        .faq-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; padding: 0.9rem 1.2rem; border-top: 1px solid var(--card-border); }
+        .faq-chip { display: flex; align-items: center; width: 100%; text-align: left; background: transparent; color: var(--text-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 0.6rem 0.85rem; font-size: 0.85rem; line-height: 1.35; cursor: pointer; }
+        .faq-chip:hover { border-color: var(--accent-color); color: var(--accent-color); }
+        .faq-form { display: flex; gap: 0.6rem; padding: 0.9rem 1.2rem; border-top: 1px solid var(--card-border); }
+        .faq-form input { flex: 1; min-width: 0; background: #0b1120; color: var(--text-color); border: 1px solid var(--card-border); border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 1rem; }
+        .faq-form input:focus-visible, .faq-chip:focus-visible, .faq-links a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+        @media (max-width: 768px) { .faq-log { height: 300px; padding: 1rem; } .faq-msg { max-width: 94%; } .faq-chips { padding: 0.8rem 1rem; gap: 0.5rem; } .faq-chip { font-size: 0.8rem; padding: 0.55rem 0.7rem; } }
     </style>
 
     <!-- Google Analytics 4 -->
@@ -1457,15 +1487,16 @@
 
         <nav>
             <ul>
-                <li><a href="#about" class="active" onclick="closeMobileMenu()">About</a></li>
-                <li><a href="#tech" onclick="closeMobileMenu()">Tech Stack</a></li>
+                <li><a href="#about" class="active" onclick="closeMobileMenu()">Home</a></li>
                 <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
-                <li><a href="#packages" onclick="closeMobileMenu()">Packages</a></li>
-                <li><a href="#systems" onclick="closeMobileMenu()">Systems</a></li>
-                <li><a href="payment.html">Buy Payroll</a></li>
-                <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="#calculator" onclick="closeMobileMenu()">Estimator</a></li>
+                <li><a href="#packages" onclick="closeMobileMenu()">Website Pricing</a></li>
+                <li><a href="#systems" onclick="closeMobileMenu()">Business Systems</a></li>
+                <li><a href="payment.html">Buy Payroll System</a></li>
+                <li><a href="#projects" onclick="closeMobileMenu()">Our Work</a></li>
+                <li><a href="portfolio.html">Demo Samples</a></li>
+                <li><a href="#calculator" onclick="closeMobileMenu()">Get a Quote</a></li>
+                <li><a href="#tech" onclick="closeMobileMenu()">How We Build</a></li>
+                <li><a href="#faq" onclick="closeMobileMenu()">FAQ</a></li>
                 <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
             </ul>
         </nav>
@@ -1504,82 +1535,55 @@
         <section id="about" class="hero reveal">
             <div class="hero-container">
                 <div>
-                    <span class="badge">Custom Frontend & Supabase Architecture</span>
-                    <h2>Engineered Web Solutions: <span>Frontend & Full-Stack ERP</span></h2>
-                    <p class="hero-text">We build two distinct tiers of web platforms: lightweight, lightning-fast <strong>Frontend-Only Websites</strong> and powerful <strong>Full-Stack Applications</strong> driven by Supabase cloud databases and Higher ERP backends.</p>
+                    <span class="badge">Websites &amp; Business Systems for Philippine Businesses</span>
+                    <h2>Professional Websites &amp; <span>Business Systems</span></h2>
+                    <p class="hero-text">We build fast, mobile-friendly <strong>business websites</strong> that bring in customers, and custom <strong>online systems</strong> that help you run your business. Websites have a clear starting price. Online systems are quoted to your needs, and the price is negotiable.</p>
                     
                     <div class="hero-action-btns">
-                        <a href="#calculator" class="btn">Calculate Project Cost</a>
+                        <a href="#calculator" class="btn">Get a Price Estimate</a>
                         <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer" class="btn btn-messenger">
-                            Direct PM on Messenger
+                            Message Us on Messenger
                         </a>
                         <a href="about-me.html" class="btn btn-outline">Learn More About Us</a>
                     </div>
 
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <h4>Frontend</h4>
-                            <p>Pure HTML / CSS / JS</p>
+                            <h4>From &#8369;15,000</h4>
+                            <p>Complete business website</p>
                         </div>
                         <div class="stat-item">
-                            <h4>Full-Stack</h4>
-                            <p>Supabase + ERP</p>
+                            <h4>Fast &amp; Mobile-Friendly</h4>
+                            <p>Opens quickly on any phone</p>
                         </div>
                         <div class="stat-item">
-                            <h4>Version Control</h4>
-                            <p>Managed via GitHub</p>
+                            <h4>Online Systems</h4>
+                            <p>Quoted to your needs</p>
                         </div>
                     </div>
                 </div>
                 <div class="hero-image-wrap">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Web Development Architecture">
-                </div>
-            </div>
-        </section>
-
-        <!-- TECH STACK SECTION -->
-        <section id="tech" class="reveal">
-            <h2 class="section-title">Tech Stack & Infrastructure</h2>
-            <div class="tech-grid">
-                <div class="tech-card reveal delay-1">
-                    <span class="tech-icon">🌐</span>
-                    <h4>Frontend Web</h4>
-                    <p>Clean HTML5, CSS3, & JS without heavy frameworks or template bloat.</p>
-                </div>
-                <div class="tech-card supabase-card reveal delay-2">
-                    <span class="tech-icon">⚡</span>
-                    <h4>Supabase Database</h4>
-                    <p>Cloud PostgreSQL database for ERP data, real-time sync, and user access.</p>
-                </div>
-                <div class="tech-card github-card reveal delay-3">
-                    <span class="tech-icon">🐱</span>      
-                    <h4>GitHub Management</h4>
-                    <p>Version control, automated deployments, and continuous integration.</p>
-                </div>
-                <div class="tech-card supabase-card reveal delay-4">
-                    <span class="tech-icon">🔒</span>
-                    <h4>Supabase Auth & RLS</h4>
-                    <p>Secure authentication with fine-grained Row Level Security policies.</p>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Business website shown on laptop and phone">
                 </div>
             </div>
         </section>
 
         <!-- TWO SERVICE TYPES SECTION -->
         <section id="services" class="reveal">
-            <h2 class="section-title">Our 2 Website Solution Types</h2>
+            <h2 class="section-title">Two Ways We Can Build for You</h2>
             <div class="grid">
                 <div class="card reveal delay-1">
                     <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Frontend Only Website" class="card-image">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Business website on a laptop" class="card-image">
                     </div>
                     <div class="card-body">
-                        <h3>1. Frontend-Only Websites</h3>
-                        <p>Perfect for corporate portfolios, landing pages, and business showcases. Built entirely on clean HTML/CSS/JS for ultra-fast load times, SEO optimization, and smooth mobile UI.</p>
+                        <h3>1. Business Website</h3>
+                        <p>Perfect for shops, salons, restaurants, and service businesses. A fast, mobile-friendly website that shows your business online and brings in customers, with a booking or contact form. Fixed price from &#8369;15,000.</p>
                         <div class="card-tags">
-                            <span class="tag tag-frontend">Frontend Only</span>
-                            <span class="tag">Semantic HTML5</span>
-                            <span class="tag">Custom CSS</span>
-                            <span class="tag tag-github">GitHub Hosted</span>
+                            <span class="tag tag-frontend">Simple Website</span>
+                            <span class="tag">Fast Loading</span>
+                            <span class="tag">Mobile Friendly</span>
+                            <span class="tag tag-github">Free Hosting</span>
                         </div>
                         <a href="#packages" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Package &amp; Pricing &rarr;</a>
                     </div>
@@ -1587,17 +1591,18 @@
 
                 <div class="card reveal delay-2">
                     <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Full-Stack Web App" class="card-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Online business system on a computer" class="card-image">
                     </div>
                     <div class="card-body">
-                        <h3>2. Full-Stack Websites (Frontend + Supabase)</h3>
-                        <p>Engineered for complex business operations, portals, and Higher ERP applications. Baseline includes User Auth, RLS (₱200/user), Higher ERP Relational Sync, and Admin Management UI.</p>
+                        <h3>2. Website + Online System</h3>
+                        <p>For businesses that need more than a showcase: staff logins, an online database, and an admin panel for inventory, orders, and records. Every business is different, so the price is quoted after we discuss your needs, and it is negotiable.</p>
                         <div class="card-tags">
-                            <span class="tag tag-fullstack">Frontend + Backend</span>
-                            <span class="tag tag-supabase">Supabase ERP</span>
-                            <span class="tag tag-supabase">PostgreSQL</span>
-                            <span class="tag">Realtime Sync</span>
+                            <span class="tag tag-fullstack">Website + System</span>
+                            <span class="tag tag-supabase">Online Database</span>
+                            <span class="tag">Staff Logins</span>
+                            <span class="tag">Live Updates</span>
                         </div>
+                        <a href="#contact" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">Request a Custom Quote &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -1605,7 +1610,7 @@
 
         <!-- FRONTEND-ONLY PACKAGE & ADD-ONS -->
 <section id="packages" class="reveal">
-    <h2 class="section-title">Frontend-Only Package &amp; Add-Ons</h2>
+    <h2 class="section-title">Business Website Package &amp; Add-Ons</h2>
 
     <div class="pkg-unified">
         <!-- Core package -->
@@ -1618,10 +1623,10 @@
         </div>
         <ul class="pkg-list">
             <li><strong>Custom Branding:</strong> Your logo, assets, service menu &amp; copy on a proven layout.</li>
-            <li><strong>Fast, Clean Code:</strong> Plain HTML/CSS/JS for quick loads and better Google scores.</li>
+            <li><strong>Fast Loading:</strong> Lightweight pages that open quickly and rank better on Google.</li>
             <li><strong>Mobile-First:</strong> Fully responsive on phones, tablets &amp; desktop.</li>
             <li><strong>Lead Capture:</strong> Working booking/contact form sent to your email.</li>
-            <li><strong>&#8369;0 Hosting:</strong> Deployed on GitHub — no monthly server fees.</li>
+            <li><strong>&#8369;0 Hosting:</strong> Your site is hosted for free on GitHub, so there are no monthly server fees.</li>
             <li><strong>Launch &amp; Handover:</strong> Domain linked live, plus 14 days of support.</li>
         </ul>
         <p class="pkg-note"><strong>Note:</strong> Domain registration (&#8369;800&ndash;&#8369;1,500/year) is billed directly by your registrar (e.g. Namecheap, GoDaddy) — you keep full ownership.</p>
@@ -1682,7 +1687,7 @@
         <!-- Steps below the slideshow -->
         <div class="steps">
             <div class="step-card"><h4><span>1</span>Approval</h4><p>Reply to the proposal confirming your selected package and optional add-ons.</p></div>
-            <div class="step-card"><h4><span>2</span>Downpayment</h4><p>A 50% mobilization deposit (&#8369;7,500 on the core package) starts the work. The balance is settled on final approval, before go-live on your domain.</p></div>
+            <div class="step-card"><h4><span>2</span>Down Payment</h4><p>A 50% down payment (&#8369;7,500 on the core package) starts the work. The balance is settled on final approval, before go-live on your domain.</p></div>
             <div class="step-card"><h4><span>3</span>Content Handover</h4><p>Send your logo, verified service/pricing list, high-resolution media, and preferred contact channels.</p></div>
         </div>
     </div>
@@ -1690,10 +1695,12 @@
 
         <!-- FULL-STACK & ERP SYSTEMS (SLIDESHOW) -->
         <section id="systems" class="reveal">
-            <h2 class="section-title">Full-Stack &amp; ERP Systems</h2>
-            <p class="sys-intro">Ready-made desktop software you own outright: no subscription and no internet needed.</p>
+            <h2 class="section-title">Business Systems (ERP)</h2>
+            <p class="sys-intro">Two ways to get a system for your business: ready-made desktop software you own, or a custom online system built around your needs.</p>
 
-            <div class="addon-slider systems-slider" id="systemsSlider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Full-Stack and ERP systems">
+            <div class="systems-subhead" style="margin-top:0.5rem;">&#128187; Desktop Software <span class="count">Ready-made &middot; one-time license &middot; works offline</span></div>
+
+            <div class="addon-slider systems-slider" id="systemsSlider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Desktop software">
                 <div class="slider-viewport">
                     <div class="slider-track" id="systemsTrack">
 
@@ -1708,13 +1715,14 @@
                                     <div class="sys-figures">
                                         <div class="sys-figure"><span class="num">&#8369;20,000</span><span class="label">one-time license</span></div>
                                         <div class="sys-figure"><span class="num">30 days</span><span class="label">free trial, no key needed</span></div>
-                                        <div class="sys-figure"><span class="num">4</span><span class="label">gov't contributions automated</span></div>
+                                        <div class="sys-figure"><span class="num">4</span><span class="label">government contributions computed automatically</span></div>
                                         <div class="sys-figure"><span class="num">2</span><span class="label">configurable payroll cutoffs</span></div>
                                     </div>
                                     <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:auto;">
                                         <a href="https://github.com/jhamcy/jmcy-websolutions/releases/download/v1.1.4/JMCY-PH-Payroll-System-1.1.4-x64-Installer.exe" class="btn">Download for Windows &rarr;</a>
                                         <a href="payment.html" class="btn btn-outline">Buy License &#8369;20,000 &rarr;</a>
                                     </div>
+                                    <p class="pkg-note" style="margin-top:0.8rem;">If Windows shows a security warning when you open the installer, choose &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;.</p>
                                 </div>
                                 <div class="sys-side">
                                     <a href="payroll-promo-square-1080x1080.png" target="_blank" rel="noopener noreferrer" class="sys-promo" aria-label="View the JMCY PH Payroll System promo image full size">
@@ -1766,6 +1774,23 @@
                     <button type="button" class="slider-btn" id="systemsNext" aria-label="Next system">&#8250;</button>
                 </div>
             </div>
+
+            <div class="systems-subhead">&#9729;&#65039; Online Systems <span class="count">Custom-built &middot; price agreed after we talk</span></div>
+            <div class="erp-card">
+                <div class="erp-card-text">
+                    <h3>Custom Online ERP System</h3>
+                    <p>An online system built around how your business works: staff logins, a secure cloud database, and an admin panel for inventory, orders, customers, or employee records. Because every business needs something different, there is no fixed price. We discuss your needs first, then send a quote that you can negotiate with us.</p>
+                    <div class="card-tags" style="margin-bottom:0;">
+                        <span class="tag tag-fullstack">Website + System</span>
+                        <span class="tag tag-supabase">Online Database</span>
+                        <span class="tag">Negotiable Price</span>
+                    </div>
+                </div>
+                <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+                    <a href="#contact" class="btn">Request a Custom Quote &rarr;</a>
+                    <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Live Example: JMP International &rarr;</a>
+                </div>
+            </div>
         </section>
 
         <!-- FILTERABLE PORTFOLIO SECTION -->
@@ -1779,8 +1804,8 @@
 
             <div class="portfolio-filters">
                 <button class="filter-btn active" onclick="filterProjects('all')">All Solutions</button>
-                <button class="filter-btn" onclick="filterProjects('frontend-type')">Frontend Only</button>
-                <button class="filter-btn" onclick="filterProjects('fullstack-type')">Full-Stack (Supabase)</button>
+                <button class="filter-btn" onclick="filterProjects('frontend-type')">Websites</button>
+                <button class="filter-btn" onclick="filterProjects('fullstack-type')">Online Systems</button>
             </div>
 
             <div class="addon-slider project-slider" id="projectsSlider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Completed client projects">
@@ -1794,10 +1819,10 @@
                                 </a>
                                 <div class="card-body">
                                     <h3>JMP International Fish Trading</h3>
-                                    <p>Full website platform plus a Supabase-backed ERP inventory system: product catalog, employee login portal, cold-chain stock tracking, and admin management UI.</p>
+                                    <p>A full business website plus an online inventory system: product catalog, staff login portal, cold-storage stock tracking, and an admin dashboard.</p>
                                     <div class="card-tags">
-                                        <span class="tag tag-fullstack">Frontend + Backend</span>
-                                        <span class="tag tag-supabase">Supabase ERP</span>
+                                        <span class="tag tag-fullstack">Website + System</span>
+                                        <span class="tag tag-supabase">Online ERP</span>
                                         <span class="tag tag-github">Client Project &middot; Live</span>
                                     </div>
                                     <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:1.2rem; padding:0.6rem 1.2rem; font-size:0.85rem;">View Live Project &rarr;</a>
@@ -1812,9 +1837,9 @@
                                 </a>
                                 <div class="card-body">
                                     <h3>Famous Touch &mdash; Mobile Massage Booking</h3>
-                                    <p>Frontend-only marketing and booking site for a 24/7 mobile massage service, with service-area sections, WhatsApp/Viber booking links, and SEO-optimized local landing content.</p>
+                                    <p>A booking website for a 24/7 mobile massage service, with service-area pages, WhatsApp/Viber booking links, and local search (SEO) content that helps nearby customers find them.</p>
                                     <div class="card-tags">
-                                        <span class="tag tag-frontend">Frontend Only</span>
+                                        <span class="tag tag-frontend">Website Only</span>
                                         <span class="tag">Local SEO</span>
                                         <span class="tag tag-github">Client Project &middot; Live</span>
                                     </div>
@@ -1836,7 +1861,7 @@
         <!-- INTERACTIVE COST ESTIMATOR SECTION -->
         <section id="calculator" class="reveal">
             <h2 class="section-title">Interactive Scope &amp; Cost Estimator</h2>
-            <p class="est-intro">Get a quick price in 3 easy steps. This is only an estimate, so there is no commitment.</p>
+            <p class="est-intro">Get a quick price in 3 easy steps. Websites have a fixed starting price; online systems get a custom quote. No commitment.</p>
 
             <div class="calculator-container reveal delay-1">
                 <div>
@@ -1850,10 +1875,10 @@
                                 <small>&#8369;15,000 &middot; Shows your business online. Great for shops, salons, restaurants &amp; services.</small>
                             </label>
 
-                            <input type="radio" id="type2" name="projectType" value="20000" class="calc-radio" onchange="handleTypeChange()">
+                            <input type="radio" id="type2" name="projectType" value="0" class="calc-radio" onchange="handleTypeChange()">
                             <label for="type2" class="option-label">
                                 <strong>Website + Online System</strong>
-                                <small>From &#8369;20,000 &middot; Adds staff login, a database &amp; an admin panel. Great for inventory, orders &amp; payroll.</small>
+                                <small>Custom quote &middot; Adds staff login, an online database &amp; an admin panel. Great for inventory, orders &amp; records. Price is negotiable.</small>
                             </label>
                         </div>
                     </div>
@@ -1875,12 +1900,12 @@
 
                     <!-- STEP 2 (Online System): size of the system -->
                     <div class="calc-group" id="backendModulesGroup" style="display: none;">
-                        <label class="est-step"><span>2</span> How big is your system?</label>
+                        <label class="est-step"><span>2</span> Tell us about your system <em>(optional)</em></label>
 
                         <div class="est-counter">
                             <div class="est-counter-text">
                                 <strong>People who will log in</strong>
-                                <small>&#8369;200 per person. For example: you, your staff, your managers.</small>
+                                <small>For example: you, your staff, your managers. This helps us prepare your quote.</small>
                             </div>
                             <div class="est-stepper">
                                 <button type="button" onclick="stepValue('userAccountCount', -1)" aria-label="Fewer people">&minus;</button>
@@ -1892,7 +1917,7 @@
                         <div class="est-counter">
                             <div class="est-counter-text">
                                 <strong>Parts of your business to manage (modules)</strong>
-                                <small>&#8369;20,000 each. One module is one list you can add, edit, search and delete, like Products, Customers, Orders or Employees.</small>
+                                <small>One module is one list you can add, edit, search and delete, like Products, Customers, Orders or Employees.</small>
                             </div>
                             <div class="est-stepper">
                                 <button type="button" onclick="stepValue('dataTableModuleCount', -1)" aria-label="Fewer modules">&minus;</button>
@@ -1915,7 +1940,7 @@
                             </ul>
                         </div>
                         <div id="includesFullstack" style="display:none;">
-                            <h4>Included in the &#8369;20,000 base</h4>
+                            <h4>Usually included in an online system</h4>
                             <ul class="pkg-list single">
                                 <li>Secure login for you and your team</li>
                                 <li>An online database that safely stores your data</li>
@@ -1931,16 +1956,62 @@
                     <div>
                         <h3><span class="est-step-num">3</span> Your Estimate</h3>
                         <div class="calc-price" id="totalPrice">&#8369;15,000</div>
-                        <span class="est-sub">one-time payment</span>
+                        <span class="est-sub" id="estSub">one-time payment</span>
                         <div class="calc-breakdown" id="calcLines"></div>
                         <div class="calc-breakdown">
                             <div id="monthlyRow" style="display:none;"><span>Total per month (optional services)</span><strong id="monthlyPrice">&#8369;0 / month</strong></div>
-                            <div id="depositRow"><span>To start: 50% downpayment</span><strong id="depositPrice">&#8369;7,500</strong></div>
+                            <div id="depositRow"><span>To start: 50% down payment</span><strong id="depositPrice">&#8369;7,500</strong></div>
                         </div>
-                        <p>Includes the complete source code and launch. Domain registration and ad spend are paid separately to your own accounts. The final price is confirmed after we talk about your needs.</p>
+                        <p id="estNote">Includes the complete source code and launch. Domain registration and ad spend are paid separately to your own accounts. The final price is confirmed after we talk about your needs.</p>
                     </div>
                     <button type="button" class="btn" onclick="applyEstimateToForm()">Get This Quote &rarr;</button>
                 </div>
+            </div>
+        </section>
+
+        <!-- TECH STACK SECTION -->
+        <section id="tech" class="reveal">
+            <h2 class="section-title">How We Build Your Website</h2>
+            <div class="tech-grid">
+                <div class="tech-card reveal delay-1">
+                    <span class="tech-icon">🌐</span>
+                    <h4>Fast-Loading Pages</h4>
+                    <p>Clean, lightweight pages with no heavy plugins, so your site opens quickly on any phone.</p>
+                </div>
+                <div class="tech-card supabase-card reveal delay-2">
+                    <span class="tech-icon">⚡</span>
+                    <h4>Online Database</h4>
+                    <p>Your business data is kept in a secure cloud database (Supabase) and updates in real time. Used for online systems.</p>
+                </div>
+                <div class="tech-card github-card reveal delay-3">
+                    <span class="tech-icon">🐱</span>      
+                    <h4>Free Hosting &amp; Safe Updates</h4>
+                    <p>Your site is hosted for free on GitHub, and every change is saved so we can restore an earlier version anytime.</p>
+                </div>
+                <div class="tech-card supabase-card reveal delay-4">
+                    <span class="tech-icon">🔒</span>
+                    <h4>Secure Staff Logins</h4>
+                    <p>Each person logs in with their own account and only sees what they are allowed to see.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FAQ CHAT ASSISTANT -->
+        <section id="faq" class="reveal">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="est-intro">Ask our assistant about prices, payment, and how we work. For anything else, message us and our team will reply personally.</p>
+            <div class="faq-chat" role="region" aria-label="FAQ assistant">
+                <div class="faq-head">
+                    <span class="faq-avatar" aria-hidden="true">J</span>
+                    <div><strong>JMCY Assistant</strong><small>Automated answers to common questions</small></div>
+                </div>
+                <div class="faq-log" id="faqLog" role="log" aria-live="polite" aria-label="Chat messages"></div>
+                <div class="faq-chips" id="faqChips"></div>
+                <form class="faq-form" id="faqForm" autocomplete="off">
+                    <input type="text" id="faqInput" placeholder="Type your question..." aria-label="Type your question" maxlength="200">
+                    <button type="submit" class="btn">Send</button>
+                </form>
             </div>
         </section>
 
@@ -1955,11 +2026,11 @@
                         <a href="http://www.jmcywebsolutions.com" target="_blank">www.jmcywebsolutions.com</a>
                     </div>
                     <div class="info-item">
-                        <h4>Company Details</h4>
+                        <h4>About Us</h4>
                         <a href="about-me.html">Learn More About Us &rarr;</a>
                     </div>
                     <div class="info-item">
-                        <h4>Direct Email</h4>
+                        <h4>Email</h4>
                         <a href="mailto:jhamcyd@gmail.com">jhamcyd@gmail.com</a>
                     </div>
                     <div class="info-item">
@@ -1967,13 +2038,13 @@
                         <a href="https://wa.me/639091297422" target="_blank">+63 909 129 7422</a>
                     </div>
                     <div class="info-item">
-                        <h4>Messenger Direct PM</h4>
+                        <h4>Messenger</h4>
                         <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer">m.me/jmcyweb &rarr;</a>
                     </div>
                 </div>
 
                 <div class="contact-container reveal delay-2">
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Ready to launch your frontend or full-stack web application? Send us your details below:</p>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Ready to get started? Tell us about your business and we will reply with the next steps.</p>
                     
                     <form id="contact-form" onsubmit="sendEmail(event)">
                         <div>
@@ -1988,8 +2059,8 @@
                         <div>
                             <select id="architectureSelect" name="website_type" onchange="handleDropdownSelectionChange()" required>
                                 <option value="">Select Website Type</option>
-                                <option value="Frontend-Only Website">1. Frontend-Only Website (Static HTML/CSS/JS)</option>
-                                <option value="Full-Stack Website">2. Full-Stack Website (Frontend + Supabase Backend)</option>
+                                <option value="Frontend-Only Website">1. Simple Website (from &#8369;15,000)</option>
+                                <option value="Full-Stack Website">2. Website + Online System (custom quote)</option>
                             </select>
                         </div>
                         <div>
@@ -2019,7 +2090,7 @@
                 </svg>
             </div>
             <h3 class="modal-title" id="modalTitle">Request Sent!</h3>
-            <p class="modal-message" id="modalMessage">Thank you! Your inquiry has been successfully sent to jhamcyd@gmail.com.</p>
+            <p class="modal-message" id="modalMessage">Thank you! Your request was sent. We will get back to you shortly.</p>
             <button class="modal-close-btn" onclick="closeNotificationModal()">Continue</button>
         </div>
     </div>
@@ -2118,9 +2189,9 @@
                     rows.push([name, peso(ad.price) + (ad.billing === 'monthly' ? ' / month' : '')]);
                 });
             } else {
-                rows.push(['Website + Online System (base)', peso(20000)]);
-                if (est.userCount > 0) rows.push([est.userCount + ' login' + (est.userCount > 1 ? 's' : '') + ' x \u20B1200', peso(est.userCount * 200)]);
-                if (est.moduleCount > 0) rows.push([est.moduleCount + ' module' + (est.moduleCount > 1 ? 's' : '') + ' x \u20B120,000', peso(est.moduleCount * 20000)]);
+                rows.push(['Website + Online System', 'Quoted after we talk']);
+                if (est.userCount > 0) rows.push([est.userCount + ' ' + (est.userCount > 1 ? 'people' : 'person') + ' will log in', 'For your quote']);
+                if (est.moduleCount > 0) rows.push([est.moduleCount + ' module' + (est.moduleCount > 1 ? 's' : '') + ' to manage', 'For your quote']);
             }
             document.getElementById('calcLines').innerHTML = rows.map(r => '<div><span>' + r[0] + '</span><strong>' + r[1] + '</strong></div>').join('');
         }
@@ -2142,7 +2213,7 @@
             } else {
                 est.userCount = parseInt(document.getElementById('userAccountCount').value) || 0;
                 est.moduleCount = parseInt(document.getElementById('dataTableModuleCount').value) || 0;
-                est.oneTime += est.userCount * 200 + est.moduleCount * 20000;
+                est.custom = true;
             }
             return est;
         }
@@ -2170,7 +2241,11 @@
             const est = getEstimate();
 
             const priceDisplay = document.getElementById('totalPrice');
-            priceDisplay.innerText = peso(est.oneTime);
+            priceDisplay.innerText = est.custom ? 'Custom Quote' : peso(est.oneTime);
+            document.getElementById('estSub').innerText = est.custom ? 'price agreed after we discuss your needs' : 'one-time payment';
+            document.getElementById('estNote').innerText = est.custom
+                ? 'Online systems are priced to your needs, and the price is negotiable. Send your request and we will reply with a quote.'
+                : 'Includes the complete source code and launch. Domain registration and ad spend are paid separately to your own accounts. The final price is confirmed after we talk about your needs.';
 
             document.getElementById('monthlyRow').style.display = est.monthly > 0 ? 'flex' : 'none';
             document.getElementById('monthlyPrice').innerText = peso(est.monthly) + ' / month';
@@ -2209,7 +2284,7 @@
             const messageInput = document.getElementById('messageInput');
 
             if (est.isFrontendOnly) {
-                let msg = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote for a Frontend-Only Website (Static HTML/CSS/JS).\n\nCore Development Package (one-time): ₱15,000`;
+                let msg = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote for a Simple Website.\n\nCore Development Package (one-time): ₱15,000`;
                 est.addons.forEach(ad => {
                     msg += `\n${ad.label}: ${peso(ad.price)}${ad.billing === 'monthly' ? ' / month' : ' (one-time)'}`;
                 });
@@ -2218,11 +2293,11 @@
                 msg += `\n\nI would like to discuss implementing this project with your team.`;
                 messageInput.value = msg;
             } else {
-                let detailsList = `\nBase Tier (₱20,000): Supabase Auth & RLS, Higher ERP Relational Sync, Admin Management UI.`;
-                if (est.userCount > 0) detailsList += `\nUser Accounts: ${est.userCount} accounts (${peso(est.userCount * 200)}).`;
-                if (est.moduleCount > 0) detailsList += `\nData Table Modules: ${est.moduleCount} module(s) (${peso(est.moduleCount * 20000)}).`;
+                let detailsList = `\nIncludes: staff logins, an online database, and an admin panel.`;
+                if (est.userCount > 0) detailsList += `\nPeople who will log in: ${est.userCount}.`;
+                if (est.moduleCount > 0) detailsList += `\nParts of the business to manage (modules): ${est.moduleCount}.`;
 
-                messageInput.value = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote of ${peso(est.oneTime)} for a Full-Stack Website (Frontend + Supabase Backend).${detailsList}\n\nI would like to discuss implementing this project using your custom HTML frontend and Supabase backend services.`;
+                messageInput.value = `Hello JMCY Web Solutions,\n\nI would like a custom quote for a Website + Online System.${detailsList}\n\nPlease contact me so we can discuss what my business needs.`;
             }
         }
 
@@ -2307,7 +2382,7 @@
                     showNotificationModal(
                         'success', 
                         'Request Sent!', 
-                        'Thank you! Your inquiry has been successfully sent to jhamcyd@gmail.com. We will get back to you shortly.'
+                        'Thank you! Your request was sent. We will get back to you shortly.'
                     );
 
                     // GA4: record a successful consultation request as a key business event.
@@ -2648,6 +2723,124 @@
             /* Attach scroll-reveal observer to all marked elements */
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         });
+    </script>
+
+    <script>
+    /* FAQ CHAT ASSISTANT: automated answers, no AI service or server needed */
+    (function () {
+        var MSG = "https://m.me/jmcyweb", WA = "https://wa.me/639091297422";
+        var FAQ = [
+            { id: "cost", chip: 1, q: "How much does it cost?", k: ["pricing"], g: ["how much", "price", "prices", "cost", "rate", "rates", "fee", "magkano", "presyo", "hm"],
+              a: "Here is a quick price guide:\n• Business website: ₱15,000 one-time\n• Payroll System (Windows software): ₱20,000 one-time license\n• Custom online system (ERP): custom quote, negotiable after we talk about your needs\n\nOptional website add-ons: Local SEO ₱3,500 one-time, Website Maintenance ₱1,500/month, Google Ads management ₱4,500/month.",
+              l: [["Get a price estimate", "#calculator"]] },
+            { id: "own", chip: 1, q: "Do I own my website?", k: ["own", "ownership", "source code", "copyright"], g: ["mine"],
+              a: "The website package includes the complete source code, and your domain is registered with your own registrar account, so you keep full ownership of your domain.",
+              l: [] },
+            { id: "website", chip: 1, q: "What is included in a website?", k: ["website", "site", "landing", "package", "included", "include"], g: ["web"],
+              a: "The business website is ₱15,000 one-time. It includes custom branding with your logo, a mobile-friendly design, a booking or contact form sent to your email, free hosting on GitHub (no monthly server fees), and launch on your domain plus 14 days of support.\n\nDomain registration (about ₱800–₱1,500 per year) is paid directly to your registrar.",
+              l: [["See website pricing", "#packages"], ["See our work", "#projects"]] },
+            { id: "process", chip: 1, q: "How does it work?", k: ["process", "down payment", "downpayment", "deposit", "steps", "how it works", "how does it work", "balance", "timeline", "how long", "approval"], g: ["start", "begin"],
+              a: "1. Approval: you confirm your package and any add-ons.\n2. Down payment: 50% starts the work (₱7,500 on the core website).\n3. Content handover: you send your logo, verified service and price list, photos, and contact details.\n\nThe balance is paid on final approval, before we go live on your domain. We confirm the schedule in your proposal.",
+              l: [["Get a price estimate", "#calculator"]] },
+            { id: "payment", q: "How can I pay?", k: ["gcash", "payment", "payments", "bank", "card", "qr", "installment"], g: ["pay"],
+              a: "The Payroll System license can be paid by GCash, QR Ph, or card on the payment page. For websites and online systems, message us and we will confirm the payment options with you.",
+              l: [["Payroll payment page", "payment.html"], ["Messenger", MSG]] },
+            { id: "hosting", q: "How does hosting and domain work?", k: ["hosting", "host", "domain", "github", "server", "namecheap", "godaddy"], g: ["free", "monthly"],
+              a: "Your website is hosted for free on GitHub, so there are no monthly server fees. You only pay for your domain (about ₱800–₱1,500 per year) directly to your registrar, such as Namecheap or GoDaddy.",
+              l: [] },
+            { id: "online", chip: 1, q: "What is an online system (ERP)?", k: ["erp", "online system", "supabase", "cloud", "database", "portal", "login", "negotiable", "custom quote", "online"], g: ["system", "admin", "custom", "staff"],
+              a: "An online system is built around how your business works: staff logins, a secure online database, and an admin panel for inventory, orders, customers, or employee records.\n\nBecause every business needs something different, there is no fixed price. We talk about your needs first, then send a quote that you can negotiate.",
+              l: [["Request a custom quote", "#contact"], ["Live example: JMP International", "https://www.jmp-international.com"]] },
+            { id: "payroll", chip: 1, q: "Tell me about the Payroll System", k: ["payroll", "payslip", "payslips", "sss", "philhealth", "pag-ibig", "pagibig", "bir", "attendance", "salary", "loans"], g: ["employees", "overtime"],
+              a: "The JMCY PH Payroll System is a Windows app you install on your own PC. It handles attendance, semi-monthly payroll, SSS, PhilHealth, Pag-IBIG and BIR tax, loans, and payslips.\n\nIt is a one-time ₱20,000 license with no subscription. It works offline and your data stays on your PC. You can pay by GCash, QR Ph, or card.",
+              l: [["See details", "#systems"], ["Buy license", "payment.html"]] },
+            { id: "trial", chip: 1, q: "Is there a free trial?", k: ["trial", "try", "demo", "demos", "sample", "samples"], g: ["free"],
+              a: "Yes. The Payroll System has a 30-day free trial, and no license key is needed to try it. You can download it from the Business Systems section. If Windows shows a security warning, choose \"More info\", then \"Run anyway\".\n\nFor websites, you can browse our demo samples in the portfolio.",
+              l: [["Download the trial", "#systems"], ["Demo samples", "portfolio.html"]] },
+            { id: "inventory", q: "What about the Inventory System?", k: ["inventory", "stock", "warehouse"], g: [],
+              a: "The JMCY Internal Inventory System is still in development. It is planned as an offline Windows app with a one-time license and unlimited users. Details and pricing will follow closer to release. Message us if you would like to hear when it is ready.",
+              l: [["Ask about it", "#contact"]] },
+            { id: "updates", q: "Can you update my website later?", k: ["maintenance", "update", "updates", "changes", "edit", "revision", "revisions", "support", "after"], g: ["change"],
+              a: "After launch you get 14 days of support. After that, the optional Website Maintenance plan is ₱1,500 per month with no lock-in: up to 3 updates a month (text, prices, menu, or hours) plus monthly checkups.",
+              l: [["See add-ons", "#packages"]] },
+            { id: "seo", q: "Can you help customers find me on Google?", k: ["seo", "google", "ads", "ad", "ranking", "found", "search", "advertising"], g: [],
+              a: "Yes, with two optional add-ons. Local SEO Setup is ₱3,500 one-time (search-friendly titles and headings, and your site submitted to Google). Google Ads management is ₱4,500 per month, and your ad budget is paid separately to Google.",
+              l: [["See add-ons", "#packages"]] },
+            { id: "about", q: "Who is behind JMCY?", k: ["who", "james", "founder", "company", "about", "owner", "ceo"], g: [],
+              a: "JMCY Web Solutions was founded by James Del Rosario. We build business websites and business systems for small and growing businesses in the Philippines.",
+              l: [["About us", "about-me.html"], ["See our work", "#projects"]] },
+            { id: "contact", chip: 1, q: "How can I contact you?", k: ["contact", "message", "email", "phone", "call", "whatsapp", "messenger", "viber", "reach", "talk", "human", "person", "number"], g: ["chat"],
+              a: "You can reach JMCY Web Solutions on Messenger or WhatsApp (+63 909 129 7422), by email at jhamcyd@gmail.com, or with the contact form on this page.",
+              l: [["Messenger", MSG], ["WhatsApp", WA], ["Contact form", "#contact"]] },
+            { id: "thanks", q: "", k: ["thanks", "thank", "salamat"], g: [],
+              a: "You're welcome! If you would like to get started, message us anytime.", l: [["Messenger", MSG]] },
+            { id: "hello", q: "", k: [], g: ["hi", "hello", "hey", "kumusta", "good", "morning", "afternoon", "evening"],
+              a: "Hi! I can answer questions about our prices, how we work, the Payroll System, and online systems. Pick a question below or type your own.", l: [] }
+        ];
+        var FALLBACK = { a: "I'm not sure about that one. Try one of the questions below, or message JMCY Web Solutions directly and we will reply.", l: [["Messenger", MSG], ["WhatsApp", WA], ["Contact form", "#contact"]] };
+
+        function tokens(t) { return t.toLowerCase().replace(/[^a-z0-9\s'-]/g, " ").split(/\s+/).filter(Boolean); }
+        function has(text, tk, kw) {
+            if (kw.indexOf(" ") > -1) return text.indexOf(kw) > -1;
+            return tk.some(function (w) { return w === kw || (kw.length >= 5 && w.indexOf(kw) === 0); });
+        }
+        window.faqMatch = function (input) {
+            var text = input.toLowerCase(), tk = tokens(input), best = null, top = 0;
+            FAQ.forEach(function (e) {
+                var sc = 0;
+                e.k.forEach(function (kw) { if (has(text, tk, kw)) sc += 2; });
+                e.g.forEach(function (kw) { if (has(text, tk, kw)) sc += 1; });
+                if (sc > top) { top = sc; best = e; }
+            });
+            return best;
+        };
+
+        var log = document.getElementById("faqLog");
+        if (!log) return;
+        var chips = document.getElementById("faqChips"), form = document.getElementById("faqForm"), input = document.getElementById("faqInput");
+        var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function add(text, who, links) {
+            var m = document.createElement("div");
+            m.className = "faq-msg " + who;
+            m.textContent = text;
+            if (links && links.length) {
+                var w = document.createElement("div");
+                w.className = "faq-links";
+                links.forEach(function (x) {
+                    var a = document.createElement("a");
+                    a.textContent = x[0]; a.href = x[1];
+                    if (/^https?:/.test(x[1])) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+                    w.appendChild(a);
+                });
+                m.appendChild(w);
+            }
+            log.appendChild(m);
+            log.scrollTop = log.scrollHeight;
+            return m;
+        }
+        function reply(e) {
+            var wait = add("Typing...", "bot typing");
+            setTimeout(function () { wait.remove(); add(e.a, "bot", e.l); }, calm ? 0 : 450);
+        }
+
+        FAQ.forEach(function (e) {
+            if (!e.chip) return;
+            var b = document.createElement("button");
+            b.type = "button"; b.className = "faq-chip"; b.textContent = e.q;
+            b.addEventListener("click", function () { add(e.q, "user"); reply(e); });
+            chips.appendChild(b);
+        });
+        form.addEventListener("submit", function (ev) {
+            ev.preventDefault();
+            var text = input.value.trim();
+            if (!text) return;
+            add(text, "user");
+            input.value = "";
+            reply(window.faqMatch(text) || FALLBACK);
+        });
+        add(FAQ[FAQ.length - 1].a, "bot");
+    })();
     </script>
 </body>
 </html>
