@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's Included in ₱15,000 | JMCY Web Solutions</title>
+<meta name="description" content="A one-page business website for ₱15,000 with product carousel, FAQ chatbot, photo gallery, testimonials, and Call, SMS, Email, WhatsApp, Viber and Messenger buttons.">
+<meta name="theme-color" content="#090d16">
+<link rel="icon" href="Images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Change --accent to match the main site if needed */
+  :root{
+    --bg:#090d16; --panel:#0f1626; --panel-2:#141d31; --line:#1f2b44; --bar:#26334f;
+    --text:#e7ecf6; --muted:#93a0b8; --accent:#38bdf8; --accent-ink:#04121c;
+    --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+    --body:"Manrope","Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+  .wrap{width:min(1120px,92%);margin-inline:auto}
+  h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.01em}
+
+  .top{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;font:700 1.05rem var(--display)}
+  .brand img{width:34px;height:34px;border-radius:8px}
+  .back{color:var(--muted);text-decoration:none;font-size:.92rem}
+  .back:hover{color:var(--text)}
+
+  .intro{padding:34px 0 44px}
+  .intro h1{font-size:clamp(2rem,4.8vw,3.3rem);max-width:20ch;margin-bottom:1rem}
+  .intro p{color:var(--muted);max-width:60ch;font-size:1.08rem}
+
+  .figure{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:start;padding-bottom:80px}
+
+  /* Browser mock */
+  .browser{position:relative;border:1px solid var(--line);border-radius:18px;background:var(--panel);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .chrome{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel-2)}
+  .chrome i{width:10px;height:10px;border-radius:50%;background:var(--bar)}
+  .chrome .url{margin-left:12px;flex:1;background:var(--bg);border-radius:999px;padding:.2rem .9rem;font-size:.78rem;color:var(--muted)}
+  .page{display:grid;gap:14px;padding:16px 16px 0}
+  .blk{position:relative;border:1px solid var(--line);border-radius:12px;padding:34px 16px 16px;background:var(--bg)}
+  .blk > b{position:absolute;left:14px;top:9px;font:600 .8rem var(--body);color:var(--accent)}
+  .bar{height:8px;border-radius:4px;background:var(--bar)}
+  .bar.s{width:46%}.bar.m{width:70%}.bar.l{width:92%}
+  .btnbar{display:inline-block;height:24px;width:92px;border-radius:999px;background:var(--accent);margin-top:12px}
+
+  .hero-w{display:grid;grid-template-columns:1fr 120px;gap:16px;align-items:center}
+  .hero-w .stack{display:grid;gap:8px}
+  .photo{border-radius:10px;background:linear-gradient(135deg,#1d2a47,#2a3b60);min-height:70px}
+
+  .about-w{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:center}
+
+  .carousel{display:grid;grid-template-columns:22px 1fr 1fr 1fr 22px;gap:10px;align-items:center}
+  .carousel .arrow{width:22px;height:22px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-size:.8rem}
+  .tile{background:var(--panel-2);border-radius:10px;padding:8px;display:grid;gap:6px}
+  .tile .photo{min-height:46px}
+  .tile .bar{height:6px}
+
+  .grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+  .grid6 .photo{aspect-ratio:1;min-height:0}
+  .grid6 .photo:nth-child(2n){background:linear-gradient(135deg,#243556,#35496f)}
+  .grid6 .photo:nth-child(3n){background:linear-gradient(135deg,#1a2744,#233459)}
+
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .q{background:var(--panel-2);border-radius:10px;padding:10px;display:grid;gap:6px}
+  .q .stars{color:#facc15;font-size:.72rem;letter-spacing:1px}
+  .q .bar{height:6px}
+
+  .contact-w{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .map{border-radius:10px;min-height:96px;background:
+    linear-gradient(90deg,transparent 48%,#2a3b60 48%,#2a3b60 52%,transparent 52%),
+    linear-gradient(0deg,transparent 48%,#2a3b60 48%,#2a3b60 52%,transparent 52%),#17233c;position:relative}
+  .map::after{content:"";position:absolute;left:50%;top:42%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:var(--accent);transform:translate(-50%,-50%) rotate(-45deg)}
+  .form{display:grid;gap:8px;align-content:start}
+  .field{height:20px;border-radius:6px;background:var(--panel-2);border:1px solid var(--line)}
+  .field.tall{height:36px}
+  .chan{display:flex;gap:7px;margin-top:2px}
+  .chan i{width:18px;height:18px;border-radius:50%;display:block}
+
+  .fade{height:34px;margin:0 -16px;background:linear-gradient(transparent,var(--panel));margin-top:-20px;position:relative}
+
+  /* Floating overlays */
+  .chat{position:absolute;right:18px;bottom:76px;width:190px;background:var(--panel-2);border:1px solid var(--accent);border-radius:14px;padding:10px;font-size:.78rem;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+  .chat b{display:block;font:700 .8rem var(--display);color:var(--accent);margin-bottom:6px}
+  .chat .m{background:var(--bg);border-radius:10px 10px 10px 2px;padding:.4rem .6rem;margin-bottom:6px}
+  .chat .r{display:flex;gap:5px;flex-wrap:wrap}
+  .chat .r span{border:1px solid var(--bar);border-radius:999px;padding:.1rem .5rem;font-size:.7rem}
+  .fab{position:absolute;right:18px;bottom:20px;background:var(--accent);color:var(--accent-ink);font:700 .82rem var(--body);padding:.6rem 1.1rem;border-radius:999px;box-shadow:0 10px 28px rgba(56,189,248,.35)}
+
+  /* Right column */
+  .side{display:grid;gap:34px}
+  .pricebox{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:26px}
+  .price{font:700 3rem var(--display);line-height:1.05}
+  .pricebox p{color:var(--muted);font-size:.95rem;margin:.4rem 0 1.2rem}
+  .pricebox dl{display:grid;gap:.5rem;font-size:.93rem}
+  .pricebox dl div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:.5rem}
+  .pricebox dt{color:var(--muted)}
+  .pricebox dd{font-weight:700}
+  .side h3{font-size:1.1rem;margin-bottom:.7rem}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .9rem;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-weight:600;font-size:.9rem}
+  .chip i{width:9px;height:9px;border-radius:50%;display:block}
+  .list{list-style:none;display:grid;gap:.5rem;font-size:.94rem}
+  .list li{padding-left:1.5rem;position:relative}
+  .fine{color:var(--muted);font-size:.85rem;margin-top:.9rem}
+  .list li::before{content:"";position:absolute;left:2px;top:.5em;width:.5rem;height:.28rem;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+
+
+
+  /* Footer */
+  .site-footer{background:var(--panel);border-top:1px solid var(--line);color:var(--muted);font-size:.93rem}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;padding:56px 0 44px}
+  .foot-brand .brand{color:var(--text);margin-bottom:.9rem}
+  .foot-brand p{max-width:34ch;margin-bottom:1.2rem}
+  .social{display:flex;gap:10px}
+  .social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;color:var(--muted);transition:color .15s,border-color .15s,background .15s}
+  .social svg{width:18px;height:18px;fill:currentColor}
+  .social a:hover{color:var(--accent);border-color:var(--accent)}
+  .site-footer h4{font:700 1rem var(--display);color:var(--text);margin-bottom:1rem}
+  .site-footer ul{list-style:none;display:grid;gap:.6rem}
+  .site-footer a{text-decoration:none}
+  .site-footer ul a:hover{color:var(--accent)}
+  .contact-list li{display:grid;gap:.1rem}
+  .contact-list small{color:var(--muted);font-size:.8rem}
+  .contact-list a{color:var(--text);font-weight:600}
+  .foot-bottom{border-top:1px solid var(--line);padding:20px 0;text-align:center;font-size:.85rem}
+  @media(max-width:700px){.foot-grid{grid-template-columns:1fr;gap:36px}}
+
+  @media(max-width:900px){
+    .figure{grid-template-columns:1fr;gap:36px}
+    .side{position:static}
+    .chat{position:static;width:auto;margin:14px 16px 0}
+    .fab{position:static;display:inline-block;margin:12px 16px 16px}
+    .fade{display:none}
+    .page{padding-bottom:0}
+  }
+  @media(max-width:520px){
+    .carousel{grid-template-columns:1fr 1fr 1fr}.carousel .arrow{display:none}
+    .contact-w{grid-template-columns:1fr}
+    .hero-w{grid-template-columns:1fr}.hero-w .photo{min-height:60px}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="index.html"><img src="Images/logo.png" alt="" onerror="this.style.display='none'"> JMCY Web Solutions</a>
+    <a class="back" href="index.html#packages">Back to pricing</a>
+  </div>
+
+  <div class="intro">
+    <h1>What you get in the ₱15,000 website</h1>
+    <p>One scrolling page with every feature below already built in. Your customers can browse your products, get quick answers, and message you in the app they already use.</p>
+  </div>
+
+  <div class="figure">
+    <!-- Page figure -->
+    <div class="browser" role="img" aria-label="Diagram of a one-page website with Home, About, Product carousel, Photo gallery, Testimonials, and Contact sections, plus a floating FAQ chatbot and Contact us button">
+      <div class="chrome"><i></i><i></i><i></i><span class="url">yourbusiness.com</span></div>
+      <div class="page">
+
+        <div class="blk">
+          <b>Home</b>
+          <div class="hero-w">
+            <div class="stack"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div><span class="btnbar"></span></div>
+            <div class="photo"></div>
+          </div>
+        </div>
+
+        <div class="blk">
+          <b>About your business</b>
+          <div class="about-w"><div class="photo" style="min-height:64px"></div><div style="display:grid;gap:8px"><div class="bar l"></div><div class="bar l"></div><div class="bar m"></div></div></div>
+        </div>
+
+        <div class="blk">
+          <b>Product carousel</b>
+          <div class="carousel">
+            <span class="arrow">&#8249;</span>
+            <div class="tile"><div class="photo"></div><div class="bar m"></div><div class="bar s"></div></div>
+            <div class="tile"><div class="photo"></div><div class="bar m"></div><div class="bar s"></div></div>
+            <div class="tile"><div class="photo"></div><div class="bar m"></div><div class="bar s"></div></div>
+            <span class="arrow">&#8250;</span>
+          </div>
+        </div>
+
+        <div class="blk">
+          <b>Photo gallery</b>
+          <div class="grid6"><div class="photo"></div><div class="photo"></div><div class="photo"></div><div class="photo"></div><div class="photo"></div><div class="photo"></div></div>
+        </div>
+
+        <div class="blk">
+          <b>Testimonials slider</b>
+          <div class="quotes">
+            <div class="q"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="bar l"></div><div class="bar m"></div></div>
+            <div class="q"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="bar l"></div><div class="bar m"></div></div>
+            <div class="q"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="bar l"></div><div class="bar m"></div></div>
+          </div>
+        </div>
+
+        <div class="blk">
+          <b>Contact, map and business hours</b>
+          <div class="contact-w">
+            <div class="map"></div>
+            <div class="form">
+              <div class="field"></div><div class="field"></div><div class="field tall"></div>
+              <div class="chan">
+                <i style="background:#4ade80"></i><i style="background:#facc15"></i><i style="background:#f87171"></i><i style="background:#22c55e"></i><i style="background:#a78bfa"></i><i style="background:#38bdf8"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade"></div>
+      </div>
+
+      <div class="chat">
+        <b>FAQ chatbot</b>
+        <div class="m">Hi! Ask me about hours, prices or delivery.</div>
+        <div class="r"><span>Hours</span><span>Prices</span><span>Delivery</span></div>
+      </div>
+      <div class="fab">Contact us</div>
+    </div>
+
+    <!-- Details -->
+    <aside class="side">
+      <div class="pricebox">
+        <div class="price">₱15,000</div>
+        <p>One-time payment for a one-page website with everything shown here. No monthly hosting fee.</p>
+        <dl>
+          <div><dt>Down payment to start</dt><dd>₱7,500</dd></div>
+          <div><dt>Need another page?</dt><dd>₱1,500 each</dd></div>
+          <div><dt>Support after launch</dt><dd>14 days</dd></div>
+        </dl>
+      </div>
+
+      <div>
+        <h3>Customers reach you with one tap</h3>
+        <div class="chips">
+          <span class="chip"><i style="background:#4ade80"></i>Call</span>
+          <span class="chip"><i style="background:#facc15"></i>SMS</span>
+          <span class="chip"><i style="background:#f87171"></i>Email</span>
+          <span class="chip"><i style="background:#22c55e"></i>WhatsApp</span>
+          <span class="chip"><i style="background:#a78bfa"></i>Viber</span>
+          <span class="chip"><i style="background:#38bdf8"></i>Messenger</span>
+        </div>
+      </div>
+
+      <div>
+        <h3>Everything included</h3>
+        <ul class="list">
+          <li><b>One-Page Website, Everything Included:</b> Home, About, Product Carousel, FAQ Chatbot, Photo Gallery, Testimonials, and Contact with map &amp; business hours.</li>
+          <li><b>One-Tap Contact Buttons:</b> Call, SMS, Email, WhatsApp, Viber &amp; Messenger, plus a floating contact button on screen.</li>
+          <li><b>Custom Branding:</b> Your logo, assets, service menu &amp; copy on a proven layout.</li>
+          <li><b>Fast Loading:</b> Lightweight pages that open quickly and rank better on Google.</li>
+          <li><b>Mobile-First:</b> Fully responsive on phones, tablets &amp; desktop.</li>
+          <li><b>Lead Capture:</b> Working booking/contact form sent to your email.</li>
+          <li><b>₱0 Hosting:</b> Your site is hosted for free on GitHub, so there are no monthly server fees. Monthly add-ons are optional services you choose, never hosting fees.</li>
+          <li><b>Launch &amp; Handover:</b> Domain linked live, plus 14 days of support.</li>
+          <li><b>Need More Pages?</b> Extra pages are ₱1,500 each (for example Services, Menu or Gallery on their own page).</li>
+        </ul>
+        <p class="fine">Domain registration (₱800 to ₱1,500 per year) is paid to your registrar, and you keep full ownership.</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><img src="Images/logo.png" alt="" onerror="this.style.display='none'"> JMCY Web Solutions</a>
+        <p>Affordable websites and business systems for Philippine businesses.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/share/1F1MPHFTPg/" target="_blank" rel="noopener" aria-label="Facebook Page" title="Facebook Page"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://www.instagram.com/jmcy.websolutions" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://m.me/jmcyweb" target="_blank" rel="noopener" aria-label="Messenger" title="Messenger"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.302 2.246.466 3.443.466 6.627 0 12-4.975 12-11.113C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.125 3.26 5.893-3.26-6.559 6.96z"/></svg></a>
+          <a href="https://wa.me/639091297422" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="contact-list">
+          <li><small>Email</small><a href="mailto:jhamcyd@gmail.com">jhamcyd@gmail.com</a></li>
+          <li><small>WhatsApp</small><a href="https://wa.me/639091297422" target="_blank" rel="noopener">+63 909 129 7422</a></li>
+          <li><small>Messenger</small><a href="https://m.me/jmcyweb" target="_blank" rel="noopener">m.me/jmcyweb</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>&copy; 2026 JMCY Web Solutions. Websites &amp; Business Systems for Philippine Businesses.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

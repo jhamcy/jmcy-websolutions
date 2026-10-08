@@ -1621,14 +1621,10 @@
             </div>
             <div class="pkg-price">&#8369;15,000<small>One-time investment</small></div>
         </div>
-        <ul class="pkg-list">
-            <li><strong>Custom Branding:</strong> Your logo, assets, service menu &amp; copy on a proven layout.</li>
-            <li><strong>Fast Loading:</strong> Lightweight pages that open quickly and rank better on Google.</li>
-            <li><strong>Mobile-First:</strong> Fully responsive on phones, tablets &amp; desktop.</li>
-            <li><strong>Lead Capture:</strong> Working booking/contact form sent to your email.</li>
-            <li><strong>&#8369;0 Hosting:</strong> Your site is hosted for free on GitHub, so there are no monthly server fees.</li>
-            <li><strong>Launch &amp; Handover:</strong> Domain linked live, plus 14 days of support.</li>
-        </ul>
+        <div class="portfolio-cta" style="margin:1.2rem 0 1.6rem;">
+            <p>See everything included in your &#8369;15,000 website, all in one picture.</p>
+            <a href="whats-included.html" class="btn portfolio-cta-btn">See What&rsquo;s Included &rarr;</a>
+        </div>
         <p class="pkg-note"><strong>Note:</strong> Domain registration (&#8369;800&ndash;&#8369;1,500/year) is billed directly by your registrar (e.g. Namecheap, GoDaddy) — you keep full ownership.</p>
 
         <!-- Add-ons slideshow -->
@@ -1673,6 +1669,17 @@
                                 <li><strong>Radius Targeting:</strong> Mapped to your location, with verification help.</li>
                             </ul>
                             <p class="pkg-note">Daily ad budget is billed directly by Google to your card.</p>
+                        </div>
+                    </div>
+                    <div class="slider-slide">
+                        <div class="addon-card">
+                            <span class="addon-tag">Option D</span>
+                            <h4>Extra Pages</h4>
+                            <div class="addon-price">&#8369;1,500 <small>per page &middot; one-time</small></div>
+                            <ul class="pkg-list single">
+                                <li><strong>Same design, same buttons:</strong> Each extra page (Services, Menu, Gallery, Team and more) matches your site and keeps the contact buttons.</li>
+                                <li><strong>Why add pages:</strong> Longer content stays easy to read, and each page can be found on Google separately.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1896,6 +1903,18 @@
                             <input type="checkbox" id="addonC" value="4500" data-billing="monthly" class="calc-checkbox addon-checkbox" onchange="calculateTotal()">
                             <label for="addonC" class="option-label"><strong>We Run Your Google Ads</strong><small>&#8369;4,500 per month &middot; We set up and manage your ads. Your ad budget is paid separately to Google.</small></label>
                         </div>
+
+                        <div class="est-counter">
+                            <div class="est-counter-text">
+                                <strong>Extra pages</strong>
+                                <small>&#8369;1,500 each &middot; Your &#8369;15,000 website is one page with everything included. Add separate pages if your content is long.</small>
+                            </div>
+                            <div class="est-stepper">
+                                <button type="button" onclick="stepValue('extraPageCount', -1)" aria-label="Fewer extra pages">&minus;</button>
+                                <input type="number" id="extraPageCount" value="0" min="0" oninput="calculateTotal()" aria-label="Number of extra pages">
+                                <button type="button" onclick="stepValue('extraPageCount', 1)" aria-label="More extra pages">+</button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- STEP 2 (Online System): size of the system -->
@@ -1932,12 +1951,15 @@
                         <div id="includesFrontend">
                             <h4>Included in your &#8369;15,000</h4>
                             <ul class="pkg-list single">
+                                <li>One page with About, product carousel, FAQ chatbot, gallery and testimonials</li>
+                                <li>Call, SMS, Email, WhatsApp, Viber and Messenger buttons</li>
                                 <li>Custom design with your logo and branding</li>
                                 <li>Works on phones, tablets and computers</li>
                                 <li>Contact or booking form sent to your email</li>
                                 <li>Free hosting, so no monthly server fees</li>
                                 <li>Launch on your own domain plus 14 days of support</li>
                             </ul>
+                            <p class="pkg-note"><a href="whats-included.html" style="color:inherit;text-decoration:underline;">See the full list of what is included &rarr;</a></p>
                         </div>
                         <div id="includesFullstack" style="display:none;">
                             <h4>Usually included in an online system</h4>
@@ -2184,6 +2206,7 @@
             const rows = [];
             if (est.isFrontendOnly) {
                 rows.push(['Simple Website', peso(15000)]);
+                if (est.pages > 0) rows.push(['Extra pages (' + est.pages + ' x ' + peso(EXTRA_PAGE_PRICE) + ')', peso(est.pages * EXTRA_PAGE_PRICE)]);
                 est.addons.forEach(ad => {
                     const name = ad.label.replace(/^Option [A-C]: /, '');
                     rows.push([name, peso(ad.price) + (ad.billing === 'monthly' ? ' / month' : '')]);
@@ -2199,12 +2222,16 @@
         function peso(n) { return '₱' + n.toLocaleString(); }
 
         /* SINGLE SOURCE OF TRUTH FOR ESTIMATE MATH */
+        const EXTRA_PAGE_PRICE = 1500;
+
         function getEstimate() {
             const isFrontendOnly = document.getElementById('type1').checked;
             const base = parseInt(document.querySelector('input[name="projectType"]:checked').value);
-            const est = { isFrontendOnly, oneTime: base, monthly: 0, addons: [], userCount: 0, moduleCount: 0 };
+            const est = { isFrontendOnly, oneTime: base, monthly: 0, addons: [], userCount: 0, moduleCount: 0, pages: 0 };
 
             if (isFrontendOnly) {
+                est.pages = Math.max(0, parseInt(document.getElementById('extraPageCount').value) || 0);
+                est.oneTime += est.pages * EXTRA_PAGE_PRICE;
                 document.querySelectorAll('.addon-checkbox:checked').forEach(cb => {
                     const price = parseInt(cb.value);
                     if (cb.dataset.billing === 'monthly') est.monthly += price; else est.oneTime += price;
@@ -2230,6 +2257,7 @@
                 document.getElementById('userAccountCount').value = 0;
                 document.getElementById('dataTableModuleCount').value = 0;
             } else {
+                document.getElementById('extraPageCount').value = 0;
                 document.querySelectorAll('.addon-checkbox').forEach(cb => cb.checked = false);
             }
 
@@ -2285,6 +2313,7 @@
 
             if (est.isFrontendOnly) {
                 let msg = `Hello JMCY Web Solutions,\n\nI calculated an estimated quote for a Simple Website.\n\nCore Development Package (one-time): ₱15,000`;
+                if (est.pages > 0) msg += `\nExtra pages (${est.pages} x ${peso(EXTRA_PAGE_PRICE)}): ${peso(est.pages * EXTRA_PAGE_PRICE)} (one-time)`;
                 est.addons.forEach(ad => {
                     msg += `\n${ad.label}: ${peso(ad.price)}${ad.billing === 'monthly' ? ' / month' : ' (one-time)'}`;
                 });
