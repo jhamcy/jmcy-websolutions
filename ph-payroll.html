@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What's Included in ₱15,000 | JMCY Web Solutions</title>
-<meta name="description" content="A one-page business website for ₱15,000 with product carousel, FAQ chatbot, photo gallery, testimonials, and Call, SMS, Email, WhatsApp, Viber and Messenger buttons.">
+<title>JMCY PH Payroll System | What's Included</title>
+<meta name="description" content="Explore the features included in JMCY PH Payroll System Version 1.1.4 for Philippine businesses.">
 <meta name="theme-color" content="#090d16">
 <link rel="icon" href="Images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Change --accent to match the main site if needed */
   :root{
     --bg:#090d16; --panel:#0f1626; --panel-2:#141d31; --line:#1f2b44; --bar:#26334f;
     --text:#e7ecf6; --muted:#93a0b8; --accent:#38bdf8; --accent-ink:#04121c;
@@ -23,91 +22,67 @@
   a{color:inherit}
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
   .wrap{width:min(1120px,92%);margin-inline:auto}
-  h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.01em}
+  h1,h2,h3,h4{font-family:var(--display);line-height:1.12;letter-spacing:-.01em}
 
   .foot-brand .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;font:700 1.05rem var(--display)}
   .foot-brand .brand img{width:34px;height:34px;border-radius:8px}
 
   .intro{padding:0 0 40px}
+  .intro .ver{color:var(--accent);font-weight:600;font-size:.95rem;margin-bottom:.8rem}
   .intro h1{font-size:clamp(2rem,4.8vw,3.3rem);max-width:20ch;margin-bottom:1rem}
   .intro p{color:var(--muted);max-width:60ch;font-size:1.08rem}
 
-  .figure{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:start;padding-bottom:44px}
+  .figure{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:start;padding-bottom:80px}
 
-  /* Browser mock */
+  /* App window mock */
   .browser{position:relative;border:1px solid var(--line);border-radius:18px;background:var(--panel);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
   .chrome{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel-2)}
   .chrome i{width:10px;height:10px;border-radius:50%;background:var(--bar)}
   .chrome .url{margin-left:12px;flex:1;background:var(--bg);border-radius:999px;padding:.2rem .9rem;font-size:.78rem;color:var(--muted)}
-  .page{display:grid;gap:14px;padding:16px 16px 0}
-  .blk{position:relative;border:1px solid var(--line);border-radius:12px;padding:34px 16px 16px;background:var(--bg)}
-  .blk > b{position:absolute;left:14px;top:9px;font:600 .8rem var(--body);color:var(--accent)}
-  .bar{height:8px;border-radius:4px;background:var(--bar)}
-  .bar.s{width:46%}.bar.m{width:70%}.bar.l{width:92%}
-  .btnbar{display:inline-block;height:24px;width:92px;border-radius:999px;background:var(--accent);margin-top:12px}
-
-  .hero-w{display:grid;grid-template-columns:1fr 120px;gap:16px;align-items:center}
-  .hero-w .stack{display:grid;gap:8px}
-  .photo{border-radius:10px;background:linear-gradient(135deg,#1d2a47,#2a3b60);min-height:70px}
-
-  .about-w{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:center}
-
-  .carousel{display:grid;grid-template-columns:22px 1fr 1fr 1fr 22px;gap:10px;align-items:center}
-  .carousel .arrow{width:22px;height:22px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-size:.8rem}
-  .tile{background:var(--panel-2);border-radius:10px;padding:8px;display:grid;gap:6px}
-  .tile .photo{min-height:46px}
-  .tile .bar{height:6px}
-
-  .grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
-  .grid6 .photo{aspect-ratio:1;min-height:0}
-  .grid6 .photo:nth-child(2n){background:linear-gradient(135deg,#243556,#35496f)}
-  .grid6 .photo:nth-child(3n){background:linear-gradient(135deg,#1a2744,#233459)}
-
-  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .q{background:var(--panel-2);border-radius:10px;padding:10px;display:grid;gap:6px}
-  .q .stars{color:#facc15;font-size:.72rem;letter-spacing:1px}
-  .q .bar{height:6px}
-
-  .contact-w{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .map{border-radius:10px;min-height:96px;background:
-    linear-gradient(90deg,transparent 48%,#2a3b60 48%,#2a3b60 52%,transparent 52%),
-    linear-gradient(0deg,transparent 48%,#2a3b60 48%,#2a3b60 52%,transparent 52%),#17233c;position:relative}
-  .map::after{content:"";position:absolute;left:50%;top:42%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:var(--accent);transform:translate(-50%,-50%) rotate(-45deg)}
-  .form{display:grid;gap:8px;align-content:start}
-  .field{height:20px;border-radius:6px;background:var(--panel-2);border:1px solid var(--line)}
-  .field.tall{height:36px}
-  .chan{display:flex;gap:7px;margin-top:2px}
-  .chan i{width:18px;height:18px;border-radius:50%;display:block}
-
-  .fade{height:34px;margin:0 -16px;background:linear-gradient(transparent,var(--panel));margin-top:-20px;position:relative}
-
-  /* Floating overlays */
-  .chat{position:absolute;right:18px;bottom:76px;width:190px;background:var(--panel-2);border:1px solid var(--accent);border-radius:14px;padding:10px;font-size:.78rem;box-shadow:0 14px 40px rgba(0,0,0,.5)}
-  .chat b{display:block;font:700 .8rem var(--display);color:var(--accent);margin-bottom:6px}
-  .chat .m{background:var(--bg);border-radius:10px 10px 10px 2px;padding:.4rem .6rem;margin-bottom:6px}
-  .chat .r{display:flex;gap:5px;flex-wrap:wrap}
-  .chat .r span{border:1px solid var(--bar);border-radius:999px;padding:.1rem .5rem;font-size:.7rem}
-  .fab{position:absolute;right:18px;bottom:20px;background:var(--accent);color:var(--accent-ink);font:700 .82rem var(--body);padding:.6rem 1.1rem;border-radius:999px;box-shadow:0 10px 28px rgba(56,189,248,.35)}
+  .preview{padding:22px}
+  .preview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .preview-brand{font:700 1.05rem var(--display)}
+  .tag{font-size:.78rem;color:var(--accent-ink);background:var(--accent);padding:.2rem .7rem;border-radius:999px;font-weight:700;white-space:nowrap}
+  .welcome{padding:22px 0 18px}
+  .welcome small{color:var(--accent);font-weight:600;font-size:.85rem}
+  .welcome h2{font-size:1.65rem;margin:6px 0 8px}
+  .welcome p{color:var(--muted);font-size:.93rem;max-width:46ch}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .stat{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .stat small{display:block;color:var(--muted);font-size:.8rem}
+  .stat strong{display:block;font:700 1rem var(--display);margin-top:2px}
+  .mini-title{font:700 1rem var(--display);margin:22px 0 10px}
+  .rows{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .row{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+  .row:last-child{border-bottom:0}
+  .row.header{background:var(--panel-2);color:var(--text);font-weight:700}
+  .row b{color:var(--text);font-weight:600}
+  .preview-note{font-size:.82rem;color:var(--muted);margin-top:14px}
 
   /* Right column */
   .side{display:grid;gap:34px}
-  .pricebox{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:26px}
-  .price{font:700 3rem var(--display);line-height:1.05}
-  .pricebox p{color:var(--muted);font-size:.95rem;margin:.4rem 0 1.2rem}
-  .pricebox dl{display:grid;gap:.5rem;font-size:.93rem}
-  .pricebox dl div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:.5rem}
-  .pricebox dt{color:var(--muted)}
-  .pricebox dd{font-weight:700}
   .side h3{font-size:1.1rem;margin-bottom:.7rem}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .9rem;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-weight:600;font-size:.9rem}
-  .chip i{width:9px;height:9px;border-radius:50%;display:block}
+  .chip i{width:9px;height:9px;border-radius:50%;display:block;background:var(--accent)}
   .list{list-style:none;display:grid;gap:.5rem;font-size:.94rem}
   .list li{padding-left:1.5rem;position:relative}
-  .fine{color:var(--muted);font-size:.85rem;margin-top:.9rem}
   .list li::before{content:"";position:absolute;left:2px;top:.5em;width:.5rem;height:.28rem;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+  .list b{font-weight:600}
+  .fine{color:var(--muted);font-size:.85rem;margin-top:.9rem}
 
-
+  /* How it works */
+  .more{border-top:1px solid var(--line);padding:48px 0 40px}
+  .section-head{max-width:720px;margin-bottom:1.6rem}
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:.6rem}
+  .section-head p{color:var(--muted)}
+  .workflow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .step{padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+  .step small{display:block;color:var(--accent);font-weight:700;font-size:.9rem;margin-bottom:.3rem}
+  .step h3{font-size:1.1rem;margin-bottom:.5rem}
+  .step p{font-size:.94rem;color:var(--muted)}
+  .notice{margin-top:22px;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px 22px;color:var(--muted);font-size:.9rem}
+  .notice b{color:var(--text)}
 
   /* Footer */
   .site-footer{background:var(--panel);border-top:1px solid var(--line);color:var(--muted);font-size:.93rem}
@@ -127,6 +102,7 @@
   .contact-list a{color:var(--text);font-weight:600}
   .foot-bottom{border-top:1px solid var(--line);padding:14px 0;text-align:center;font-size:.85rem}
   @media(max-width:700px){.foot-grid{grid-template-columns:1fr;gap:36px}}
+
 
 
   /* ---- Site navigation copied from payment.html ---- */
@@ -423,16 +399,12 @@
 
   @media(max-width:900px){
     .figure{grid-template-columns:1fr;gap:36px}
-    .side{position:static}
-    .chat{position:static;width:auto;margin:14px 16px 0}
-    .fab{position:static;display:inline-block;margin:12px 16px 16px}
-    .fade{display:none}
-    .page{padding-bottom:0}
+    .workflow{grid-template-columns:1fr}
   }
   @media(max-width:520px){
-    .carousel{grid-template-columns:1fr 1fr 1fr}.carousel .arrow{display:none}
-    .contact-w{grid-template-columns:1fr}
-    .hero-w{grid-template-columns:1fr}.hero-w .photo{min-height:60px}
+    .row{font-size:.74rem;padding:9px 10px}
+    .stats{grid-template-columns:1fr}
+    .preview{padding:16px}
   }
 </style>
 </head>
@@ -499,126 +471,84 @@
             <p style="margin-top:0.4rem;">&copy; <span id="year">2026</span> JMCY Web Solutions.</p>
         </div>
     </aside>
-
 <main>
   <a href="index.html" class="btn-return">&#8592; Back to main site</a>
 
-  <div class="intro">
-    <h1>What you get in the ₱15,000 website</h1>
-    <p>One scrolling page with every feature below already built in. Your customers can browse your products, get quick answers, and message you in the app they already use.</p>
-  </div>
+    <section class="intro">
+      <div class="ver">JMCY Business Software, Version 1.1.4</div>
+      <h1>JMCY PH Payroll System: what’s included</h1>
+      <p>A Windows desktop payroll application designed to help Philippine businesses organize employee information, attendance, payroll processing, payslips, and payroll reports in one place.</p>
+    </section>
 
-  <div class="figure">
-    <!-- Page figure -->
-    <div class="browser" role="img" aria-label="Diagram of a one-page website with Home, About, Product carousel, Photo gallery, Testimonials, and Contact sections, plus a floating FAQ chatbot and Contact us button">
-      <div class="chrome"><i></i><i></i><i></i><span class="url">yourbusiness.com</span></div>
-      <div class="page">
-
-        <div class="blk">
-          <b>Home</b>
-          <div class="hero-w">
-            <div class="stack"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div><span class="btnbar"></span></div>
-            <div class="photo"></div>
+    <section class="figure" aria-label="Payroll system preview and included features">
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span class="url">JMCY PH Payroll System</span></div>
+        <div class="preview">
+          <div class="preview-head"><div class="preview-brand">Payroll Overview</div><span class="tag">Product preview</span></div>
+          <div class="welcome"><small>Payroll workspace</small><h2>Payroll, organized.</h2><p>Keep key employee and payroll tasks together, from employee records and time entries to reviewing payroll outputs.</p></div>
+          <div class="stats">
+            <div class="stat"><small>Employee records</small><strong>Employee management</strong></div>
+            <div class="stat"><small>Time &amp; attendance</small><strong>Time records</strong></div>
+            <div class="stat"><small>Pay period</small><strong>Cutoff processing</strong></div>
+            <div class="stat"><small>Payroll outputs</small><strong>Payslips &amp; reports</strong></div>
+            <div class="stat"><small>Contribution dashboard</small><strong>Quick government links</strong></div>
+            <div class="stat"><small>Useful shortcuts</small><strong>Contribution portals</strong></div>
           </div>
-        </div>
-
-        <div class="blk">
-          <b>About your business</b>
-          <div class="about-w"><div class="photo" style="min-height:64px"></div><div style="display:grid;gap:8px"><div class="bar l"></div><div class="bar l"></div><div class="bar m"></div></div></div>
-        </div>
-
-        <div class="blk">
-          <b>Product carousel</b>
-          <div class="carousel">
-            <span class="arrow">&#8249;</span>
-            <div class="tile"><div class="photo"></div><div class="bar m"></div><div class="bar s"></div></div>
-            <div class="tile"><div class="photo"></div><div class="bar m"></div><div class="bar s"></div></div>
-            <div class="tile"><div class="photo"></div><div class="bar m"></div><div class="bar s"></div></div>
-            <span class="arrow">&#8250;</span>
+          <div class="mini-title">Contribution links dashboard</div>
+          <div class="chips" style="margin-bottom:18px">
+            <span class="chip"><i></i>SSS portal</span>
+            <span class="chip"><i></i>PhilHealth portal</span>
+            <span class="chip"><i></i>Pag-IBIG / HDMF</span>
+            <span class="chip"><i></i>BIR resources</span>
           </div>
-        </div>
-
-        <div class="blk">
-          <b>Photo gallery</b>
-          <div class="grid6"><div class="photo"></div><div class="photo"></div><div class="photo"></div><div class="photo"></div><div class="photo"></div><div class="photo"></div></div>
-        </div>
-
-        <div class="blk">
-          <b>Testimonials slider</b>
-          <div class="quotes">
-            <div class="q"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="bar l"></div><div class="bar m"></div></div>
-            <div class="q"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="bar l"></div><div class="bar m"></div></div>
-            <div class="q"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="bar l"></div><div class="bar m"></div></div>
+          <div class="mini-title">Example payroll workflow</div>
+          <div class="rows">
+            <div class="row header"><span>Work area</span><span>What you do</span><span>Output</span></div>
+            <div class="row"><b>Employees</b><span>Maintain records</span><span>Profiles</span></div>
+            <div class="row"><b>Attendance</b><span>Review time</span><span>Hours</span></div>
+            <div class="row"><b>Payroll</b><span>Calculate &amp; check</span><span>Pay totals</span></div>
+            <div class="row"><b>Reports</b><span>Generate documents</span><span>Print / review</span></div>
           </div>
-        </div>
-
-        <div class="blk">
-          <b>Contact, map and business hours</b>
-          <div class="contact-w">
-            <div class="map"></div>
-            <div class="form">
-              <div class="field"></div><div class="field"></div><div class="field tall"></div>
-              <div class="chan">
-                <i style="background:#4ade80"></i><i style="background:#facc15"></i><i style="background:#f87171"></i><i style="background:#22c55e"></i><i style="background:#a78bfa"></i><i style="background:#38bdf8"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="fade"></div>
-      </div>
-
-      <div class="chat">
-        <b>FAQ chatbot</b>
-        <div class="m">Hi! Ask me about hours, prices or delivery.</div>
-        <div class="r"><span>Hours</span><span>Prices</span><span>Delivery</span></div>
-      </div>
-      <div class="fab">Contact us</div>
-    </div>
-
-    <!-- Details -->
-    <div class="side">
-      <div class="pricebox">
-        <div class="price">₱15,000</div>
-        <p>One-time payment for a one-page website with everything shown here. No monthly hosting fee.</p>
-        <dl>
-          <div><dt>Down payment to start</dt><dd>₱7,500</dd></div>
-          <div><dt>Need another page?</dt><dd>₱1,500 each</dd></div>
-          <div><dt>Support after launch</dt><dd>14 days</dd></div>
-        </dl>
-      </div>
-
-      <div>
-        <h3>Customers reach you with one tap</h3>
-        <div class="chips">
-          <span class="chip"><i style="background:#4ade80"></i>Call</span>
-          <span class="chip"><i style="background:#facc15"></i>SMS</span>
-          <span class="chip"><i style="background:#f87171"></i>Email</span>
-          <span class="chip"><i style="background:#22c55e"></i>WhatsApp</span>
-          <span class="chip"><i style="background:#a78bfa"></i>Viber</span>
-          <span class="chip"><i style="background:#38bdf8"></i>Messenger</span>
+          <p class="preview-note">Illustrative layout only. This is not a live screenshot or live payroll data.</p>
         </div>
       </div>
 
-      <div>
-        <h3>Everything included</h3>
-        <ul class="list">
-          <li><b>One-Page Website, Everything Included:</b> Home, About, Product Carousel, FAQ Chatbot, Photo Gallery, Testimonials, and Contact with map &amp; business hours.</li>
-          <li><b>One-Tap Contact Buttons:</b> Call, SMS, Email, WhatsApp, Viber &amp; Messenger, plus a floating contact button on screen.</li>
-          <li><b>Custom Branding:</b> Your logo, assets, service menu &amp; copy on a proven layout.</li>
-          <li><b>Fast Loading:</b> Lightweight pages that open quickly and rank better on Google.</li>
-          <li><b>Mobile-First:</b> Fully responsive on phones, tablets &amp; desktop.</li>
-          <li><b>Lead Capture:</b> Working booking/contact form sent to your email.</li>
-          <li><b>₱0 Hosting:</b> Your site is hosted for free on GitHub, so there are no monthly server fees. Monthly add-ons are optional services you choose, never hosting fees.</li>
-          <li><b>Launch &amp; Handover:</b> Domain linked live, plus 14 days of support.</li>
-          <li><b>Need More Pages?</b> Extra pages are ₱1,500 each (for example Services, Menu or Gallery on their own page).</li>
-        </ul>
-        <p class="fine">Domain registration (₱800 to ₱1,500 per year) is paid to your registrar, and you keep full ownership.</p>
+      <div class="side">
+        <div>
+          <h3>Core payroll tools</h3>
+          <div class="chips"><span class="chip"><i></i>Employees</span><span class="chip"><i></i>Attendance</span><span class="chip"><i></i>Payroll</span><span class="chip"><i></i>Payslips</span><span class="chip"><i></i>Reports</span><span class="chip"><i></i>Contribution links</span><span class="chip"><i></i>Settings</span></div>
+        </div>
+
+        <div>
+          <h3>Everything included</h3>
+          <ul class="list">
+            <li><b>Employee Management:</b> Maintain employee profiles, employment details, and payroll-related settings.</li>
+            <li><b>Attendance &amp; Time Records:</b> Work with attendance entries and supported spreadsheet imports; calculate relevant time values such as overtime, tardiness, and undertime.</li>
+            <li><b>Payroll Processing:</b> Process selected cutoff periods with applicable pay, allowances, overtime, and deductions.</li>
+            <li><b>Government Contribution Support:</b> Configurable calculations for SSS, PhilHealth, Pag-IBIG/HDMF, and withholding-tax estimates.</li>
+            <li><b>Contribution Links Dashboard:</b> A dedicated dashboard area with quick links to relevant government contribution websites, making it easier to open the portals used for contribution-related tasks.</li>
+            <li><b>Employee Loans:</b> Maintain loan information and associated payroll deductions where configured.</li>
+            <li><b>Holiday &amp; Wage Settings:</b> Manage settings used by payroll calculations.</li>
+            <li><b>Payslips &amp; Reports:</b> Generate payroll-related documents for employee communication and recordkeeping.</li>
+            <li><b>Payroll History:</b> Review previous payroll runs and related records.</li>
+            <li><b>License Activation:</b> JMCY PH Payroll System license activation support.</li>
+          </ul>
+          <p class="fine">Feature availability and exact behavior should be confirmed against the installed version and your business workflow before purchase.</p>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <section class="more">
+      <div class="section-head"><h2>A clear process for each payroll period</h2><p>Use a consistent workflow to prepare employee data, review time records, and produce payroll outputs.</p></div>
+      <div class="workflow">
+        <article class="step"><small>Step 1</small><h3>Set up company and employees</h3><p>Enter company details, maintain employee information, and review wage and contribution settings.</p></article>
+        <article class="step"><small>Step 2</small><h3>Review attendance and cutoff</h3><p>Check attendance records and select the payroll period before running calculations.</p></article>
+        <article class="step"><small>Step 3</small><h3>Calculate and verify payroll</h3><p>Review calculated amounts and deductions, then generate payslips and payroll reports.</p></article>
+      </div>
+      <div class="notice"><b>Important:</b> Payroll and government contribution rules can change. Review settings and verify all calculated amounts before paying employees or submitting official reports. Reports assist with preparation and recordkeeping; they do not replace employer review or official filing responsibilities.</div>
+    </section>
   <a href="index.html" class="btn-return">&#8592; Back to main site</a>
-</main>
+  </main>
 
 <footer class="site-footer">
   <div class="wrap">
