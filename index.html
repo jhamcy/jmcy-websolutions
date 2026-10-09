@@ -7,14 +7,14 @@
     <title>JMCY Web Solutions | Affordable Websites & Payroll Software for Philippine Businesses</title>
 
     <!-- SEO -->
-    <meta name="description" content="JMCY Web Solutions builds affordable business websites, custom online systems, and the JMCY PH Payroll System for Philippine businesses. See live projects for JMP International Fish Trading and Famous Touch.">
+    <meta name="description" content="JMCY Web Solutions creates custom business websites from scratch, tailored online systems, and Philippine payroll software for small and growing businesses.">
     <link rel="canonical" href="https://www.jmcywebsolutions.com/">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png"> <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"> <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"> <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
 
     <!-- Open Graph / Social Preview -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="JMCY Web Solutions | Affordable Websites & Payroll Software for Philippine Businesses">
-    <meta property="og:description" content="Business websites from ₱15,000, custom online systems priced to your needs, and an offline Philippine payroll system you own.">
+    <meta property="og:description" content="Custom business websites built from scratch, online business systems tailored to your needs, and Philippine payroll software.">
     <meta property="og:image" content="https://www.jmcywebsolutions.com/Images/logo.png">
     <meta property="og:url" content="https://www.jmcywebsolutions.com/">
     <meta name="twitter:card" content="summary_large_image">
@@ -1121,6 +1121,8 @@
         }
 
         /* PAYROLL PROMO IMAGE */
+        .sys-side-img { display: flex; flex-direction: column; justify-content: center; }
+        .sys-side-img .sys-promo { margin-bottom: 0; }
         .sys-promo { display: block; margin-bottom: 1.1rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--card-border); }
         .sys-promo img { display: block; width: 100%; height: auto; transition: transform 0.5s ease; }
         .sys-promo:hover img { transform: scale(1.04); }
@@ -1423,6 +1425,7 @@
 
         /* BUSINESS SYSTEMS: desktop vs online tracks */
         .erp-card { background: linear-gradient(135deg, var(--card-bg), var(--sidebar-bg)); border: 1px solid var(--card-border); border-radius: 12px; padding: 2.2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+        .erp-card-actions { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; flex: 0 0 100%; }
         .erp-card-text h3 { font-size: 1.3rem; margin-bottom: 0.6rem; }
         .erp-card-text p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; max-width: 560px; margin-bottom: 1rem; }
         .systems-subhead { display: flex; align-items: center; gap: 0.6rem; margin: 2.6rem 0 1.2rem 0; font-size: 1rem; font-weight: 700; color: var(--text-color); }
@@ -1537,7 +1540,7 @@
                 <div>
                     <span class="badge">Websites &amp; Business Systems for Philippine Businesses</span>
                     <h2>Professional Websites &amp; <span>Business Systems</span></h2>
-                    <p class="hero-text">We build fast, mobile-friendly <strong>business websites</strong> that bring in customers, and custom <strong>online systems</strong> that help you run your business. Websites have a clear starting price. Online systems are quoted to your needs, and the price is negotiable.</p>
+                    <p class="hero-text">We build fast, mobile-friendly <strong>business websites from scratch</strong> and custom <strong>online systems</strong> designed around how your business works. We start by understanding your goals, services, and customers—then plan and build a solution to fit. We do not simply take a pre-made WordPress, Wix, or Canva website template and replace its text and logos. Website packages start at ₱15,000; online systems are quoted to your needs, with pricing discussed before work begins.</p>
                     
                     <div class="hero-action-btns">
                         <a href="#calculator" class="btn">Get a Price Estimate</a>
@@ -1578,7 +1581,7 @@
                     </div>
                     <div class="card-body">
                         <h3>1. Business Website</h3>
-                        <p>Perfect for shops, salons, restaurants, and service businesses. A fast, mobile-friendly website that shows your business online and brings in customers, with a booking or contact form. Fixed price from &#8369;15,000.</p>
+                        <p>Ideal for shops, salons, restaurants, and service businesses. We research your needs and create a custom, mobile-friendly website from scratch—not a pre-made template with swapped text and logos. Includes a booking or contact form. Fixed price from &#8369;15,000.</p>
                         <div class="card-tags">
                             <span class="tag tag-frontend">Simple Website</span>
                             <span class="tag">Fast Loading</span>
@@ -1726,23 +1729,16 @@
                                         <div class="sys-figure"><span class="num">2</span><span class="label">configurable payroll cutoffs</span></div>
                                     </div>
                                     <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:auto;">
+                                        <a href="ph-payroll.html" class="btn portfolio-cta-btn" style="flex:1 1 100%;text-align:center;">See What&rsquo;s Included &rarr;</a>
                                         <a href="https://github.com/jhamcy/jmcy-websolutions/releases/download/v1.1.4/JMCY-PH-Payroll-System-1.1.4-x64-Installer.exe" class="btn">Download for Windows &rarr;</a>
                                         <a href="payment.html" class="btn btn-outline">Buy License &#8369;20,000 &rarr;</a>
                                     </div>
                                     <p class="pkg-note" style="margin-top:0.8rem;">If Windows shows a security warning when you open the installer, choose &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;.</p>
                                 </div>
-                                <div class="sys-side">
+                                <div class="sys-side sys-side-img">
                                     <a href="Images/payroll-promo-square-1080x1080.png" target="_blank" rel="noopener noreferrer" class="sys-promo" aria-label="View the JMCY PH Payroll System promo image full size">
                                     <img src="Images/payroll-promo-square-1080x1080.png" alt="JMCY PH Payroll System: Philippine payroll, pay once and own it. ₱20,000 one-time license, 30-day free trial." width="1080" height="1080" loading="lazy">
                                 </a>
-                                <h4>What's included</h4>
-                                    <ul class="pkg-list single">
-                                        <li>Attendance with tardiness, undertime &amp; overtime rules</li>
-                                        <li>SSS, PhilHealth, Pag-IBIG &amp; BIR tax auto-computed</li>
-                                        <li>Holiday calendar &amp; rest-day premium pay</li>
-                                        <li>Loan tracking with automatic payoff detection</li>
-                                        <li>Payslips, reports &amp; automatic daily backups</li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -1793,7 +1789,7 @@
                         <span class="tag">Negotiable Price</span>
                     </div>
                 </div>
-                <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+                <div class="erp-card-actions">
                     <a href="#contact" class="btn">Request a Custom Quote &rarr;</a>
                     <a href="https://www.jmp-international.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Live Example: JMP International &rarr;</a>
                 </div>
@@ -1947,21 +1943,8 @@
                     </div>
 
                     <!-- What's included -->
-                    <div class="est-includes">
-                        <div id="includesFrontend">
-                            <h4>Included in your &#8369;15,000</h4>
-                            <ul class="pkg-list single">
-                                <li>One page with About, product carousel, FAQ chatbot, gallery and testimonials</li>
-                                <li>Call, SMS, Email, WhatsApp, Viber and Messenger buttons</li>
-                                <li>Custom design with your logo and branding</li>
-                                <li>Works on phones, tablets and computers</li>
-                                <li>Contact or booking form sent to your email</li>
-                                <li>Free hosting, so no monthly server fees</li>
-                                <li>Launch on your own domain plus 14 days of support</li>
-                            </ul>
-                            <p class="pkg-note"><a href="whats-included.html" style="color:inherit;text-decoration:underline;">See the full list of what is included &rarr;</a></p>
-                        </div>
-                        <div id="includesFullstack" style="display:none;">
+                    <div class="est-includes" style="display:none;">
+                        <div id="includesFullstack">
                             <h4>Usually included in an online system</h4>
                             <ul class="pkg-list single">
                                 <li>Secure login for you and your team</li>
@@ -1993,22 +1976,22 @@
 
         <!-- TECH STACK SECTION -->
         <section id="tech" class="reveal">
-            <h2 class="section-title">How We Build Your Website</h2>
+            <h2 class="section-title">Custom Websites, Built from Scratch</h2>
             <div class="tech-grid">
                 <div class="tech-card reveal delay-1">
                     <span class="tech-icon">🌐</span>
-                    <h4>Fast-Loading Pages</h4>
-                    <p>Clean, lightweight pages with no heavy plugins, so your site opens quickly on any phone.</p>
+                    <h4>Designed Around Your Business</h4>
+                    <p>We learn about your business, goals, and customers before planning a website structure and experience that fits your needs.</p>
                 </div>
                 <div class="tech-card supabase-card reveal delay-2">
                     <span class="tech-icon">⚡</span>
-                    <h4>Online Database</h4>
-                    <p>Your business data is kept in a secure cloud database (Supabase) and updates in real time. Used for online systems.</p>
+                    <h4>Custom Development</h4>
+                    <p>We use HTML, CSS, and JavaScript to build custom website layouts and interactions instead of simply swapping content into a pre-made theme.</p>
                 </div>
                 <div class="tech-card github-card reveal delay-3">
                     <span class="tech-icon">🐱</span>      
-                    <h4>Free Hosting &amp; Safe Updates</h4>
-                    <p>Your site is hosted for free on GitHub, and every change is saved so we can restore an earlier version anytime.</p>
+                    <h4>Lightweight &amp; Maintainable</h4>
+                    <p>We aim for clean, lightweight pages that load smoothly on phones and are easier to update as your business evolves.</p>
                 </div>
                 <div class="tech-card supabase-card reveal delay-4">
                     <span class="tech-icon">🔒</span>
@@ -2250,8 +2233,7 @@
             const isFrontendOnly = document.getElementById('type1').checked;
             document.getElementById('backendModulesGroup').style.display = isFrontendOnly ? 'none' : 'block';
             document.getElementById('frontendAddonsGroup').style.display = isFrontendOnly ? 'block' : 'none';
-            document.getElementById('includesFrontend').style.display = isFrontendOnly ? 'block' : 'none';
-            document.getElementById('includesFullstack').style.display = isFrontendOnly ? 'none' : 'block';
+            document.querySelector('.est-includes').style.display = isFrontendOnly ? 'none' : 'block';
 
             if (isFrontendOnly) {
                 document.getElementById('userAccountCount').value = 0;
@@ -2766,7 +2748,7 @@
               a: "The website package includes the complete source code, and your domain is registered with your own registrar account, so you keep full ownership of your domain.",
               l: [] },
             { id: "website", chip: 1, q: "What is included in a website?", k: ["website", "site", "landing", "package", "included", "include"], g: ["web"],
-              a: "The business website is ₱15,000 one-time. It includes custom branding with your logo, a mobile-friendly design, a booking or contact form sent to your email, free hosting on GitHub (no monthly server fees), and launch on your domain plus 14 days of support.\n\nDomain registration (about ₱800–₱1,500 per year) is paid directly to your registrar.",
+              a: "The business website is ₱15,000 one-time. We research your business needs and create a custom website from scratch using HTML, CSS, and JavaScript rather than simply replacing the text and logos in a pre-made WordPress, Wix, or Canva template. It includes custom branding, a mobile-friendly design, a booking or contact form sent to your email, free hosting on GitHub (no monthly server fees), launch on your domain, and 14 days of support.\n\nDomain registration (about ₱800–₱1,500 per year) is paid directly to your registrar.",
               l: [["See website pricing", "#packages"], ["See our work", "#projects"]] },
             { id: "process", chip: 1, q: "How does it work?", k: ["process", "down payment", "downpayment", "deposit", "steps", "how it works", "how does it work", "balance", "timeline", "how long", "approval"], g: ["start", "begin"],
               a: "1. Approval: you confirm your package and any add-ons.\n2. Down payment: 50% starts the work (₱7,500 on the core website).\n3. Content handover: you send your logo, verified service and price list, photos, and contact details.\n\nThe balance is paid on final approval, before we go live on your domain. We confirm the schedule in your proposal.",
