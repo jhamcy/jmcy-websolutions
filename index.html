@@ -1433,6 +1433,41 @@
         .systems-subhead::after { content: ""; flex: 1; height: 1px; background: var(--card-border); }
         @media (max-width: 768px) { .erp-card { flex-direction: column; align-items: flex-start; padding: 1.4rem; } .systems-subhead { flex-wrap: wrap; } }
 
+        /* FLOATING CHAT BUTTON */
+        .chat-fab { position: fixed; right: calc(var(--sidebar-width) + 1.5rem); bottom: 1.5rem; z-index: 800; display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.3rem; border-radius: 999px; background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); color: #fff; font-weight: 700; font-size: 0.95rem; text-decoration: none; box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .chat-fab svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+        .chat-fab:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(56, 189, 248, 0.5); }
+        .chat-fab:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+        @media screen and (max-width: 768px) { .chat-fab { right: 1rem; bottom: 1rem; padding: 0.8rem 1.1rem; } }
+        /* FLOATING CHATBOX (opens in the center of the screen) */
+        .chatbox-overlay { position: fixed; inset: 0; z-index: 1500; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgba(3, 7, 18, 0.72); backdrop-filter: blur(4px); }
+        .chatbox-overlay[hidden] { display: none; }
+        .chatbox { width: min(560px, 100%); height: min(660px, calc(100vh - 2rem)); height: min(660px, calc(100dvh - 2rem)); display: flex; flex-direction: column; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); overflow: hidden; animation: chatboxIn 0.25s ease; }
+        @keyframes chatboxIn { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: none; } }
+        .chatbox-close { margin-left: auto; flex: none; width: 34px; height: 34px; border-radius: 50%; background: transparent; border: 1px solid var(--card-border); color: var(--text-color); font-size: 1.3rem; line-height: 1; cursor: pointer; }
+        .chatbox-close:hover { border-color: var(--accent-color); color: var(--accent-color); }
+        .chatbox-close:focus-visible, .chatbox-foot a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+        .chatbox .faq-log { flex: 1; height: auto; min-height: 0; }
+        .chatbox .faq-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; max-height: 11rem; overflow-y: auto; padding: 0.7rem 1rem; }
+        .chatbox .faq-chip { width: 100%; font-size: 0.8rem; padding: 0.45rem 0.7rem; border-radius: 10px; }
+        .chatbox .faq-form { flex-direction: row; align-items: center; gap: 0.6rem; padding: 0.8rem 1rem; margin: 0; }
+        .chatbox .faq-form input { flex: 1; min-width: 0; width: auto; }
+        .chatbox .faq-form .btn { flex: none; width: auto; margin: 0; padding: 0.7rem 1.2rem; }
+        .chatbox-foot { display: grid; gap: 0.5rem; padding: 0 1rem 0.9rem; color: var(--text-muted); font-size: 0.8rem; }
+        .foot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+        .chatbox-foot a { color: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 999px; padding: 0.35rem 0.7rem; font-weight: 600; text-decoration: none; text-align: center; }
+        .chatbox-foot a:hover { background: var(--accent-glow); }
+        .chatbox-foot .foot-call { justify-self: center; background: var(--accent-color); color: #04121c; padding: 0.4rem 1.3rem; }
+        .chatbox-foot .foot-call:hover { background: #7dd3fc; }
+        .lang-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.55rem 1rem; border-bottom: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.8rem; }
+        .lang-switch { display: inline-flex; border: 1px solid var(--card-border); border-radius: 999px; overflow: hidden; }
+        .lang-btn { background: transparent; color: var(--text-muted); border: 0; padding: 0.35rem 0.95rem; font-size: 0.8rem; font-weight: 700; font-family: inherit; cursor: pointer; }
+        .lang-btn:hover { color: var(--text-color); }
+        .lang-btn[aria-pressed="true"] { background: var(--accent-color); color: #04121c; }
+        .lang-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: -2px; }
+        body.chatbox-open { overflow: hidden; }
+        @media (max-width: 768px) { .chatbox .faq-chips { max-height: 8.6rem; } .chatbox-overlay { padding: 0.6rem; } .chatbox { height: calc(100vh - 1.2rem); height: calc(100dvh - 1.2rem); } }
+        @media (prefers-reduced-motion: reduce) { .chatbox { animation: none; } }
         /* FAQ CHAT ASSISTANT */
         .faq-chat { max-width: 760px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; }
         .faq-head { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.2rem; background: var(--sidebar-bg); border-bottom: 1px solid var(--card-border); }
@@ -1499,7 +1534,7 @@
                 <li><a href="portfolio.html">Demo Samples</a></li>
                 <li><a href="#calculator" onclick="closeMobileMenu()">Get a Quote</a></li>
                 <li><a href="#tech" onclick="closeMobileMenu()">How We Build</a></li>
-                <li><a href="#faq" onclick="closeMobileMenu()">FAQ</a></li>
+                <li><a href="faq-chatbot.html" class="open-chat" onclick="closeMobileMenu()">FAQ</a></li>
                 <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
             </ul>
         </nav>
@@ -2001,24 +2036,6 @@
             </div>
         </section>
 
-
-        <!-- FAQ CHAT ASSISTANT -->
-        <section id="faq" class="reveal">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="est-intro">Ask our assistant about prices, payment, and how we work. For anything else, message us and our team will reply personally.</p>
-            <div class="faq-chat" role="region" aria-label="FAQ assistant">
-                <div class="faq-head">
-                    <span class="faq-avatar" aria-hidden="true">J</span>
-                    <div><strong>JMCY Assistant</strong><small>Automated answers to common questions</small></div>
-                </div>
-                <div class="faq-log" id="faqLog" role="log" aria-live="polite" aria-label="Chat messages"></div>
-                <div class="faq-chips" id="faqChips"></div>
-                <form class="faq-form" id="faqForm" autocomplete="off">
-                    <input type="text" id="faqInput" placeholder="Type your question..." aria-label="Type your question" maxlength="200">
-                    <button type="submit" class="btn">Send</button>
-                </form>
-            </div>
-        </section>
 
         <!-- CONTACT SECTION -->
         <section id="contact" class="reveal">
@@ -2736,6 +2753,38 @@
         });
     </script>
 
+    <!-- FLOATING CHATBOX -->
+    <div class="chatbox-overlay" id="chatbox" hidden>
+        <div class="chatbox" role="dialog" aria-modal="true" aria-labelledby="chatboxTitle">
+            <div class="faq-head">
+                <span class="faq-avatar" aria-hidden="true">J</span>
+                <div><strong id="chatboxTitle">JMCY Assistant</strong><small data-t="sub">Automated answers to common questions</small></div>
+                <button type="button" class="chatbox-close" aria-label="Close chat" data-t-aria="close">&times;</button>
+            </div>
+            <div class="lang-bar"><span data-t="langLabel">Language</span><div class="lang-switch" role="group" aria-label="Language"><button type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button><button type="button" class="lang-btn" data-lang="tl" aria-pressed="false">Tagalog</button></div></div>
+            <div class="faq-log" id="chatLog" role="log" aria-live="polite" aria-label="Chat messages"></div>
+            <div class="faq-chips" id="chatChips"></div>
+            <form class="faq-form" id="chatForm" autocomplete="off">
+                <input type="text" id="chatInput" placeholder="Type your question..." aria-label="Type your question" maxlength="200" data-t-placeholder="placeholder">
+                <button type="submit" class="btn" data-t="send">Send</button>
+            </form>
+            <div class="chatbox-foot">
+                <span data-t="handoff">Prefer to talk to a person?</span>
+                <div class="foot-grid">
+                    <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer">Messenger</a>
+                    <a href="https://wa.me/639091297422" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                </div>
+                <a href="tel:+639091297422" class="foot-call" data-t="call">Call +63 909 129 7422</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING CHAT BUTTON -->
+    <a href="faq-chatbot.html" class="chat-fab" aria-label="Chat with our FAQ assistant" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 5v2h10V8H7zm0 4v2h7v-2H7z"/></svg>
+        <span>Ask us</span>
+    </a>
+
     <script>
     /* FAQ CHAT ASSISTANT: automated answers, no AI service or server needed */
     (function () {
@@ -2771,6 +2820,9 @@
             { id: "inventory", q: "What about the Inventory System?", k: ["inventory", "stock", "warehouse"], g: [],
               a: "The JMCY Internal Inventory System is still in development. It is planned as an offline Windows app with a one-time license and unlimited users. Details and pricing will follow closer to release. Message us if you would like to hear when it is ready.",
               l: [["Ask about it", "#contact"]] },
+            { id: "cancel", q: "Can I cancel the monthly maintenance?", k: ["cancel", "stop", "terminate", "discontinue", "unsubscribe", "quit", "end maintenance", "stop maintenance"], g: ["maintenance", "monthly", "lock-in", "subscription", "refund"],
+              a: "Yes, you can cancel or stop the monthly Website Maintenance plan at any time; there is no lock-in. If your monthly maintenance date has already started, you will need to pay for that last month. After that, the service stops.",
+              l: [["Message us", MSG]] },
             { id: "updates", q: "Can you update my website later?", k: ["maintenance", "update", "updates", "changes", "edit", "revision", "revisions", "support", "after"], g: ["change"],
               a: "After launch you get 14 days of support. After that, the optional Website Maintenance plan is ₱1,500 per month with no lock-in: up to 3 updates a month (text, prices, menu, or hours) plus monthly checkups.",
               l: [["See add-ons", "#packages"]] },
@@ -2806,51 +2858,133 @@
             return best;
         };
 
-        var log = document.getElementById("faqLog");
-        if (!log) return;
-        var chips = document.getElementById("faqChips"), form = document.getElementById("faqForm"), input = document.getElementById("faqInput");
+                /* ENGLISH / TAGALOG: Tagalog questions and answers, extra Tagalog keywords, and interface text */
+        var TL = {"cost": {"q": "Magkano ang presyo?", "a": "Narito ang mabilis na gabay sa presyo:\n• Business website: ₱15,000 isang beses na bayad\n• Payroll System (Windows software): ₱20,000 isang beses na lisensya\n• Custom online system (ERP): custom na quote, pwedeng pag-usapan at tawaran pagkatapos nating pag-usapan ang inyong pangangailangan\n\nMga opsyonal na add-on sa website: Local SEO ₱3,500 isang beses, Website Maintenance ₱1,500 kada buwan, Google Ads management ₱4,500 kada buwan.", "l": ["Kumuha ng price estimate"]}, "own": {"q": "Akin ba ang website ko?", "a": "Kasama sa website package ang kumpletong source code, at ang inyong domain ay nakarehistro sa sarili ninyong account sa registrar, kaya buo ang inyong pagmamay-ari ng domain.", "l": []}, "website": {"q": "Ano ang kasama sa website?", "a": "Ang business website ay ₱15,000 isang beses na bayad. Pinag-aaralan namin ang pangangailangan ng inyong negosyo at gumagawa kami ng custom na website mula sa simula gamit ang HTML, CSS, at JavaScript, hindi lang pagpapalit ng teksto at logo sa ready-made na WordPress, Wix, o Canva template. Kasama rito ang custom branding, mobile-friendly na disenyo, booking o contact form na ipinapadala sa inyong email, libreng hosting sa GitHub (walang buwanang bayad sa server), paglulunsad sa inyong domain, at 14 na araw na suporta.\n\nAng pagpaparehistro ng domain (humigit-kumulang ₱800–₱1,500 kada taon) ay direktang binabayaran sa inyong registrar.", "l": ["Tingnan ang presyo ng website", "Tingnan ang aming mga gawa"]}, "process": {"q": "Paano ito gumagana?", "a": "1. Pag-apruba: kinukumpirma ninyo ang inyong package at anumang add-on.\n2. Down payment: 50% ang paunang bayad para masimulan ang trabaho (₱7,500 sa core website).\n3. Pagpapasa ng content: ibibigay ninyo ang inyong logo, na-verify na listahan ng serbisyo at presyo, mga larawan, at contact details.\n\nAng balanse ay babayaran sa final na pag-apruba, bago kami mag-live sa inyong domain. Kukumpirmahin namin ang iskedyul sa inyong proposal.", "l": ["Kumuha ng price estimate"]}, "payment": {"q": "Paano ako magbabayad?", "a": "Ang lisensya ng Payroll System ay pwedeng bayaran sa pamamagitan ng GCash, QR Ph, o card sa payment page. Para sa mga website at online system, mag-message lang sa amin at kukumpirmahin namin ang mga paraan ng pagbabayad.", "l": ["Payment page ng Payroll", "Messenger"]}, "hosting": {"q": "Paano gumagana ang hosting at domain?", "a": "Libre ang hosting ng inyong website sa GitHub, kaya walang buwanang bayad sa server. Ang babayaran lang ninyo ay ang domain (humigit-kumulang ₱800–₱1,500 kada taon) nang direkta sa inyong registrar, tulad ng Namecheap o GoDaddy.", "l": []}, "online": {"q": "Ano ang online system (ERP)?", "a": "Ang online system ay ginagawa ayon sa takbo ng inyong negosyo: login para sa staff, ligtas na online database, at admin panel para sa inventory, orders, customers, o talaan ng mga empleyado.\n\nDahil iba-iba ang pangangailangan ng bawat negosyo, walang nakapirming presyo. Pag-uusapan muna natin ang inyong pangangailangan, saka kami magpapadala ng quote na pwede ninyong tawaran.", "l": ["Humingi ng custom quote", "Live na halimbawa: JMP International"]}, "payroll": {"q": "Ano ang Payroll System?", "a": "Ang JMCY PH Payroll System ay Windows app na ini-install ninyo sa sarili ninyong PC. Kaya nitong asikasuhin ang attendance, semi-monthly na payroll, SSS, PhilHealth, Pag-IBIG at BIR tax, mga loan, at payslip.\n\nIsang beses na lisensya na ₱20,000 lang, walang subscription. Gumagana ito offline at nasa inyong PC ang inyong data. Pwede kayong magbayad sa GCash, QR Ph, o card.", "l": ["Tingnan ang detalye", "Bilhin ang lisensya"]}, "trial": {"q": "May libreng trial ba?", "a": "Opo. Ang Payroll System ay may 30 araw na libreng trial, at hindi kailangan ng license key para subukan ito. Pwede ninyo itong i-download sa seksyong Business Systems. Kapag nagpakita ang Windows ng security warning, piliin ang \"More info\", saka \"Run anyway\".\n\nPara sa mga website, pwede ninyong tingnan ang aming mga demo sample sa portfolio.", "l": ["I-download ang trial", "Mga demo sample"]}, "inventory": {"q": "Ano ang Inventory System?", "a": "Ang JMCY Internal Inventory System ay ginagawa pa lamang. Plano itong maging offline na Windows app na may isang beses na lisensya at walang limitasyon sa bilang ng users. Ibibigay namin ang detalye at presyo paglapit ng release. Mag-message sa amin kung gusto ninyong malaman kapag handa na ito.", "l": ["Magtanong tungkol dito"]}, "updates": {"q": "Pwede ba ninyong i-update ang website ko?", "a": "Pagkatapos ng launch, may 14 na araw kayong suporta. Pagkatapos nito, ang opsyonal na Website Maintenance plan ay ₱1,500 kada buwan na walang lock-in: hanggang 3 update kada buwan (teksto, presyo, menu, o oras) at buwanang checkup.", "l": ["Tingnan ang mga add-on"]}, "seo": {"q": "Matutulungan ba ninyo akong mahanap sa Google?", "a": "Opo, sa pamamagitan ng dalawang opsyonal na add-on. Ang Local SEO Setup ay ₱3,500 isang beses (mga pamagat at heading na madaling mahanap sa search, at isinumite ang inyong site sa Google). Ang Google Ads management ay ₱4,500 kada buwan, at hiwalay na binabayaran sa Google ang inyong ad budget.", "l": ["Tingnan ang mga add-on"]}, "about": {"q": "Sino ang nasa likod ng JMCY?", "a": "Ang JMCY Web Solutions ay itinatag ni James Del Rosario. Gumagawa kami ng business website at business system para sa maliliit at lumalaking negosyo sa Pilipinas.", "l": ["Tungkol sa amin", "Tingnan ang aming mga gawa"]}, "contact": {"q": "Paano ko kayo makokontak?", "a": "Maaari ninyong makontak ang JMCY Web Solutions sa Messenger o WhatsApp (+63 909 129 7422), sa email na jhamcyd@gmail.com, o gamit ang contact form sa aming website.", "l": ["Messenger", "WhatsApp", "Contact form"]}, "thanks": {"q": "", "a": "Walang anuman po! Kung gusto ninyong magsimula, mag-message lang sa amin anumang oras.", "l": ["Messenger"]}, "hello": {"q": "", "a": "Kumusta po! Masasagot ko ang mga tanong tungkol sa aming presyo, kung paano kami gumagana, sa Payroll System, at sa mga online system. Pumili ng tanong sa ibaba o i-type ang sarili ninyong tanong.", "l": []}, "fallback": {"q": "", "a": "Pasensya na po, hindi ako sigurado sa sagot diyan. Subukan ang isa sa mga tanong sa ibaba, o direktang mag-message sa JMCY Web Solutions at sasagutin namin kayo.", "l": ["Messenger", "WhatsApp", "Contact form"]}, "cancel": {"q": "Pwede ko bang ihinto ang monthly maintenance?", "a": "Opo, pwede ninyong kanselahin o ihinto ang buwanang Website Maintenance anumang oras; walang lock-in. Kung nagsimula na ang buwanang petsa ng inyong maintenance, kailangan ninyong bayaran ang huling buwang iyon. Pagkatapos nito, titigil na ang serbisyo.", "l": ["Mag-message sa amin"]}};
+        var EXTRA = {"cost": {"k": ["halaga", "singil", "bayarin", "gastos"]}, "own": {"k": ["pagmamay-ari", "pag-aari", "akin ba"]}, "website": {"k": ["kasama", "laman", "nilalaman"]}, "process": {"k": ["proseso", "hakbang", "paunang bayad", "gaano katagal", "paano gumagana"]}, "payment": {"k": ["magbayad", "bayaran", "pambayad", "bayad"]}, "hosting": {"k": ["buwanan", "buwan-buwan"]}, "online": {"k": ["sistema"]}, "payroll": {"k": ["sahod", "suweldo", "sweldo"]}, "trial": {"k": ["subukan", "subok", "libreng"]}, "inventory": {"k": ["imbentaryo"]}, "updates": {"k": ["baguhin", "pagbabago", "palitan", "i-update"]}, "seo": {"k": ["mahanap", "hanapin", "makita"]}, "about": {"k": ["sino", "may-ari", "nagtatag"]}, "contact": {"k": ["kontak", "makipag-ugnayan", "tawagan", "tawag", "numero", "mensahe"]}, "thanks": {"k": ["maraming salamat"]}, "hello": {"g": ["magandang"]}, "cancel": {"k": ["kanselahin", "i-cancel", "kansela", "ihinto", "itigil", "tigil", "huminto", "hihinto", "magkansela"], "g": ["buwanan", "buwan-buwan"]}};
+        var UI = {"en": {"sub": "Automated answers to common questions", "subAI": "AI-assisted answers about JMCY Web Solutions", "placeholder": "Type your question...", "send": "Send", "handoff": "Prefer to talk to a person?", "call": "Call +63 909 129 7422", "close": "Close chat", "typing": "Typing...", "langLabel": "Language", "switched": "Sure! I'll reply in English. Pick a question below or type your own.", "title": "Frequently Asked Questions", "lead": "Ask our assistant about prices, payment, and how we work. For anything else, message us and our team will reply personally."}, "tl": {"sub": "Awtomatikong sagot sa mga karaniwang tanong", "subAI": "May tulong ng AI ang mga sagot tungkol sa JMCY Web Solutions", "placeholder": "I-type ang inyong tanong...", "send": "Ipadala", "handoff": "Mas gusto bang makausap ang tao?", "call": "Tawagan ang +63 909 129 7422", "close": "Isara ang chat", "typing": "Nagta-type...", "langLabel": "Wika", "switched": "Sige po! Tagalog na ang gagamitin ko sa pagsagot. Pumili ng tanong sa ibaba o i-type ang inyong tanong.", "title": "Mga Madalas na Itanong", "lead": "Magtanong sa aming assistant tungkol sa presyo, bayad, at kung paano kami gumagana. Para sa iba pang tanong, mag-message sa amin at personal kayong sasagutin ng aming team."}};
+        FAQ.forEach(function (e) {
+            var x = EXTRA[e.id]; if (!x) return;
+            (x.k || []).forEach(function (kw) { e.k.push(kw); });
+            (x.g || []).forEach(function (kw) { e.g.push(kw); });
+        });
+        var lang = "en";
+        try { if (localStorage.getItem("jmcyChatLang") === "tl") lang = "tl"; } catch (err) {}
+        function T(key) { return UI[lang][key]; }
+        function qText(e) { return lang === "tl" && TL[e.id] ? TL[e.id].q : e.q; }
+        function pick(e) {
+            if (lang !== "tl" || !TL[e.id]) return e;
+            var t = TL[e.id];
+            return { a: t.a, l: (e.l || []).map(function (x, i) { return [(t.l && t.l[i]) || x[0], x[1]]; }) };
+        }
+        function fallback() { return pick({ id: "fallback", a: FALLBACK.a, l: FALLBACK.l }); }
+        function applyText(root) {
+            Array.prototype.forEach.call(root.querySelectorAll("[data-t]"), function (el) { el.textContent = T(el.getAttribute("data-t")); });
+            Array.prototype.forEach.call(root.querySelectorAll("[data-t-placeholder]"), function (el) { el.placeholder = T(el.getAttribute("data-t-placeholder")); });
+            Array.prototype.forEach.call(root.querySelectorAll("[data-t-aria]"), function (el) { el.setAttribute("aria-label", T(el.getAttribute("data-t-aria"))); });
+            Array.prototype.forEach.call(root.querySelectorAll(".lang-btn"), function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false"); });
+        }
+        function chosenQuestions() {
+            return FAQ.filter(function (e) { return e.q; }).map(function (e) { return { e: e, t: qText(e) }; })
+                .sort(function (a, b) { return a.t.length - b.t.length; });
+        }
+
         var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        function add(text, who, links) {
-            var m = document.createElement("div");
-            m.className = "faq-msg " + who;
-            m.textContent = text;
-            if (links && links.length) {
-                var w = document.createElement("div");
-                w.className = "faq-links";
-                links.forEach(function (x) {
-                    var a = document.createElement("a");
-                    a.textContent = x[0]; a.href = x[1];
-                    if (/^https?:/.test(x[1])) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
-                    w.appendChild(a);
-                });
-                m.appendChild(w);
+        /* builds one chat inside the given elements; used by the FAQ section and by the floating chatbox */
+        function mount(log, chips, form, input, root) {
+            function add(text, who, links) {
+                var m = document.createElement("div");
+                m.className = "faq-msg " + who;
+                m.textContent = text;
+                if (links && links.length) {
+                    var w = document.createElement("div");
+                    w.className = "faq-links";
+                    links.forEach(function (x) {
+                        var a = document.createElement("a");
+                        a.textContent = x[0]; a.href = x[1];
+                        if (/^https?:/.test(x[1])) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+                        w.appendChild(a);
+                    });
+                    m.appendChild(w);
+                }
+                log.appendChild(m);
+                log.scrollTop = log.scrollHeight;
+                return m;
             }
-            log.appendChild(m);
-            log.scrollTop = log.scrollHeight;
-            return m;
-        }
-        function reply(e) {
-            var wait = add("Typing...", "bot typing");
-            setTimeout(function () { wait.remove(); add(e.a, "bot", e.l); }, calm ? 0 : 450);
+            function reply(e) {
+                var wait = add(T("typing"), "bot typing");
+                setTimeout(function () { wait.remove(); add(e.a, "bot", e.l); }, calm ? 0 : 450);
+            }
+            function buildChips() {
+                chips.innerHTML = "";
+                chosenQuestions().forEach(function (item) {
+                    var b = document.createElement("button");
+                    b.type = "button"; b.className = "faq-chip"; b.textContent = item.t;
+                    b.addEventListener("click", function () { add(item.t, "user"); reply(pick(item.e)); });
+                    chips.appendChild(b);
+                });
+            }
+            form.addEventListener("submit", function (ev) {
+                ev.preventDefault();
+                var text = input.value.trim();
+                if (!text) return;
+                add(text, "user");
+                input.value = "";
+                var hit = window.faqMatch(text);
+                reply(hit ? pick(hit) : fallback());
+            });
+            Array.prototype.forEach.call(root.querySelectorAll(".lang-btn"), function (btn) {
+                btn.addEventListener("click", function () {
+                    var next = btn.getAttribute("data-lang");
+                    if (next === lang) return;
+                    lang = next;
+                    try { localStorage.setItem("jmcyChatLang", lang); } catch (err) {}
+                    applyText(root); buildChips();
+                    add(T("switched"), "bot");
+                });
+            });
+            applyText(root); buildChips();
+            add(pick(FAQ[FAQ.length - 1]).a, "bot");
+            return { input: input };
         }
 
-        FAQ.forEach(function (e) {
-            if (!e.chip) return;
-            var b = document.createElement("button");
-            b.type = "button"; b.className = "faq-chip"; b.textContent = e.q;
-            b.addEventListener("click", function () { add(e.q, "user"); reply(e); });
-            chips.appendChild(b);
-        });
-        form.addEventListener("submit", function (ev) {
-            ev.preventDefault();
-            var text = input.value.trim();
-            if (!text) return;
-            add(text, "user");
-            input.value = "";
-            reply(window.faqMatch(text) || FALLBACK);
-        });
-        add(FAQ[FAQ.length - 1].a, "bot");
+        /* FLOATING CHATBOX: opens in the center of the screen from the "Ask us" button */
+        var fab = document.querySelector(".chat-fab"), overlay = document.getElementById("chatbox");
+        if (fab && overlay) {
+            var dlg = overlay.querySelector(".chatbox"), closeBtn = overlay.querySelector(".chatbox-close"), chat = null, lastFocus = null;
+            var openBox = function (ev) {
+                ev.preventDefault();
+                lastFocus = document.activeElement;
+                if (!chat) chat = mount(document.getElementById("chatLog"), document.getElementById("chatChips"), document.getElementById("chatForm"), document.getElementById("chatInput"), overlay);
+                overlay.hidden = false;
+                document.body.classList.add("chatbox-open");
+                setTimeout(function () { chat.input.focus(); }, 30);
+            };
+            var closeBox = function () {
+                overlay.hidden = true;
+                document.body.classList.remove("chatbox-open");
+                if (lastFocus && lastFocus.focus) lastFocus.focus();
+            };
+            fab.addEventListener("click", openBox);
+            Array.prototype.forEach.call(document.querySelectorAll(".open-chat"), function (el) { el.addEventListener("click", openBox); });
+            closeBtn.addEventListener("click", closeBox);
+            overlay.addEventListener("mousedown", function (ev) { if (ev.target === overlay) closeBox(); });
+            /* a link to a section of this page closes the chatbox so the visitor can see where it went */
+            document.getElementById("chatLog").addEventListener("click", function (ev) {
+                var a = ev.target.closest && ev.target.closest(".faq-links a");
+                if (a && a.getAttribute("href").charAt(0) === "#") closeBox();
+            });
+            document.addEventListener("keydown", function (ev) {
+                if (overlay.hidden) return;
+                if (ev.key === "Escape") { closeBox(); return; }
+                if (ev.key !== "Tab") return;
+                var f = Array.prototype.filter.call(dlg.querySelectorAll("button, a[href], input"), function (el) { return !el.disabled && el.offsetParent !== null; });
+                if (!f.length) return;
+                var first = f[0], last = f[f.length - 1];
+                if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+                else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+            });
+        }
     })();
     </script>
 </body>

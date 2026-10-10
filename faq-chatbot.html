@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Chatbot | JMCY Web Solutions</title>
+    <meta name="description" content="Ask the JMCY assistant about website and payroll system prices, payment, hosting and how we work. Quick answers anytime, with Messenger and WhatsApp when you want a person.">
+    <link rel="canonical" href="https://www.jmcywebsolutions.com/faq-chatbot.html">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="theme-color" content="#090d16">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        :root { --sidebar-width: 270px; --bg-color: #090d16; --sidebar-bg: #030712; --card-bg: #111827; --card-border: #1f2937; --accent-color: #38bdf8; --accent-glow: rgba(56, 189, 248, 0.2); --supabase-green: #3ecf8e; --github-gray: #e6edf3; --text-color: #f9fafb; --text-muted: #9ca3af; }
+        body { background-color: var(--bg-color); color: var(--text-color); display: flex; min-height: 100vh; width: 100%; overflow-x: hidden; }
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: var(--sidebar-bg);
+            border-bottom: 1px solid var(--card-border);
+            padding: 0 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-header.nav-hidden {
+            transform: translateY(-100%);
+        }
+
+        .mobile-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .mobile-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--card-border);
+        }
+
+        .mobile-brand span {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: 1px solid var(--card-border);
+            color: var(--text-color);
+            font-size: 1.4rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--card-bg);
+        }
+
+        /* DESKTOP RIGHT-SIDE NAVIGATION PANEL */
+        aside {
+            width: var(--sidebar-width);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: var(--sidebar-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 2.5rem 1.5rem;
+            border-left: 1px solid var(--card-border);
+            z-index: 900;
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .brand-logo {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--card-border);
+            animation: logoPulse 4s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .brand h1 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .brand p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* NAVIGATION MENU */
+        nav {
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        nav li {
+            width: 100%;
+            position: relative;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: transparent;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ffffff;
+            background-color: var(--card-bg);
+            transform: translateX(-6px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a:hover::before, nav a.active::before {
+            background-color: var(--accent-color);
+            box-shadow: 0 0 8px var(--accent-color);
+            transform: scale(1.4);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 3px;
+            background-color: var(--accent-color);
+            border-radius: 4px 0 0 4px;
+            opacity: 0;
+            transform: scaleY(0);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        /* SOCIAL MEDIA LINKS SECTION */
+        .social-nav {
+            margin-top: 1.5rem;
+            margin-bottom: auto;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--card-border);
+            width: 100%;
+        }
+
+        .social-nav span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-btn.facebook:hover { color: #1877f2; border-color: #1877f2; background-color: rgba(24, 119, 242, 0.1); }
+        .social-btn.instagram:hover { color: #e4405f; border-color: #e4405f; background-color: rgba(228, 64, 95, 0.1); }
+        .social-btn.messenger:hover { color: #0084ff; border-color: #0084ff; background-color: rgba(0, 132, 255, 0.1); }
+        .social-btn.whatsapp:hover { color: #25d366; border-color: #25d366; background-color: rgba(37, 211, 102, 0.1); }
+
+        .sidebar-footer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--card-border);
+            padding-top: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .sidebar-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--github-gray) !important;
+            font-weight: 600;
+            margin-top: 0.4rem;
+            transition: color 0.3s ease;
+        }
+
+        .github-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        /* MAIN CONTENT AREA */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.85rem 1.6rem; border-radius: 8px; border: 1px solid transparent; background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35); }
+        .btn-outline { background: transparent; border-color: var(--accent-color); color: var(--accent-color); }
+        .btn:focus-visible, .btn-return:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+        .btn-return { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; margin-bottom: 1.8rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: #ffffff; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.25s ease; }
+        .btn-return:hover { background: var(--accent-color); color: #07111f; border-color: var(--accent-color); transform: translateX(-4px); box-shadow: 0 4px 15px rgba(56,189,248,0.3); }
+        h2.section-title { font-size: 1.9rem; font-weight: 800; margin-bottom: 1.4rem; }
+
+        main { margin-right: var(--sidebar-width); flex: 1; min-width: 0; padding: 3rem 4rem; width: calc(100% - var(--sidebar-width)); max-width: 1100px; }
+
+
+        /* SIDEBAR LAYOUT (same as index.html) */
+        @media screen and (max-width: 768px) {
+            .mobile-header { display: flex; }
+            aside { top: 70px; width: var(--sidebar-width); transform: translateX(100%); padding-top: 1.5rem; }
+            aside.open { transform: translateX(0); }
+            aside.nav-hidden { transform: translateX(100%) !important; }
+            main { margin-right: 0; width: 100%; padding: 5.5rem 1rem 3rem 1rem; }
+        }
+    
+        /* SHARED SITE FOOTER */
+        .jf-footer, .jf-footer *, .jf-footer *::before, .jf-footer *::after { box-sizing: border-box; }
+        .jf-footer { background: #0f1626; border-top: 1px solid #1f2b44; color: #93a0b8; font-size: .93rem; line-height: 1.6; text-align: left; padding: 0; margin: 0; }
+        .jf-wrap { width: min(1120px, 92%); margin-inline: auto; }
+        .jf-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; padding: 30px 0 22px; }
+        .jf-brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; font-weight: 700; font-size: 1.05rem; color: #e7ecf6; margin-bottom: .55rem; }
+        .jf-brand img { width: 34px; height: 34px; border-radius: 8px; }
+        .jf-about { max-width: 34ch; margin: 0 0 .85rem; line-height: 1.5; }
+        .jf-social { display: flex; gap: 10px; }
+        .jf-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid #1f2b44; background: #090d16; display: grid; place-items: center; color: #93a0b8; transition: color .15s, border-color .15s; }
+        .jf-social svg { width: 18px; height: 18px; fill: currentColor; }
+        .jf-social a:hover { color: #38bdf8; border-color: #38bdf8; }
+        .jf-footer h4 { font-size: 1rem; font-weight: 700; color: #e7ecf6; margin: 0 0 .65rem; }
+        .jf-footer ul { list-style: none; display: grid; gap: .4rem; margin: 0; padding: 0; }
+        .jf-footer a { text-decoration: none; }
+        .jf-contact li { display: flex; gap: .8rem; align-items: baseline; }
+        .jf-contact small { font-size: .8rem; color: #93a0b8; min-width: 4.8rem; }
+        .jf-contact a { color: #e7ecf6; font-weight: 600; }
+        .jf-contact a:hover { color: #38bdf8; }
+        .jf-bottom { border-top: 1px solid #1f2b44; padding: 14px 0; text-align: center; font-size: .85rem; }
+        @media (max-width: 700px) { .jf-grid { grid-template-columns: 1fr; gap: 36px; } }
+        body { flex-wrap: wrap; align-content: space-between; }
+        .jf-footer { flex: 0 0 calc(100% - var(--sidebar-width)); margin-right: var(--sidebar-width); }
+        @media screen and (max-width: 768px) { .jf-footer { flex-basis: 100%; margin-right: 0; } }
+        /* FAQ CHAT ASSISTANT */
+        .faq-chat { max-width: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; }
+        .faq-head { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.2rem; background: var(--sidebar-bg); border-bottom: 1px solid var(--card-border); }
+        .faq-head small { display: block; color: var(--text-muted); font-size: 0.78rem; }
+        .faq-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-color); color: #03121c; font-weight: 800; display: grid; place-items: center; flex: none; }
+        .faq-log { height: 460px; overflow-y: auto; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+        .faq-msg { max-width: 88%; padding: 0.7rem 0.95rem; border-radius: 12px; font-size: 0.92rem; line-height: 1.55; white-space: pre-line; overflow-wrap: anywhere; }
+        .faq-msg.bot { align-self: flex-start; background: #0b1120; border: 1px solid var(--card-border); }
+        .faq-msg.user { align-self: flex-end; background: var(--accent-color); color: #03121c; }
+        .faq-msg.typing { color: var(--text-muted); font-style: italic; }
+        .faq-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; white-space: normal; }
+        .faq-links a { color: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.8rem; font-weight: 600; text-decoration: none; }
+        .faq-links a:hover { background: var(--accent-glow); }
+        .faq-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; padding: 0.9rem 1.2rem; border-top: 1px solid var(--card-border); }
+        .faq-chip { display: flex; align-items: center; width: 100%; text-align: left; background: transparent; color: var(--text-color); border: 1px solid var(--card-border); border-radius: 10px; padding: 0.6rem 0.85rem; font-size: 0.85rem; line-height: 1.35; cursor: pointer; }
+        .faq-chip:hover { border-color: var(--accent-color); color: var(--accent-color); }
+        .faq-form { display: flex; gap: 0.6rem; padding: 0.9rem 1.2rem; border-top: 1px solid var(--card-border); }
+        .faq-form input { flex: 1; min-width: 0; background: #0b1120; color: var(--text-color); border: 1px solid var(--card-border); border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 1rem; }
+        .faq-form input:focus-visible, .faq-chip:focus-visible, .faq-links a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+        @media (max-width: 768px) { .faq-log { height: 300px; padding: 1rem; } .faq-msg { max-width: 94%; } .faq-chips { padding: 0.8rem 1rem; gap: 0.5rem; } .faq-chip { font-size: 0.8rem; padding: 0.55rem 0.7rem; } }
+        .lang-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.55rem 1rem; border-bottom: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.8rem; }
+        .lang-switch { display: inline-flex; border: 1px solid var(--card-border); border-radius: 999px; overflow: hidden; }
+        .lang-btn { background: transparent; color: var(--text-muted); border: 0; padding: 0.35rem 0.95rem; font-size: 0.8rem; font-weight: 700; font-family: inherit; cursor: pointer; }
+        .lang-btn:hover { color: var(--text-color); }
+        .lang-btn[aria-pressed="true"] { background: var(--accent-color); color: #04121c; }
+        .lang-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: -2px; }
+        .faq-lead { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: -0.8rem 0 1.6rem; max-width: 640px; }
+        .faq-form .btn { white-space: nowrap; }
+        .faq-form .btn[disabled] { opacity: 0.6; cursor: wait; transform: none; box-shadow: none; }
+        .faq-handoff { margin-top: 1.2rem; width: min(420px, 100%); display: grid; gap: 0.6rem; color: var(--text-muted); font-size: 0.9rem; }
+        .handoff-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+        .faq-handoff a { color: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 999px; padding: 0.5rem 0.9rem; font-size: 0.85rem; font-weight: 600; text-decoration: none; text-align: center; }
+        .faq-handoff a:hover { background: var(--accent-glow); }
+        .faq-handoff .handoff-call { justify-self: center; background: var(--accent-color); border-color: var(--accent-color); color: #04121c; padding: 0.55rem 1.4rem; }
+        .faq-handoff .handoff-call:hover { background: #7dd3fc; }
+    </style>
+</head>
+<body>
+    <!-- MOBILE TOP HEADER BAR -->
+    <header class="mobile-header" id="mobileHeader">
+        <a href="index.html#about" class="mobile-brand">
+            <img src="Images/logo.png" alt="JMCY Logo">
+            <span>JMCY WEB SOLUTIONS</span>
+        </a>
+        <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+            ☰
+        </button>
+    </header>
+
+    <!-- RIGHT SIDEBAR PANEL -->
+    <aside id="sidebarNav">
+        <div class="brand">
+            <img src="Images/logo.png" alt="JMCY Logo" class="brand-logo">
+            <div>
+                <h1>JMCY</h1>
+                <p>WEB SOLUTIONS</p>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html#about" onclick="closeMobileMenu()">About</a></li>
+                <li><a href="index.html#tech" onclick="closeMobileMenu()">Tech Stack</a></li>
+                <li><a href="index.html#services" onclick="closeMobileMenu()">Services</a></li>
+                <li><a href="index.html#packages" onclick="closeMobileMenu()">Packages</a></li>
+                <li><a href="index.html#systems" onclick="closeMobileMenu()">Systems</a></li>
+                <li><a href="index.html#projects" onclick="closeMobileMenu()">Projects</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#calculator" onclick="closeMobileMenu()">Estimator</a></li>
+                <li><a href="index.html#contact" onclick="closeMobileMenu()">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- SOCIAL MEDIA LINKS -->
+        <div class="social-nav">
+            <span>Connect With Us</span>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/1F1MPHFTPg/" target="_blank" class="social-btn facebook" title="Facebook Page">
+                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/jmcy.websolutions" target="_blank" class="social-btn instagram" title="Instagram (jmcy.websolutions)">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer" class="social-btn messenger" title="Messenger (jmcyweb)">
+                    <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.302 2.246.466 3.443.466 6.627 0 12-4.975 12-11.113C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.125 3.26 5.893-3.26-6.559 6.96z"/></svg>
+                </a>
+                <a href="https://wa.me/639091297422" target="_blank" class="social-btn whatsapp" title="WhatsApp (0909 129 7422)">
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <p><a href="index.html">www.jmcywebsolutions.com</a></p>
+            <p><a href="about-me.html" class="github-link">
+                Learn More About Us &rarr;
+            </a></p>
+            <p style="margin-top:0.4rem;">&copy; <span id="year">2026</span> JMCY Web Solutions.</p>
+        </div>
+    </aside>
+    <main>
+        <a href="index.html" class="btn-return">&#8592; Back to main site</a>
+        <section id="faq-chatbot" style="margin-bottom:2rem;">
+            <h2 class="section-title" data-t="title">Frequently Asked Questions</h2>
+            <p class="faq-lead" data-t="lead">Ask our assistant about prices, payment, and how we work. For anything else, message us and our team will reply personally.</p>
+            <div class="faq-chat" role="region" aria-label="FAQ assistant">
+                <div class="faq-head">
+                    <span class="faq-avatar" aria-hidden="true">J</span>
+                    <div><strong>JMCY Assistant</strong><small id="faqSub" data-t="sub">Automated answers to common questions</small></div>
+                </div>
+                <div class="lang-bar"><span data-t="langLabel">Language</span><div class="lang-switch" role="group" aria-label="Language"><button type="button" class="lang-btn" data-lang="en" aria-pressed="true">English</button><button type="button" class="lang-btn" data-lang="tl" aria-pressed="false">Tagalog</button></div></div>
+                <div class="faq-log" id="faqLog" role="log" aria-live="polite" aria-label="Chat messages"></div>
+                <div class="faq-chips" id="faqChips"></div>
+                <form class="faq-form" id="faqForm" autocomplete="off">
+                    <input type="text" id="faqInput" placeholder="Type your question..." aria-label="Type your question" maxlength="200" data-t-placeholder="placeholder">
+                    <button type="submit" class="btn" id="faqSend" data-t="send">Send</button>
+                </form>
+            </div>
+            <div class="faq-handoff">
+                <span data-t="handoff">Prefer to talk to a person?</span>
+                <div class="handoff-grid">
+                    <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer">Messenger</a>
+                    <a href="https://wa.me/639091297422" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                </div>
+                <a href="tel:+639091297422" class="handoff-call" data-t="call">Call +63 909 129 7422</a>
+            </div>
+        </section>
+
+        <a href="index.html" class="btn-return">&#8592; Back to main site</a>
+    </main>
+    <footer class="jf-footer">
+    <div class="jf-wrap">
+        <div class="jf-grid">
+            <div>
+                <a class="jf-brand" href="index.html"><img src="Images/logo.png" alt="" onerror="this.style.display='none'"> JMCY Web Solutions</a>
+                <p class="jf-about">Affordable websites and business systems for Philippine businesses.</p>
+                <div class="jf-social">
+                    <a href="https://www.facebook.com/share/1F1MPHFTPg/" target="_blank" rel="noopener" aria-label="Facebook Page" title="Facebook Page"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="https://www.instagram.com/jmcy.websolutions" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    <a href="https://m.me/jmcyweb" target="_blank" rel="noopener" aria-label="Messenger" title="Messenger"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.302 2.246.466 3.443.466 6.627 0 12-4.975 12-11.113C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.125 3.26 5.893-3.26-6.559 6.96z"/></svg></a>
+                    <a href="https://wa.me/639091297422" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+                </div>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul class="jf-contact">
+                    <li><small>Email</small><a href="mailto:jhamcyd@gmail.com">jhamcyd@gmail.com</a></li>
+                    <li><small>WhatsApp</small><a href="https://wa.me/639091297422" target="_blank" rel="noopener">+63 909 129 7422</a></li>
+                    <li><small>Messenger</small><a href="https://m.me/jmcyweb" target="_blank" rel="noopener">m.me/jmcyweb</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="jf-bottom">&copy; <span id="year2">2026</span> JMCY Web Solutions. Websites &amp; Business Systems for Philippine Businesses.</div>
+    </div>
+</footer>
+    <script>
+        function toggleMobileMenu() { const s = document.getElementById('sidebarNav'); s.classList.toggle('open'); s.classList.remove('nav-hidden'); }
+        function closeMobileMenu() { const s = document.getElementById('sidebarNav'); if (window.innerWidth <= 768) s.classList.remove('open'); }
+        let lastScrollTop = 0;
+        const mobileHeader = document.getElementById('mobileHeader');
+        const sidebarNav = document.getElementById('sidebarNav');
+        function handleMobileScroll() {
+            if (window.innerWidth > 768) return;
+            const cur = window.pageYOffset || document.documentElement.scrollTop;
+            if (cur > lastScrollTop && cur > 60) { sidebarNav.classList.remove('open'); mobileHeader.classList.add('nav-hidden'); sidebarNav.classList.add('nav-hidden'); }
+            else { mobileHeader.classList.remove('nav-hidden'); sidebarNav.classList.remove('nav-hidden'); }
+            lastScrollTop = cur <= 0 ? 0 : cur;
+        }
+        window.addEventListener('scroll', handleMobileScroll);
+        window.addEventListener('touchmove', handleMobileScroll);
+        document.getElementById('year').textContent = new Date().getFullYear(); document.getElementById('year2').textContent = new Date().getFullYear();
+    </script>
+    <script>
+    /* FAQ CHATBOT. Answers come from the FAQ list below (same list as the FAQ on the home page).
+       OPTIONAL AI MODE: paste the URL of your own serverless function in AI_ENDPOINT (for example a Supabase Edge
+       Function that calls an AI API with your key kept private). The page sends
+         POST { "question": "...", "history": [ { "role": "user|assistant", "content": "..." } ] }
+       and expects  { "reply": "text", "links": [ ["Label", "https://..."] ] }.
+       If AI_ENDPOINT is empty, or the request fails, the chatbot answers from the FAQ list. */
+    (function () {
+        var AI_ENDPOINT = "";
+        var MSG = "https://m.me/jmcyweb", WA = "https://wa.me/639091297422";
+        var FAQ = [
+            { id: "cost", chip: 1, q: "How much does it cost?", k: ["pricing"], g: ["how much", "price", "prices", "cost", "rate", "rates", "fee", "magkano", "presyo", "hm"],
+              a: "Here is a quick price guide:\n• Business website: ₱15,000 one-time\n• Payroll System (Windows software): ₱20,000 one-time license\n• Custom online system (ERP): custom quote, negotiable after we talk about your needs\n\nOptional website add-ons: Local SEO ₱3,500 one-time, Website Maintenance ₱1,500/month, Google Ads management ₱4,500/month.",
+              l: [["Get a price estimate", "#calculator"]] },
+            { id: "own", chip: 1, q: "Do I own my website?", k: ["own", "ownership", "source code", "copyright"], g: ["mine"],
+              a: "The website package includes the complete source code, and your domain is registered with your own registrar account, so you keep full ownership of your domain.",
+              l: [] },
+            { id: "website", chip: 1, q: "What is included in a website?", k: ["website", "site", "landing", "package", "included", "include"], g: ["web"],
+              a: "The business website is ₱15,000 one-time. We research your business needs and create a custom website from scratch using HTML, CSS, and JavaScript rather than simply replacing the text and logos in a pre-made WordPress, Wix, or Canva template. It includes custom branding, a mobile-friendly design, a booking or contact form sent to your email, free hosting on GitHub (no monthly server fees), launch on your domain, and 14 days of support.\n\nDomain registration (about ₱800–₱1,500 per year) is paid directly to your registrar.",
+              l: [["See website pricing", "#packages"], ["See our work", "#projects"]] },
+            { id: "process", chip: 1, q: "How does it work?", k: ["process", "down payment", "downpayment", "deposit", "steps", "how it works", "how does it work", "balance", "timeline", "how long", "approval"], g: ["start", "begin"],
+              a: "1. Approval: you confirm your package and any add-ons.\n2. Down payment: 50% starts the work (₱7,500 on the core website).\n3. Content handover: you send your logo, verified service and price list, photos, and contact details.\n\nThe balance is paid on final approval, before we go live on your domain. We confirm the schedule in your proposal.",
+              l: [["Get a price estimate", "#calculator"]] },
+            { id: "payment", q: "How can I pay?", k: ["gcash", "payment", "payments", "bank", "card", "qr", "installment"], g: ["pay"],
+              a: "The Payroll System license can be paid by GCash, QR Ph, or card on the payment page. For websites and online systems, message us and we will confirm the payment options with you.",
+              l: [["Payroll payment page", "payment.html"], ["Messenger", MSG]] },
+            { id: "hosting", q: "How does hosting and domain work?", k: ["hosting", "host", "domain", "github", "server", "namecheap", "godaddy"], g: ["free", "monthly"],
+              a: "Your website is hosted for free on GitHub, so there are no monthly server fees. You only pay for your domain (about ₱800–₱1,500 per year) directly to your registrar, such as Namecheap or GoDaddy.",
+              l: [] },
+            { id: "online", chip: 1, q: "What is an online system (ERP)?", k: ["erp", "online system", "supabase", "cloud", "database", "portal", "login", "negotiable", "custom quote", "online"], g: ["system", "admin", "custom", "staff"],
+              a: "An online system is built around how your business works: staff logins, a secure online database, and an admin panel for inventory, orders, customers, or employee records.\n\nBecause every business needs something different, there is no fixed price. We talk about your needs first, then send a quote that you can negotiate.",
+              l: [["Request a custom quote", "#contact"], ["Live example: JMP International", "https://www.jmp-international.com"]] },
+            { id: "payroll", chip: 1, q: "Tell me about the Payroll System", k: ["payroll", "payslip", "payslips", "sss", "philhealth", "pag-ibig", "pagibig", "bir", "attendance", "salary", "loans"], g: ["employees", "overtime"],
+              a: "The JMCY PH Payroll System is a Windows app you install on your own PC. It handles attendance, semi-monthly payroll, SSS, PhilHealth, Pag-IBIG and BIR tax, loans, and payslips.\n\nIt is a one-time ₱20,000 license with no subscription. It works offline and your data stays on your PC. You can pay by GCash, QR Ph, or card.",
+              l: [["See details", "#systems"], ["Buy license", "payment.html"]] },
+            { id: "trial", chip: 1, q: "Is there a free trial?", k: ["trial", "try", "demo", "demos", "sample", "samples"], g: ["free"],
+              a: "Yes. The Payroll System has a 30-day free trial, and no license key is needed to try it. You can download it from the Business Systems section. If Windows shows a security warning, choose \"More info\", then \"Run anyway\".\n\nFor websites, you can browse our demo samples in the portfolio.",
+              l: [["Download the trial", "#systems"], ["Demo samples", "portfolio.html"]] },
+            { id: "inventory", q: "What about the Inventory System?", k: ["inventory", "stock", "warehouse"], g: [],
+              a: "The JMCY Internal Inventory System is still in development. It is planned as an offline Windows app with a one-time license and unlimited users. Details and pricing will follow closer to release. Message us if you would like to hear when it is ready.",
+              l: [["Ask about it", "#contact"]] },
+            { id: "cancel", q: "Can I cancel the monthly maintenance?", k: ["cancel", "stop", "terminate", "discontinue", "unsubscribe", "quit", "end maintenance", "stop maintenance"], g: ["maintenance", "monthly", "lock-in", "subscription", "refund"],
+              a: "Yes, you can cancel or stop the monthly Website Maintenance plan at any time; there is no lock-in. If your monthly maintenance date has already started, you will need to pay for that last month. After that, the service stops.",
+              l: [["Message us", MSG]] },
+            { id: "updates", q: "Can you update my website later?", k: ["maintenance", "update", "updates", "changes", "edit", "revision", "revisions", "support", "after"], g: ["change"],
+              a: "After launch you get 14 days of support. After that, the optional Website Maintenance plan is ₱1,500 per month with no lock-in: up to 3 updates a month (text, prices, menu, or hours) plus monthly checkups.",
+              l: [["See add-ons", "#packages"]] },
+            { id: "seo", q: "Can you help customers find me on Google?", k: ["seo", "google", "ads", "ad", "ranking", "found", "search", "advertising"], g: [],
+              a: "Yes, with two optional add-ons. Local SEO Setup is ₱3,500 one-time (search-friendly titles and headings, and your site submitted to Google). Google Ads management is ₱4,500 per month, and your ad budget is paid separately to Google.",
+              l: [["See add-ons", "#packages"]] },
+            { id: "about", q: "Who is behind JMCY?", k: ["who", "james", "founder", "company", "about", "owner", "ceo"], g: [],
+              a: "JMCY Web Solutions was founded by James Del Rosario. We build business websites and business systems for small and growing businesses in the Philippines.",
+              l: [["About us", "about-me.html"], ["See our work", "#projects"]] },
+            { id: "contact", chip: 1, q: "How can I contact you?", k: ["contact", "message", "email", "phone", "call", "whatsapp", "messenger", "viber", "reach", "talk", "human", "person", "number"], g: ["chat"],
+              a: "You can reach JMCY Web Solutions on Messenger or WhatsApp (+63 909 129 7422), by email at jhamcyd@gmail.com, or with the contact form on this page.",
+              l: [["Messenger", MSG], ["WhatsApp", WA], ["Contact form", "#contact"]] },
+            { id: "thanks", q: "", k: ["thanks", "thank", "salamat"], g: [],
+              a: "You're welcome! If you would like to get started, message us anytime.", l: [["Messenger", MSG]] },
+            { id: "hello", q: "", k: [], g: ["hi", "hello", "hey", "kumusta", "good", "morning", "afternoon", "evening"],
+              a: "Hi! I can answer questions about our prices, how we work, the Payroll System, and online systems. Pick a question below or type your own.", l: [] }
+        ];
+        var FALLBACK = { a: "I'm not sure about that one. Try one of the questions below, or message JMCY Web Solutions directly and we will reply.", l: [["Messenger", MSG], ["WhatsApp", WA], ["Contact form", "#contact"]] };
+
+        function tokens(t) { return t.toLowerCase().replace(/[^a-z0-9\s'-]/g, " ").split(/\s+/).filter(Boolean); }
+        function has(text, tk, kw) {
+            if (kw.indexOf(" ") > -1) return text.indexOf(kw) > -1;
+            return tk.some(function (w) { return w === kw || (kw.length >= 5 && w.indexOf(kw) === 0); });
+        }
+        window.faqMatch = function (input) {
+            var text = input.toLowerCase(), tk = tokens(input), best = null, top = 0;
+            FAQ.forEach(function (e) {
+                var sc = 0;
+                e.k.forEach(function (kw) { if (has(text, tk, kw)) sc += 2; });
+                e.g.forEach(function (kw) { if (has(text, tk, kw)) sc += 1; });
+                if (sc > top) { top = sc; best = e; }
+            });
+            return best;
+        };
+
+
+        /* ENGLISH / TAGALOG: Tagalog questions and answers, extra Tagalog keywords, and interface text */
+        var TL = {"cost": {"q": "Magkano ang presyo?", "a": "Narito ang mabilis na gabay sa presyo:\n• Business website: ₱15,000 isang beses na bayad\n• Payroll System (Windows software): ₱20,000 isang beses na lisensya\n• Custom online system (ERP): custom na quote, pwedeng pag-usapan at tawaran pagkatapos nating pag-usapan ang inyong pangangailangan\n\nMga opsyonal na add-on sa website: Local SEO ₱3,500 isang beses, Website Maintenance ₱1,500 kada buwan, Google Ads management ₱4,500 kada buwan.", "l": ["Kumuha ng price estimate"]}, "own": {"q": "Akin ba ang website ko?", "a": "Kasama sa website package ang kumpletong source code, at ang inyong domain ay nakarehistro sa sarili ninyong account sa registrar, kaya buo ang inyong pagmamay-ari ng domain.", "l": []}, "website": {"q": "Ano ang kasama sa website?", "a": "Ang business website ay ₱15,000 isang beses na bayad. Pinag-aaralan namin ang pangangailangan ng inyong negosyo at gumagawa kami ng custom na website mula sa simula gamit ang HTML, CSS, at JavaScript, hindi lang pagpapalit ng teksto at logo sa ready-made na WordPress, Wix, o Canva template. Kasama rito ang custom branding, mobile-friendly na disenyo, booking o contact form na ipinapadala sa inyong email, libreng hosting sa GitHub (walang buwanang bayad sa server), paglulunsad sa inyong domain, at 14 na araw na suporta.\n\nAng pagpaparehistro ng domain (humigit-kumulang ₱800–₱1,500 kada taon) ay direktang binabayaran sa inyong registrar.", "l": ["Tingnan ang presyo ng website", "Tingnan ang aming mga gawa"]}, "process": {"q": "Paano ito gumagana?", "a": "1. Pag-apruba: kinukumpirma ninyo ang inyong package at anumang add-on.\n2. Down payment: 50% ang paunang bayad para masimulan ang trabaho (₱7,500 sa core website).\n3. Pagpapasa ng content: ibibigay ninyo ang inyong logo, na-verify na listahan ng serbisyo at presyo, mga larawan, at contact details.\n\nAng balanse ay babayaran sa final na pag-apruba, bago kami mag-live sa inyong domain. Kukumpirmahin namin ang iskedyul sa inyong proposal.", "l": ["Kumuha ng price estimate"]}, "payment": {"q": "Paano ako magbabayad?", "a": "Ang lisensya ng Payroll System ay pwedeng bayaran sa pamamagitan ng GCash, QR Ph, o card sa payment page. Para sa mga website at online system, mag-message lang sa amin at kukumpirmahin namin ang mga paraan ng pagbabayad.", "l": ["Payment page ng Payroll", "Messenger"]}, "hosting": {"q": "Paano gumagana ang hosting at domain?", "a": "Libre ang hosting ng inyong website sa GitHub, kaya walang buwanang bayad sa server. Ang babayaran lang ninyo ay ang domain (humigit-kumulang ₱800–₱1,500 kada taon) nang direkta sa inyong registrar, tulad ng Namecheap o GoDaddy.", "l": []}, "online": {"q": "Ano ang online system (ERP)?", "a": "Ang online system ay ginagawa ayon sa takbo ng inyong negosyo: login para sa staff, ligtas na online database, at admin panel para sa inventory, orders, customers, o talaan ng mga empleyado.\n\nDahil iba-iba ang pangangailangan ng bawat negosyo, walang nakapirming presyo. Pag-uusapan muna natin ang inyong pangangailangan, saka kami magpapadala ng quote na pwede ninyong tawaran.", "l": ["Humingi ng custom quote", "Live na halimbawa: JMP International"]}, "payroll": {"q": "Ano ang Payroll System?", "a": "Ang JMCY PH Payroll System ay Windows app na ini-install ninyo sa sarili ninyong PC. Kaya nitong asikasuhin ang attendance, semi-monthly na payroll, SSS, PhilHealth, Pag-IBIG at BIR tax, mga loan, at payslip.\n\nIsang beses na lisensya na ₱20,000 lang, walang subscription. Gumagana ito offline at nasa inyong PC ang inyong data. Pwede kayong magbayad sa GCash, QR Ph, o card.", "l": ["Tingnan ang detalye", "Bilhin ang lisensya"]}, "trial": {"q": "May libreng trial ba?", "a": "Opo. Ang Payroll System ay may 30 araw na libreng trial, at hindi kailangan ng license key para subukan ito. Pwede ninyo itong i-download sa seksyong Business Systems. Kapag nagpakita ang Windows ng security warning, piliin ang \"More info\", saka \"Run anyway\".\n\nPara sa mga website, pwede ninyong tingnan ang aming mga demo sample sa portfolio.", "l": ["I-download ang trial", "Mga demo sample"]}, "inventory": {"q": "Ano ang Inventory System?", "a": "Ang JMCY Internal Inventory System ay ginagawa pa lamang. Plano itong maging offline na Windows app na may isang beses na lisensya at walang limitasyon sa bilang ng users. Ibibigay namin ang detalye at presyo paglapit ng release. Mag-message sa amin kung gusto ninyong malaman kapag handa na ito.", "l": ["Magtanong tungkol dito"]}, "updates": {"q": "Pwede ba ninyong i-update ang website ko?", "a": "Pagkatapos ng launch, may 14 na araw kayong suporta. Pagkatapos nito, ang opsyonal na Website Maintenance plan ay ₱1,500 kada buwan na walang lock-in: hanggang 3 update kada buwan (teksto, presyo, menu, o oras) at buwanang checkup.", "l": ["Tingnan ang mga add-on"]}, "seo": {"q": "Matutulungan ba ninyo akong mahanap sa Google?", "a": "Opo, sa pamamagitan ng dalawang opsyonal na add-on. Ang Local SEO Setup ay ₱3,500 isang beses (mga pamagat at heading na madaling mahanap sa search, at isinumite ang inyong site sa Google). Ang Google Ads management ay ₱4,500 kada buwan, at hiwalay na binabayaran sa Google ang inyong ad budget.", "l": ["Tingnan ang mga add-on"]}, "about": {"q": "Sino ang nasa likod ng JMCY?", "a": "Ang JMCY Web Solutions ay itinatag ni James Del Rosario. Gumagawa kami ng business website at business system para sa maliliit at lumalaking negosyo sa Pilipinas.", "l": ["Tungkol sa amin", "Tingnan ang aming mga gawa"]}, "contact": {"q": "Paano ko kayo makokontak?", "a": "Maaari ninyong makontak ang JMCY Web Solutions sa Messenger o WhatsApp (+63 909 129 7422), sa email na jhamcyd@gmail.com, o gamit ang contact form sa aming website.", "l": ["Messenger", "WhatsApp", "Contact form"]}, "thanks": {"q": "", "a": "Walang anuman po! Kung gusto ninyong magsimula, mag-message lang sa amin anumang oras.", "l": ["Messenger"]}, "hello": {"q": "", "a": "Kumusta po! Masasagot ko ang mga tanong tungkol sa aming presyo, kung paano kami gumagana, sa Payroll System, at sa mga online system. Pumili ng tanong sa ibaba o i-type ang sarili ninyong tanong.", "l": []}, "fallback": {"q": "", "a": "Pasensya na po, hindi ako sigurado sa sagot diyan. Subukan ang isa sa mga tanong sa ibaba, o direktang mag-message sa JMCY Web Solutions at sasagutin namin kayo.", "l": ["Messenger", "WhatsApp", "Contact form"]}, "cancel": {"q": "Pwede ko bang ihinto ang monthly maintenance?", "a": "Opo, pwede ninyong kanselahin o ihinto ang buwanang Website Maintenance anumang oras; walang lock-in. Kung nagsimula na ang buwanang petsa ng inyong maintenance, kailangan ninyong bayaran ang huling buwang iyon. Pagkatapos nito, titigil na ang serbisyo.", "l": ["Mag-message sa amin"]}};
+        var EXTRA = {"cost": {"k": ["halaga", "singil", "bayarin", "gastos"]}, "own": {"k": ["pagmamay-ari", "pag-aari", "akin ba"]}, "website": {"k": ["kasama", "laman", "nilalaman"]}, "process": {"k": ["proseso", "hakbang", "paunang bayad", "gaano katagal", "paano gumagana"]}, "payment": {"k": ["magbayad", "bayaran", "pambayad", "bayad"]}, "hosting": {"k": ["buwanan", "buwan-buwan"]}, "online": {"k": ["sistema"]}, "payroll": {"k": ["sahod", "suweldo", "sweldo"]}, "trial": {"k": ["subukan", "subok", "libreng"]}, "inventory": {"k": ["imbentaryo"]}, "updates": {"k": ["baguhin", "pagbabago", "palitan", "i-update"]}, "seo": {"k": ["mahanap", "hanapin", "makita"]}, "about": {"k": ["sino", "may-ari", "nagtatag"]}, "contact": {"k": ["kontak", "makipag-ugnayan", "tawagan", "tawag", "numero", "mensahe"]}, "thanks": {"k": ["maraming salamat"]}, "hello": {"g": ["magandang"]}, "cancel": {"k": ["kanselahin", "i-cancel", "kansela", "ihinto", "itigil", "tigil", "huminto", "hihinto", "magkansela"], "g": ["buwanan", "buwan-buwan"]}};
+        var UI = {"en": {"sub": "Automated answers to common questions", "subAI": "AI-assisted answers about JMCY Web Solutions", "placeholder": "Type your question...", "send": "Send", "handoff": "Prefer to talk to a person?", "call": "Call +63 909 129 7422", "close": "Close chat", "typing": "Typing...", "langLabel": "Language", "switched": "Sure! I'll reply in English. Pick a question below or type your own.", "title": "Frequently Asked Questions", "lead": "Ask our assistant about prices, payment, and how we work. For anything else, message us and our team will reply personally."}, "tl": {"sub": "Awtomatikong sagot sa mga karaniwang tanong", "subAI": "May tulong ng AI ang mga sagot tungkol sa JMCY Web Solutions", "placeholder": "I-type ang inyong tanong...", "send": "Ipadala", "handoff": "Mas gusto bang makausap ang tao?", "call": "Tawagan ang +63 909 129 7422", "close": "Isara ang chat", "typing": "Nagta-type...", "langLabel": "Wika", "switched": "Sige po! Tagalog na ang gagamitin ko sa pagsagot. Pumili ng tanong sa ibaba o i-type ang inyong tanong.", "title": "Mga Madalas na Itanong", "lead": "Magtanong sa aming assistant tungkol sa presyo, bayad, at kung paano kami gumagana. Para sa iba pang tanong, mag-message sa amin at personal kayong sasagutin ng aming team."}};
+        FAQ.forEach(function (e) {
+            var x = EXTRA[e.id]; if (!x) return;
+            (x.k || []).forEach(function (kw) { e.k.push(kw); });
+            (x.g || []).forEach(function (kw) { e.g.push(kw); });
+        });
+        var lang = "en";
+        try { if (localStorage.getItem("jmcyChatLang") === "tl") lang = "tl"; } catch (err) {}
+        function T(key) { return UI[lang][key]; }
+        function qText(e) { return lang === "tl" && TL[e.id] ? TL[e.id].q : e.q; }
+        function pick(e) {
+            if (lang !== "tl" || !TL[e.id]) return e;
+            var t = TL[e.id];
+            return { a: t.a, l: (e.l || []).map(function (x, i) { return [(t.l && t.l[i]) || x[0], x[1]]; }) };
+        }
+        function fallback() { return pick({ id: "fallback", a: FALLBACK.a, l: FALLBACK.l }); }
+        function applyText(root) {
+            Array.prototype.forEach.call(root.querySelectorAll("[data-t]"), function (el) { el.textContent = T(el.getAttribute("data-t")); });
+            Array.prototype.forEach.call(root.querySelectorAll("[data-t-placeholder]"), function (el) { el.placeholder = T(el.getAttribute("data-t-placeholder")); });
+            Array.prototype.forEach.call(root.querySelectorAll("[data-t-aria]"), function (el) { el.setAttribute("aria-label", T(el.getAttribute("data-t-aria"))); });
+            Array.prototype.forEach.call(root.querySelectorAll(".lang-btn"), function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false"); });
+        }
+        function chosenQuestions() {
+            return FAQ.filter(function (e) { return e.q; }).map(function (e) { return { e: e, t: qText(e) }; })
+                .sort(function (a, b) { return a.t.length - b.t.length; });
+        }
+
+        var log = document.getElementById("faqLog");
+        var chips = document.getElementById("faqChips"), form = document.getElementById("faqForm"), input = document.getElementById("faqInput"), sendBtn = document.getElementById("faqSend");
+        var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var history = [];
+        var root = document.getElementById("faq-chatbot");
+
+        function fixHref(h) { return h.charAt(0) === "#" ? "index.html" + h : h; }
+        function add(text, who, links) {
+            var m = document.createElement("div");
+            m.className = "faq-msg " + who;
+            m.textContent = text;
+            if (links && links.length) {
+                var w = document.createElement("div");
+                w.className = "faq-links";
+                links.forEach(function (x) {
+                    var a = document.createElement("a");
+                    a.textContent = x[0]; a.href = fixHref(x[1]);
+                    if (/^https?:/.test(x[1])) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+                    w.appendChild(a);
+                });
+                m.appendChild(w);
+            }
+            log.appendChild(m);
+            log.scrollTop = log.scrollHeight;
+            return m;
+        }
+        function answer(text, local) {
+            if (!AI_ENDPOINT) return Promise.resolve(local);
+            var ctl = window.AbortController ? new AbortController() : null;
+            var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 12000);
+            return fetch(AI_ENDPOINT, {
+                method: "POST", headers: { "Content-Type": "application/json" }, signal: ctl ? ctl.signal : undefined,
+                body: JSON.stringify({ question: text, language: lang === "tl" ? "Tagalog" : "English", history: history.slice(-6) })
+            }).then(function (r) { if (!r.ok) throw 0; return r.json(); })
+              .then(function (d) { clearTimeout(timer); if (!d || !d.reply) throw 0; return { a: String(d.reply), l: Array.isArray(d.links) ? d.links : [] }; })
+              .catch(function () { clearTimeout(timer); return local; });
+        }
+        function ask(text, preset) {
+            add(text, "user");
+            var hit = preset || window.faqMatch(text);
+            var local = hit ? pick(hit) : fallback();
+            var wait = add(T("typing"), "bot typing");
+            sendBtn.disabled = true;
+            var started = Date.now();
+            answer(text, local).then(function (e) {
+                var delay = calm ? 0 : Math.max(0, 450 - (Date.now() - started));
+                setTimeout(function () {
+                    wait.remove(); add(e.a, "bot", e.l);
+                    history.push({ role: "user", content: text }, { role: "assistant", content: e.a });
+                    sendBtn.disabled = false;
+                }, delay);
+            });
+        }
+
+        function buildChips() {
+            chips.innerHTML = "";
+            chosenQuestions().forEach(function (item) {
+                var b = document.createElement("button");
+                b.type = "button"; b.className = "faq-chip"; b.textContent = item.t;
+                b.addEventListener("click", function () { if (!sendBtn.disabled) ask(item.t, item.e); });
+                chips.appendChild(b);
+            });
+        }
+        function refreshText() {
+            applyText(root);
+            if (AI_ENDPOINT) document.getElementById("faqSub").textContent = T("subAI");
+        }
+        Array.prototype.forEach.call(root.querySelectorAll(".lang-btn"), function (btn) {
+            btn.addEventListener("click", function () {
+                var next = btn.getAttribute("data-lang");
+                if (next === lang) return;
+                lang = next;
+                try { localStorage.setItem("jmcyChatLang", lang); } catch (err) {}
+                refreshText(); buildChips();
+                add(T("switched"), "bot");
+            });
+        });
+        form.addEventListener("submit", function (ev) {
+            ev.preventDefault();
+            var text = input.value.trim();
+            if (!text || sendBtn.disabled) return;
+            input.value = "";
+            ask(text);
+        });
+        refreshText(); buildChips();
+        add(pick(FAQ[FAQ.length - 1]).a, "bot");
+    })();
+    </script>
+</body>
+</html>
