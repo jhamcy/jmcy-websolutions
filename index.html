@@ -671,6 +671,11 @@
             transform: scale(1.08);
         }
 
+        /* Full poster image inside a service card (shows the whole poster, no cropping) */
+        .card-image-wrap.is-poster { display: block; height: auto; background: var(--sidebar-bg); }
+        .card-image-wrap.is-poster .card-image { display: block; height: auto; object-fit: contain; }
+        .card:hover .card-image-wrap.is-poster .card-image { transform: none; }
+
         .card-body {
             padding: 1.8rem;
         }
@@ -1609,11 +1614,11 @@
         <!-- TWO SERVICE TYPES SECTION -->
         <section id="services" class="reveal">
             <h2 class="section-title">Two Ways We Can Build for You</h2>
-            <div class="grid">
+            <div class="grid" style="align-items:start;">
                 <div class="card reveal delay-1">
-                    <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" alt="Business website on a laptop" class="card-image">
-                    </div>
+                    <a href="Images/business-website-package.jpg" target="_blank" rel="noopener noreferrer" class="card-image-wrap is-poster" aria-label="View the One-Page Business Website Package poster full size">
+                        <img src="Images/business-website-package.jpg" alt="JMCY One-Page Business Website Package: &#8369;15,000 one-time payment, frontend website only, with product carousel, FAQ chatbot, photo gallery, testimonials, contact buttons, Basic SEO setup, and all accounts and code turned over after complete payment." width="1080" height="1350" loading="lazy" class="card-image">
+                    </a>
                     <div class="card-body">
                         <h3>1. Business Website</h3>
                         <p>Ideal for shops, salons, restaurants, and service businesses. We research your needs and create a custom, mobile-friendly website from scratch—not a pre-made template with swapped text and logos. Includes a booking or contact form. Fixed price from &#8369;15,000.</p>
