@@ -388,7 +388,7 @@
             border-radius: 16px;
             border: 1px solid var(--card-border);
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 2.5rem;
             align-items: center;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
@@ -441,21 +441,22 @@
         }
 
         .hero-image-wrap {
+            display: block;
             overflow: hidden;
             border-radius: 12px;
             border: 1px solid var(--card-border);
+            background: var(--sidebar-bg);
         }
 
         .hero-image-wrap img {
+            display: block;
             width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            height: auto;
+            object-fit: contain;
         }
 
-        .hero-image-wrap:hover img {
-            transform: scale(1.05);
-        }
+        .hero-image-wrap:hover { border-color: var(--accent-color); }
+        .hero-image-wrap:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
         .hero-stats {
             display: flex;
@@ -1395,15 +1396,15 @@
 
             .hero-image-wrap {
                 width: 100%;
-                max-width: 100%;
+                max-width: 440px;
                 margin: 1.5rem auto 0 auto;
             }
 
             .hero-image-wrap img {
                 width: 100%;
                 height: auto;
-                max-height: 220px;
-                object-fit: cover;
+                max-height: none;
+                object-fit: contain;
             }
 
             .hero-stats {
@@ -1605,9 +1606,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-image-wrap">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Business website shown on laptop and phone">
-                </div>
+                <a href="Images/hero-business-goals.jpg" target="_blank" rel="noopener noreferrer" class="hero-image-wrap" aria-label="View the JMCY poster full size">
+                    <img src="Images/hero-business-goals.jpg" alt="JMCY Web Solutions poster: Built for Your Business Goals. Compares pre-made templates, budget freelancers, and a JMCY custom build, with custom website development, online systems, and the JMCY PH Payroll System." width="1024" height="1900" fetchpriority="high">
+                </a>
             </div>
         </section>
 
