@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JMCY PH Payroll System | What's Included</title>
-<meta name="description" content="Explore the features included in JMCY PH Payroll System Version 1.1.4 for Philippine businesses.">
+<meta name="description" content="Explore the features included in JMCY PH Payroll System Version 1.1.6 for Philippine businesses: employee ID numbers, Excel attendance template with locked formulas, payroll, payslips, reports and backups.">
 <meta name="theme-color" content="#090d16">
 <link rel="icon" href="Images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -406,6 +406,14 @@
     .stats{grid-template-columns:1fr}
     .preview{padding:16px}
   }
+
+  /* Buttons and 4-step workflow (added for v1.1.6 page) */
+  .cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem}
+  .btn{display:inline-block;background:linear-gradient(135deg,#38bdf8 0%,#0284c7 100%);color:#fff;padding:.8rem 1.4rem;font-weight:700;font-size:.92rem;border-radius:8px;text-decoration:none;font-family:var(--body);transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(56,189,248,.4)}
+  .btn-outline{background:transparent;border:1px solid var(--line);color:var(--text)}
+  .btn-outline:hover{border-color:var(--text);box-shadow:none}
+  .workflow{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 </style>
 </head>
 <body>
@@ -432,14 +440,16 @@
 
         <nav>
             <ul>
-                <li><a href="index.html#about" onclick="closeMobileMenu()">About</a></li>
-                <li><a href="index.html#tech" onclick="closeMobileMenu()">Tech Stack</a></li>
+                <li><a href="index.html#about" onclick="closeMobileMenu()">Home</a></li>
                 <li><a href="index.html#services" onclick="closeMobileMenu()">Services</a></li>
-                <li><a href="index.html#packages" onclick="closeMobileMenu()">Packages</a></li>
-                <li><a href="index.html#systems" onclick="closeMobileMenu()">Systems</a></li>
-                <li><a href="index.html#projects" onclick="closeMobileMenu()">Projects</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="index.html#calculator" onclick="closeMobileMenu()">Estimator</a></li>
+                <li><a href="index.html#packages" onclick="closeMobileMenu()">Website Pricing</a></li>
+                <li><a href="index.html#systems" class="active" aria-current="page" onclick="closeMobileMenu()">Business Systems</a></li>
+                <li><a href="payment.html">Buy Payroll System</a></li>
+                <li><a href="index.html#projects" onclick="closeMobileMenu()">Our Work</a></li>
+                <li><a href="portfolio.html">Demo Samples</a></li>
+                <li><a href="index.html#calculator" onclick="closeMobileMenu()">Get a Quote</a></li>
+                <li><a href="index.html#tech" onclick="closeMobileMenu()">How We Build</a></li>
+                <li><a href="faq-chatbot.html">FAQ</a></li>
                 <li><a href="index.html#contact" onclick="closeMobileMenu()">Contact</a></li>
             </ul>
         </nav>
@@ -457,7 +467,7 @@
                 <a href="https://m.me/jmcyweb" target="_blank" rel="noopener noreferrer" class="social-btn messenger" title="Messenger (jmcyweb)">
                     <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.302 2.246.466 3.443.466 6.627 0 12-4.975 12-11.113C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.125 3.26 5.893-3.26-6.559 6.96z"/></svg>
                 </a>
-                <a href="https://wa.me/639091297422" target="_blank" class="social-btn whatsapp" title="WhatsApp (0909 129 7422)">
+                <a href="https://wa.me/639453392349" target="_blank" class="social-btn whatsapp" title="WhatsApp (0945 339 2349)">
                     <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                 </a>
             </div>
@@ -475,9 +485,13 @@
   <a href="index.html" class="btn-return">&#8592; Back to main site</a>
 
     <section class="intro">
-      <div class="ver">JMCY Business Software, Version 1.1.4</div>
+      <div class="ver">JMCY Business Software, Version 1.1.6</div>
       <h1>JMCY PH Payroll System: what’s included</h1>
-      <p>A Windows desktop payroll application designed to help Philippine businesses organize employee information, attendance, payroll processing, payslips, and payroll reports in one place.</p>
+      <p>A Windows desktop payroll application that helps Philippine businesses handle employees, attendance, payroll, payslips and reports in one installed app. Your data stays on your own PC, and it is a one-time license with no subscription.</p>
+      <div class="cta">
+        <a class="btn" href="docs/JMCY-PH-Payroll-System-User-Guide.pdf" target="_blank" rel="noopener noreferrer">Download the User Guide (PDF)</a>
+        <a class="btn btn-outline" href="payment.html">Buy License &#8369;20,000</a>
+      </div>
     </section>
 
     <section class="figure" aria-label="Payroll system preview and included features">
@@ -485,14 +499,14 @@
         <div class="chrome"><i></i><i></i><i></i><span class="url">JMCY PH Payroll System</span></div>
         <div class="preview">
           <div class="preview-head"><div class="preview-brand">Payroll Overview</div><span class="tag">Product preview</span></div>
-          <div class="welcome"><small>Payroll workspace</small><h2>Payroll, organized.</h2><p>Keep key employee and payroll tasks together, from employee records and time entries to reviewing payroll outputs.</p></div>
+          <div class="welcome"><small>Payroll workspace</small><h2>Payroll, organized.</h2><p>Keep employee records, attendance and payroll together, from the Excel attendance template to printed payslips.</p></div>
           <div class="stats">
-            <div class="stat"><small>Employee records</small><strong>Employee management</strong></div>
-            <div class="stat"><small>Time &amp; attendance</small><strong>Time records</strong></div>
-            <div class="stat"><small>Pay period</small><strong>Cutoff processing</strong></div>
+            <div class="stat"><small>Employee records</small><strong>ID numbers &amp; pay rates</strong></div>
+            <div class="stat"><small>Time &amp; attendance</small><strong>Excel template &amp; upload</strong></div>
+            <div class="stat"><small>Pay period</small><strong>Two cutoffs a month</strong></div>
             <div class="stat"><small>Payroll outputs</small><strong>Payslips &amp; reports</strong></div>
             <div class="stat"><small>Contribution dashboard</small><strong>Quick government links</strong></div>
-            <div class="stat"><small>Useful shortcuts</small><strong>Contribution portals</strong></div>
+            <div class="stat"><small>Data safety</small><strong>Daily automatic backups</strong></div>
           </div>
           <div class="mini-title">Contribution links dashboard</div>
           <div class="chips" style="margin-bottom:18px">
@@ -504,10 +518,11 @@
           <div class="mini-title">Example payroll workflow</div>
           <div class="rows">
             <div class="row header"><span>Work area</span><span>What you do</span><span>Output</span></div>
-            <div class="row"><b>Employees</b><span>Maintain records</span><span>Profiles</span></div>
-            <div class="row"><b>Attendance</b><span>Review time</span><span>Hours</span></div>
-            <div class="row"><b>Payroll</b><span>Calculate &amp; check</span><span>Pay totals</span></div>
-            <div class="row"><b>Reports</b><span>Generate documents</span><span>Print / review</span></div>
+            <div class="row"><b>Employees</b><span>Add ID, rate, loans</span><span>Employee list</span></div>
+            <div class="row"><b>Attendance</b><span>Download &amp; upload template</span><span>Time records</span></div>
+            <div class="row"><b>Payroll</b><span>Compute, check, save</span><span>Payroll run</span></div>
+            <div class="row"><b>Payslips</b><span>Print 4 per page</span><span>Payslips</span></div>
+            <div class="row"><b>Reports</b><span>Export filing pack</span><span>Excel file</span></div>
           </div>
           <p class="preview-note">Illustrative layout only. This is not a live screenshot or live payroll data.</p>
         </div>
@@ -516,34 +531,38 @@
       <div class="side">
         <div>
           <h3>Core payroll tools</h3>
-          <div class="chips"><span class="chip"><i></i>Employees</span><span class="chip"><i></i>Attendance</span><span class="chip"><i></i>Payroll</span><span class="chip"><i></i>Payslips</span><span class="chip"><i></i>Reports</span><span class="chip"><i></i>Contribution links</span><span class="chip"><i></i>Settings</span></div>
+          <div class="chips"><span class="chip"><i></i>Employees</span><span class="chip"><i></i>Attendance</span><span class="chip"><i></i>Payroll</span><span class="chip"><i></i>Payslips</span><span class="chip"><i></i>Reports</span><span class="chip"><i></i>Company Info</span><span class="chip"><i></i>Backup &amp; Restore</span></div>
         </div>
 
         <div>
           <h3>Everything included</h3>
           <ul class="list">
-            <li><b>Employee Management:</b> Maintain employee profiles, employment details, and payroll-related settings.</li>
-            <li><b>Attendance &amp; Time Records:</b> Work with attendance entries and supported spreadsheet imports; calculate relevant time values such as overtime, tardiness, and undertime.</li>
-            <li><b>Payroll Processing:</b> Process selected cutoff periods with applicable pay, allowances, overtime, and deductions.</li>
-            <li><b>Government Contribution Support:</b> Configurable calculations for SSS, PhilHealth, Pag-IBIG/HDMF, and withholding-tax estimates.</li>
-            <li><b>Contribution Links Dashboard:</b> A dedicated dashboard area with quick links to relevant government contribution websites, making it easier to open the portals used for contribution-related tasks.</li>
-            <li><b>Employee Loans:</b> Maintain loan information and associated payroll deductions where configured.</li>
-            <li><b>Holiday &amp; Wage Settings:</b> Manage settings used by payroll calculations.</li>
-            <li><b>Payslips &amp; Reports:</b> Generate payroll-related documents for employee communication and recordkeeping.</li>
-            <li><b>Payroll History:</b> Review previous payroll runs and related records.</li>
-            <li><b>License Activation:</b> JMCY PH Payroll System license activation support.</li>
+            <li><b>Employee Management:</b> Employee ID numbers (the same as your biometric ID), position, pay type, government numbers, leave credits, loans, an optional minimum wage earner setting, and per-employee overrides for contributions and tax.</li>
+            <li><b>Excel Attendance Template:</b> Download a template for each cutoff with every employee and date already listed. Staff type only in the open cells, and the tardiness, undertime and overtime columns are locked formulas that let them check each record before uploading.</li>
+            <li><b>Biometric-Friendly Time Records:</b> Optional AM break, lunch and PM break punches are saved as a record. Uploads match employees by ID number first, then by name, and list any rows that could not be matched.</li>
+            <li><b>Daily Attendance Log:</b> View or correct any employee’s day, with automatic tardiness, undertime and overtime, rest-day handling, and leave and holiday statuses.</li>
+            <li><b>Payroll Processing:</b> Compute a semi-monthly cutoff, choose whether to apply government deductions and loan payments, review the results, then save the payroll run. Covers overtime, night differential, holiday and rest-day pay.</li>
+            <li><b>Government Contribution Support:</b> SSS, PhilHealth, Pag-IBIG/HDMF and withholding-tax estimates with configurable defaults.</li>
+            <li><b>Employee Loans:</b> SSS, Pag-IBIG and company loans are deducted automatically and move to a completed-loans report when paid off.</li>
+            <li><b>Holiday &amp; Wage Settings:</b> A holiday calendar, minimum-wage rate rules with effective dates, and your work schedule, grace period and overtime threshold.</li>
+            <li><b>Payslips:</b> Print four payslips per Letter-size page, showing the company details and each employee’s ID number.</li>
+            <li><b>Reports &amp; Excel Filing Pack:</b> An annual summary with 13th-month pay, a completed-loans report, and a one-click Excel pack with Annual Payroll, SSS, PhilHealth, Pag-IBIG and BIR Tax Summary sheets.</li>
+            <li><b>Backup &amp; Restore:</b> Automatic daily backups for the last 14 days, plus export and restore of your data file.</li>
+            <li><b>Trial &amp; License:</b> A 30-day free trial with no key needed, then a one-time license.</li>
+            <li><b>User Guide:</b> A 24-page PDF with screenshots of every screen and button.</li>
           </ul>
-          <p class="fine">Feature availability and exact behavior should be confirmed against the installed version and your business workflow before purchase.</p>
+          <p class="fine">Attendance upload and Excel export currently need an internet connection to load the spreadsheet library; everything else runs offline. Feature availability and exact behavior should be confirmed against the installed version and your business workflow before purchase.</p>
         </div>
       </div>
     </section>
 
     <section class="more">
-      <div class="section-head"><h2>A clear process for each payroll period</h2><p>Use a consistent workflow to prepare employee data, review time records, and produce payroll outputs.</p></div>
+      <div class="section-head"><h2>A clear process for each payroll period</h2><p>Follow the same four steps every cutoff, as shown in the User Guide.</p></div>
       <div class="workflow">
-        <article class="step"><small>Step 1</small><h3>Set up company and employees</h3><p>Enter company details, maintain employee information, and review wage and contribution settings.</p></article>
-        <article class="step"><small>Step 2</small><h3>Review attendance and cutoff</h3><p>Check attendance records and select the payroll period before running calculations.</p></article>
-        <article class="step"><small>Step 3</small><h3>Calculate and verify payroll</h3><p>Review calculated amounts and deductions, then generate payslips and payroll reports.</p></article>
+        <article class="step"><small>Step 1</small><h3>Set up company and employees</h3><p>Enter company details, check the holiday calendar and minimum-wage rules, and add employees with their ID numbers and rates.</p></article>
+        <article class="step"><small>Step 2</small><h3>Record attendance</h3><p>Download the Excel template for the cutoff, fill in the open cells, upload it, and correct any day with the attendance log.</p></article>
+        <article class="step"><small>Step 3</small><h3>Compute and save payroll</h3><p>Choose the cutoff and deductions, compute, review the table, fix anything, then save the payroll run.</p></article>
+        <article class="step"><small>Step 4</small><h3>Print and back up</h3><p>Print the payslips, export your reports, and save a backup of your data.</p></article>
       </div>
       <div class="notice"><b>Important:</b> Payroll and government contribution rules can change. Review settings and verify all calculated amounts before paying employees or submitting official reports. Reports assist with preparation and recordkeeping; they do not replace employer review or official filing responsibilities.</div>
     </section>
@@ -560,7 +579,7 @@
           <a href="https://www.facebook.com/share/1F1MPHFTPg/" target="_blank" rel="noopener" aria-label="Facebook Page" title="Facebook Page"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
           <a href="https://www.instagram.com/jmcy.websolutions" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
           <a href="https://m.me/jmcyweb" target="_blank" rel="noopener" aria-label="Messenger" title="Messenger"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.302 2.246.466 3.443.466 6.627 0 12-4.975 12-11.113C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26 6.559-6.96 3.125 3.26 5.893-3.26-6.559 6.96z"/></svg></a>
-          <a href="https://wa.me/639091297422" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+          <a href="https://wa.me/639453392349" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
         </div>
       </div>
 
@@ -568,7 +587,7 @@
         <h4>Contact</h4>
         <ul class="contact-list">
           <li><small>Email</small><a href="mailto:jhamcyd@gmail.com">jhamcyd@gmail.com</a></li>
-          <li><small>WhatsApp</small><a href="https://wa.me/639091297422" target="_blank" rel="noopener">+63 909 129 7422</a></li>
+          <li><small>WhatsApp</small><a href="https://wa.me/639453392349" target="_blank" rel="noopener">+63 945 339 2349</a></li>
           <li><small>Messenger</small><a href="https://m.me/jmcyweb" target="_blank" rel="noopener">m.me/jmcyweb</a></li>
         </ul>
       </div>
